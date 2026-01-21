@@ -17,10 +17,7 @@ class Translation
     private ?string $name = null;
 
     #[ORM\Column(length: 500)]
-    private ?string $image_file_format_url = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $file_viewer_url = null;
+    private ?string $translation_file_name = null;
 
     #[ORM\Column(length: 255)]
     private ?string $translation_type = null;
@@ -58,26 +55,14 @@ class Translation
         return $this;
     }
 
-    public function getImageFileFormatUrl(): ?string
+    public function getTranslationFileName(): ?string
     {
-        return $this->image_file_format_url;
+        return $this->translation_file_name;
     }
 
-    public function setImageFileFormatUrl(string $image_file_format_url): static
+    public function setTranslationFileName(string $translation_file_name): static
     {
-        $this->image_file_format_url = $image_file_format_url;
-
-        return $this;
-    }
-
-    public function getFileViewerUrl(): ?string
-    {
-        return $this->file_viewer_url;
-    }
-
-    public function setFileViewerUrl(string $file_viewer_url): static
-    {
-        $this->file_viewer_url = $file_viewer_url;
+        $this->translation_file_name = $translation_file_name;
 
         return $this;
     }

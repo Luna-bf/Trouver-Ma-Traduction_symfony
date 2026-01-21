@@ -19,16 +19,16 @@ class Profile
     private ?string $username = null;
 
     #[ORM\Column(length: 500)]
-    private ?string $profile_picture_url = null;
+    private ?string $profile_picture_name = null;
 
     #[ORM\Column(length: 500)]
-    private ?string $thumbnail_url = null;
+    private ?string $thumbnail_name = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
     #[ORM\Column(length: 20)]
-    private ?string $phone_number = null;
+    private ?string $phone = null;
 
     /**
      * @var Collection<int, Translation>
@@ -62,26 +62,26 @@ class Profile
         return $this;
     }
 
-    public function getProfilePictureUrl(): ?string
+    public function getProfilePictureName(): ?string
     {
-        return $this->profile_picture_url;
+        return $this->profile_picture_name;
     }
 
-    public function setProfilePictureUrl(string $profile_picture_url): static
+    public function setProfilePictureName(string $profile_picture_name): static
     {
-        $this->profile_picture_url = $profile_picture_url;
+        $this->profile_picture_name = $profile_picture_name;
 
         return $this;
     }
 
-    public function getThumbnailUrl(): ?string
+    public function getThumbnailName(): ?string
     {
-        return $this->thumbnail_url;
+        return $this->thumbnail_name;
     }
 
-    public function setThumbnailUrl(string $thumbnail_url): static
+    public function setThumbnailName(string $thumbnail_name): static
     {
-        $this->thumbnail_url = $thumbnail_url;
+        $this->thumbnail_name = $thumbnail_name;
 
         return $this;
     }
@@ -98,14 +98,14 @@ class Profile
         return $this;
     }
 
-    public function getPhoneNumber(): ?string
+    public function getPhone(): ?string
     {
-        return $this->phone_number;
+        return $this->phone;
     }
 
-    public function setPhoneNumber(string $phone_number): static
+    public function setPhone(string $phone): static
     {
-        $this->phone_number = $phone_number;
+        $this->phone = $phone;
 
         return $this;
     }
