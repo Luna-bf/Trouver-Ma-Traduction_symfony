@@ -1,0 +1,40 @@
+.accessibility-form {
+    flex-direction: column;
+    width: 100vw;
+}
+
+.accessibility-form form>.param,
+.font-size-param {
+    margin-bottom: 1.5em;
+}
+
+input[type="range"] {
+    accent-color: green;
+    // accent-color: #608dff;
+}
+
+#number-input {
+    width: 20%;
+}
+
+
+/************
+RESPONSIVE
+************/
+// Mobile (portrait)
+@media screen and (max-width: 480px) {
+
+    .accessibility-form form>.param {
+        flex-direction: column;
+    }
+
+    .accessibility-form form>.param select {
+        margin-top: 10px;
+    }
+}
+
+// Tablette (portrait)
+@media screen and (min-width: 481px) and (max-width: 768px) {}
+
+// Tablette (paysage)
+@media screen and (min-width: 769px) and (max-width: 1024px) {}

@@ -1,0 +1,223 @@
+@use '../other/variables';
+
+.upload-file-container {
+    justify-content: center;
+    align-items: center;
+}
+
+.app {
+    width: 80%;
+    height: 80%;
+    border: 1px solid #aaa;
+    border-radius: 15px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 5px 10px 25px #dddddd;
+    padding: 2em 0 2em 0;
+}
+
+.heading {
+    margin-bottom: 1.5em;
+}
+
+.heading>h1 {
+    font-style: normal;
+    margin: 0.5em 0 0.3em 0;
+    font-size: 25px;
+}
+
+.preview {
+    justify-content: center;
+    margin-bottom: 1.5em;
+}
+
+// .preview>#image {
+//     background-image: url("../../../assets/imgs/placeholders/placeholder-picture.png");
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     background-position: center;
+//     width: 45%;
+//     width: 40vw;
+// 	   min-height: 22em;
+//     border: 2px solid #A0A0A0;
+//     border-radius: 10px;
+// }
+
+.preview>figure {
+    width: 45%;
+    border: 2px solid #A0A0A0;
+    border-radius: 10px;
+}
+
+.preview figure>img {
+    width: 100%;
+    vertical-align: middle;
+    border-radius: 8px;
+}
+
+.choose-container {
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.choose-container>input {
+    display: none;
+}
+
+.choose-container>.file-label {
+    display: flex;
+    align-items: center;
+    background-color: variables.$form-btn-bg-color;
+    border: 1px solid variables.$form-btn-bg-color;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 16px;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    padding: 11px 25px 11px 25px;
+    transition: none;
+}
+
+.choose-container>.file-label:hover {
+    background-color: variables.$form-btn-bg-color-active;
+    border: 1px solid variables.$form-btn-bg-color-active;
+    cursor: pointer;
+    transition: none;
+}
+
+.choose-container>#file-lines:before {
+    font-family: "FontAwesome";
+    content: "\f15c";
+    font-size: 22px;
+    align-content: center;
+    color: #fff;
+    margin-right: 15px;
+}
+
+.choose-container>#cloud:before {
+    font-family: "FontAwesome";
+    content: "\f0ee";
+    font-size: 22px;
+    align-content: center;
+    color: #fff;
+    margin-right: 15px;
+}
+
+.choose-container>p {
+    font-family: "PoppinsRegular";
+    font-weight: 400;
+    font-size: 15px;
+    margin-top: 1.5em;
+}
+
+#img-restrictions,
+#file-restrictions {
+    display: none;
+    color: firebrick;
+}
+
+
+/************
+RESPONSIVE
+************/
+// Mobile (portrait)
+@media screen and (max-width: 480px) {
+
+    .upload-file-container {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .app {
+        width: 90%;
+        height: 100%;
+        border: 1px solid #aaa;
+        border-radius: 15px;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        box-shadow: 5px 10px 25px #dddddd;
+        padding: 2em 0 2em 0;
+    }
+
+    .heading {
+        margin-bottom: 2em;
+    }
+
+    .heading>h1 {
+        font-style: normal;
+        margin: 0.5em 0 0.3em 0;
+        font-size: 20px;
+    }
+
+    .preview {
+        justify-content: center;
+        margin-bottom: 2em;
+    }
+
+    .preview>figure {
+        width: 70%;
+        border: 1px solid #A0A0A0;
+        border-radius: 6px;
+    }
+
+    .preview figure>img {
+        border-radius: 5px;
+    }
+
+    .choose-container>.file-label {
+        display: flex;
+        align-items: center;
+        background-color: variables.$form-btn-bg-color;
+        border: 1px solid variables.$form-btn-bg-color;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 15px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        padding: 10px 20px 10px 20px;
+        transition: none;
+    }
+
+    .choose-container>.file-label:hover {
+        background-color: variables.$form-btn-bg-color-active;
+        border: 1px solid variables.$form-btn-bg-color-active;
+        cursor: pointer;
+        transition: none;
+    }
+
+    .choose-container>#file-lines:before {
+        font-family: "FontAwesome";
+        content: "\f15c";
+        font-size: 18px;
+        align-content: center;
+        color: #fff;
+        margin-right: 15px;
+    }
+
+    .choose-container>#cloud:before {
+        font-family: "FontAwesome";
+        content: "\f0ee";
+        font-size: 15px;
+        align-content: center;
+        color: #fff;
+        margin-right: 15px;
+    }
+
+    .choose-container>p {
+        font-family: "PoppinsRegular";
+        font-weight: 400;
+        font-size: 15px;
+        margin-top: 1.5em;
+    }
+}
+
+// Tablette (portrait)
+@media screen and (min-width: 481px) and (max-width: 768px) {}
+
+// Tablette (paysage)
+@media screen and (min-width: 769px) and (max-width: 1024x) {}

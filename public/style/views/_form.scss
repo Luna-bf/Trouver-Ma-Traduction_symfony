@@ -1,0 +1,294 @@
+@use '../other/variables';
+
+.forms-body {
+    background-image: url("../../assets/imgs/general/form/paysage.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 60em rgba(0, 0, 0, 0.5) inset;
+}
+
+// form container
+.form-container {
+    align-items: center;
+    justify-content: center;
+}
+
+// form width
+.w-50-percent {
+    width: 60%;
+}
+
+// form parent
+.form-parent {
+    flex-direction: column;
+    /* A changer en flex-direction: row; si je décide de revenir à l'ancienne configuration */
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.form-parent>figure {
+    width: 35%;
+}
+
+.form-parent figure>img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.form-parent>h1 {
+    font-family: "PoppinsRegular", sans-serif;
+    font-size: 30px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.sign-label {
+    font-family: "PoppinsLight", sans-serif;
+    color: #fff;
+}
+
+// form
+form {
+    // background-color: #fff;
+    flex-direction: column;
+    width: 50%;
+    border-radius: 10px;
+}
+
+// inputs
+.form-input-parent {
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.form-input {
+    font-family: "PoppinsLight", sans-serif;
+    border: 1px solid #B8B8B8;
+    border-radius: 3px;
+    height: 35px;
+    font-size: 14.5px;
+    direction: left;
+    text-indent: 10px;
+    background-color: #F5F5F5;
+}
+
+.form-input[type="file"] {
+    text-indent: 0;
+}
+
+.form-input[type="file"]::file-selector-button {
+    font-family: "PoppinsLight", sans-serif;
+    border: 2px solid #B8B8B8;
+    background-color: #B8B8B8;
+    margin-right: 15px;
+    height: 35px;
+    padding: 0 10px 0 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+// password inputs
+#password-div {
+    margin-bottom: 1em;
+}
+
+#forgotten-password {
+    margin: 7px 0 30px 0;
+}
+
+// checkbox
+#remember {
+    flex-direction: row;
+    margin-top: 1.5em;
+}
+
+#remember-input {
+    margin-right: 0.4rem;
+}
+
+.mb-50 {
+    margin-bottom: 50px;
+}
+
+input[type=checkbox] {
+    transform: scale(1.4);
+}
+
+input[type=checkbox]:hover {
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    accent-color: variables.$form-btn-bg-color;
+}
+
+// .submit-btn
+.submit-btn {
+    font-family: "PoppinsLight", sans-serif;
+    font-size: 16px;
+    text-align: center;
+    background-color: variables.$form-btn-bg-color;
+    border: 1px solid variables.$form-btn-bg-color;
+    color: #fff;
+    border-radius: 6px;
+    padding: 0.5em 0 0.5em 0;
+    margin: 80px auto 25px auto;
+    /*Raccourci pour : margin: 0 auto; , margin-top: 80px;*/
+    width: 35%;
+    transition: none;
+}
+
+.submit-btn:hover {
+    background-color: variables.$form-btn-bg-color-active;
+    border: 1px solid variables.$form-btn-bg-color-active;
+    cursor: pointer;
+}
+
+// account
+.account-parent {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3em;
+}
+
+.account-parent a,
+.account-parent div {
+    margin-bottom: 14px;
+    color: #fff;
+    transition: none;
+}
+
+.account-parent div>.connect-register-link {
+    font-family: "PoppinsLight", sans-serif;
+    font-weight: 300;
+    color: variables.$form-btn-bg-color;
+}
+
+.account-parent div>.connect-register-link:hover {
+    color: variables.$form-btn-bg-color-active;
+    text-decoration: underline;
+    transition: none;
+}
+
+
+// margins
+.mt-first-label,
+.mt-second-label {
+    width: 100%;
+    margin-top: 1.5em;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+#username {
+    margin-bottom: 20px;
+}
+
+.account-parent>a,
+.account-parent div {
+    font-family: "PoppinsExtraLight", sans-serif;
+    font-weight: 300;
+}
+
+// Mobile (portrait)
+@media screen and (max-width: 480px) {
+    .form-parent {
+        flex-direction: column;
+    }
+
+    .form-parent>figure {
+        display: none;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    input[type=checkbox] {
+        transform: scale(1.0);
+    }
+
+    .submit-btn {
+        width: 50%;
+    }
+}
+
+// Tablette (portrait)
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .form-parent>figure {
+        width: 45%;
+    }
+
+    .form-parent {
+        margin: 1.5em 0 1.5em 0;
+        flex-direction: column;
+    }
+
+    form {
+        width: 95%;
+    }
+
+    .mt-first-label {
+        margin-top: 3em;
+    }
+
+    .account-parent>div {
+        margin-bottom: 0;
+    }
+}
+
+// Tablette (paysage)
+@media screen and (min-width: 769px) and (max-width: 1024x) {
+
+    // Hero
+    .hero-div h1 {
+        font-size: 26px;
+        line-height: normal;
+        margin-bottom: 2em;
+        padding: 0 0.5em 0 0.5em;
+    }
+
+    .hero-div h2 {
+        font-size: 20px;
+        padding: 0 0.5em 0 0.5em;
+    }
+
+    .hero-div>ul li form>.hero-input {
+        font-size: 16px;
+        padding: 8px 43px 8px 43px;
+    }
+
+    // Accueil container
+    .accueil-container .translation-titles>span {
+        font-size: 20px;
+        line-height: normal;
+        text-align: center;
+        padding: 0 5px 0 5px;
+    }
+
+    .accueil-container .translation-parent {
+        flex-wrap: wrap;
+    }
+
+    .accueil-container .translation-titles>span:first-child {
+        margin-bottom: 30px;
+    }
+
+    .accueil-container .translation-parent>.translation-card {
+        width: 40%;
+        margin-bottom: 3em;
+    }
+
+    .accueil-container .translation-parent .translation-card>span {
+        font-size: 20px;
+    }
+
+    .accueil-container .translation-parent .translation-card>p {
+        font-size: 15px;
+        padding: 0.8em;
+    }
+}

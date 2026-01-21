@@ -1,0 +1,225 @@
+@use '../other/variables';
+
+.profile-container {
+    width: 100%;
+}
+
+// Profile banner
+.profile-banner {
+    background-image: url("../assets/imgs/placeholders/placeholder-picture.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 45vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-pfp-figure {
+    width: 7%;
+    position: absolute;
+    bottom: 330px;
+}
+
+.user-pfp-figure>img {
+    width: 100%;
+    border-radius: 50%;
+    // border: 3.5px solid variables.$form-btn-bg-color;
+    // box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+    border: 4px solid #fff;
+}
+
+.profile-infos {
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #A0A0A0;
+    margin-bottom: 3em;
+}
+
+// .user-profile
+.user-profile {
+    width: 100%;
+}
+
+.user-profile .hr-profile {
+    margin: 2em 0 2em 0;
+}
+
+.user-profile .hr-profile>#separator {
+    background-color: #A0A0A0;
+    width: 80%;
+    height: 0.5px;
+    border: 0;
+    margin: 0 auto;
+}
+
+// .parameters-icons
+.user-profile>.parameters-icons {
+    padding: 10px 10px 10px 0;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.parameters-icons>a {
+    font-size: 21px;
+}
+
+.username-and-description {
+    text-align: center;
+}
+
+.username-and-description>h1 {
+    font-weight: 500;
+    font-size: 24px;
+    margin: 3px 0 0.7em 0;
+}
+
+.username-and-description>p {
+    font-family: "PoppinsLightItalic", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    max-width: 55%;
+    color: #888888;
+    margin: 0 auto;
+}
+
+.activity-infos {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2.1em;
+}
+
+.activity-infos div>p {
+    font-family: "PoppinsRegular", sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.activity-infos .translations:before {
+    font-family: "FontAwesome";
+    content: "\f31c";
+    font-size: 20px;
+    align-content: center;
+    color: #1B9675;
+    margin-right: 8px;
+}
+
+.buttons-and-songs {
+    flex-direction: column;
+}
+
+.posts-btns {
+    justify-content: center;
+    margin-bottom: 5em;
+}
+
+.fa-plus, .fa-minus, .fa-arrow-right-from-bracket {
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.create-post {
+    border: 1px solid #198754;
+    color: #198754;
+    padding: 8px 18px 8px 18px;
+    border-radius: 5px;
+    font-size: 15.5px;
+    transition: all 0.2s;
+}
+
+.create-post:hover {
+    background-color: #198754;
+    color: #fff;
+    transition: all 0.2s;
+}
+
+.delete-posts {
+    border: 1px solid #b22222;
+    color: #b22222;
+    padding: 8px 18px 8px 18px;
+    border-radius: 5px;
+    font-size: 15.5px;
+    transition: all 0.2s;
+    margin-left: 35px;
+}
+
+.delete-posts:hover {
+    background-color: #b22222;
+    color: #fff;
+    transition: all 0.2s;
+}
+
+/************
+RESPONSIVE
+************/
+// Mobile (portrait)
+@media screen and (max-width: 480px) {
+
+    .user-pfp-figure {
+        width: 21%;
+        position: absolute;
+        top: 440px;
+    }
+
+    .user-pfp-figure>img {
+        border: 3.5px solid #fff;
+    }
+
+    .username-and-description>h1 {
+        font-weight: 500;
+        font-size: 1.3rem;
+        margin: 0 0 0.7em 0;
+    }
+
+    .username-and-description>p {
+        font-family: "PoppinsLightItalic", sans-serif;
+        font-weight: 300;
+        font-style: italic;
+        font-size: 15px;
+        max-width: 80%;
+        color: #888888;
+        margin: 0 auto;
+    }
+
+    // .activity-infos
+    .activity-infos {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2.1em;
+    }
+
+    .activity-infos div>p {
+        font-family: "PoppinsRegular", sans-serif;
+        font-weight: 400;
+        font-size: 15px;
+    }
+
+    .activity-infos .translations:before {
+        font-family: "FontAwesome";
+        content: "\f31c";
+        font-size: 18px;
+        align-content: center;
+        color: #1B9675;
+        margin-right: 13px;
+    }
+
+    .user-profile>.parameters-icons {
+        padding: 10px 10px 10px 0;
+        justify-content: flex-end;
+        gap: 15px;
+    }
+
+    .parameters-icons>a {
+        font-size: 18px;
+    }
+}
+
+// Tablette (portrait)
+@media screen and (min-width: 481px) and (max-width: 768px) {}
+
+// Tablette (paysage)
+@media screen and (min-width: 769px) and (max-width: 1024px) {}

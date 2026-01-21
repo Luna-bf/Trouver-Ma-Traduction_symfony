@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		{% block head %}
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<title>
+				{% block title %}Base template{% endblock %}
+			</title>
+			<link rel="stylesheet" href="/style/main.css">
+			<link rel="icon" href="/assets/imgs/favicon/favicon-48x48.png">
+		{% endblock %}
+		{% block cdn %}{% endblock %}
+	</head>
+
+	<body>
+		<div id="cover-background"></div>
+
+
+			{% block header %}
+				{% include "inc/_header.html.twig" %}
+			{% endblock %}
+
+
+		{% block main %}{% endblock %}
+
+		{# <main>
+			{% block main %}
+				<p>Base main</p>
+			{% endblock %}
+		</main> #}
+
+		{% block footer %}
+			{% include "inc/_footer.html.twig" %}
+		{% endblock %}
+
+		{% block script %}{% endblock %}
+	</body>
+</html>

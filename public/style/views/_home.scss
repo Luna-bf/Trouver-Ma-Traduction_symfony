@@ -1,0 +1,142 @@
+.accueil-connect-container>h2 {
+  margin: 50px 0 30px 15px;
+}
+
+// Slider
+.swiper {
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: #fff;
+  flex-direction: column;
+  margin-bottom: 5em;
+}
+
+.cards-wrapper {
+  max-width: 100%;
+  margin: 0 auto;
+  margin: 0 75px 35px 75px;
+  overflow: hidden;
+}
+
+// Les paramètres associés à une seule carte du slider
+.swiper-slide {
+  border: 3px solid #DCAC4D;
+  border-radius: 6px;
+  padding: 10px 0 10px 0;
+  margin-bottom: 10px;
+}
+
+// Le contenu de la carte
+.card-content {
+  width: 235px;
+  margin: 0 auto;
+}
+
+.swiper-slide .card-content figure>img {
+  border-radius: 10px;
+  margin: 5px 0 15px 0;
+}
+
+.swiper-slide .card-content .title>h3 {
+  font-family: "PoppinsRegular", sans-serif;
+  font-weight: 400;
+  text-align: center;
+  font-size: 17px;
+}
+
+.see-translation-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.see-translation-link>a {
+  font-family: "PoppinsSemibold", sans-serif;
+}
+
+.swiper-slide .card-content>.text {
+  font-family: "PoppinsLight", sans-serif;
+  font-size: 15px;
+  margin: 50px 0 50px 0;
+  color: var(--text-color);
+  list-style: none;
+  line-height: 2.5em;
+}
+
+.swiper-slide .card-content>.other-infos {
+  font-family: "PoppinsLight", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  margin: 20px 0 10px 0;
+  color: var(--text-color);
+  list-style: none;
+  line-height: 2em;
+}
+
+.swiper-slide:active {
+  cursor: grabbing;
+}
+
+// Arrows
+.swiper-button-next,
+.swiper-button-prev {
+  --swiper-navigation-color: #000;
+  --swiper-navigation-size: 28px;
+}
+
+
+/************
+RESPONSIVE
+************/
+// Mobile (portrait)
+@media screen and (max-width: 480px) {
+  .accueil-connect-container>h2 {
+    margin: 50px 0 30px 15px;
+    font-size: 21px;
+  }
+
+  .swiper-slide .card-content figure {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  // Le contenu de la carte
+  .card-content {
+    width: 210px;
+    margin: 0 auto;
+  }
+
+  .swiper-slide {
+    border: 2px solid #DCAC4D;
+  }
+
+  .swiper-slide .card-content .title>h3 {
+    font-family: "PoppinsRegular", sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.6em;
+  }
+
+  .swiper-slide .card-content>.text {
+    font-size: 15px;
+    margin: 50px 0 50px 0;
+    color: var(--text-color);
+    list-style: none;
+    line-height: 2.5em;
+  }
+
+  .swiper-slide .card-content>.other-infos {
+    font-weight: 300;
+    font-size: 15px;
+    margin: 20px 0 10px 0;
+    color: var(--text-color);
+    list-style: none;
+    line-height: 2em;
+  }
+}
+
+// Tablette (portrait)
+@media screen and (min-width: 481px) and (max-width: 768px) {}
+
+// Tablette (paysage)
+@media screen and (min-width: 769px) and (max-width: 1024x) {}

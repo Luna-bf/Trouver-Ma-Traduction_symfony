@@ -1,0 +1,137 @@
+.song-container {
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 10em;
+    margin-bottom: 5em;
+}
+
+.simple-card-item {
+    display: flex;
+    align-content: center;
+    width: 290px;
+    border: 3px solid #DCAC4D;
+    border-radius: 6px;
+    padding: 10px 0 10px 0;
+    margin-bottom: 10px;
+}
+
+.simple-card-content {
+    width: 240px;
+    margin: 0 auto;
+}
+
+.simple-card-item .simple-card-content figure>img {
+    border-radius: 10px;
+    margin: 5px 0 10px 0;
+}
+
+.simple-card-item .simple-card-content .simple-title>h3 {
+    font-family: "PoppinsRegular", sans-serif;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.6em;
+    margin-top: 10px;
+}
+
+.simple-card-item .simple-card-content>.simple-text {
+    font-family: "PoppinsLight", sans-serif;
+    font-size: 16px;
+    margin: 50px 0 50px 0;
+    color: var(--text-color);
+    list-style: none;
+    line-height: 2.5em;
+}
+
+.simple-card-item .simple-card-content>.simple-other-infos {
+    font-family: "PoppinsLight", sans-serif;
+    font-size: 15px;
+    margin: 20px 0 10px 0;
+    color: var(--text-color);
+    list-style: none;
+    line-height: 2em;
+}
+
+.search-result-container>:first-child {
+    margin-top: 4em;
+}
+
+
+/************
+RESPONSIVE
+************/
+// Mobile (portrait)
+@media screen and (max-width: 480px) {
+
+    .song-container {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 5em;
+    }
+
+    .simple-card-item {
+        display: flex;
+        align-content: center;
+        width: 260px;
+        border: 2px solid #DCAC4D;
+        border-radius: 6px;
+        padding: 10px 0 10px 0;
+        margin-bottom: 10px;
+    }
+
+    .simple-card-content {
+        width: 240px;
+        margin: 0 auto;
+    }
+
+    .simple-card-item .simple-card-content>figure {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .simple-card-item .simple-card-content figure>img {
+        border-radius: 10px;
+        margin: 5px 0 10px 0;
+    }
+
+    .simple-card-item .simple-card-content .simple-title>h3 {
+        font-family: "PoppinsRegular", sans-serif;
+        font-weight: 400;
+        font-size: 17px;
+        text-align: center;
+        line-height: 1.6em;
+        margin-top: 10px;
+    }
+
+    .simple-card-item .simple-card-content>.simple-text {
+        font-size: 15px;
+        margin: 20px 0 10px 10px;
+    }
+
+    .simple-card-item .simple-card-content>.simple-other-infos {
+        font-size: 15px;
+        margin: 20px 0 10px 10px;
+        color: var(--text-color);
+        list-style: none;
+        line-height: 2em;
+    }
+
+    .see-translation-link {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .see-translation-link>a {
+        font-family: "PoppinsSemibold", sans-serif;
+        font-weight: 600;
+    }
+
+    .m-t-song {
+        margin-top: 4em;
+    }
+}
+
+// Tablette (portrait)
+@media screen and (min-width: 481px) and (max-width: 768px) {}
+
+// Tablette (paysage)
+@media screen and (min-width: 769px) and (max-width: 1024x) {}

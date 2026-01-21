@@ -1,0 +1,140 @@
+@use '../../other/variables';
+
+footer {
+    bottom: 0;
+    background-color: variables.$form-btn-bg-color;
+    padding: 1em;
+    width: 100%;
+    text-align: center;
+    flex-direction: column;
+}
+
+footer>p {
+    margin-top: 2em;
+}
+
+footer p>a {
+    font-family: "PoppinsLight", sans-serif;
+    font-weight: 300;
+    text-decoration: underline;
+    transition: none;
+}
+
+footer p>a:hover {
+    text-decoration: underline;
+    color: #fff;
+    transition: none;
+}
+
+.margin-foot {
+    margin: 1em 0 1em 0;
+}
+
+/***Logo***/
+.logo-text {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.parent-logo {
+    width: 6%;
+    margin: 0 auto;
+}
+
+.parent-logo a>img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/***Texte***/
+.parent-text {
+    width: 50%;
+    justify-content: center;
+}
+
+.text>p {
+    font-style: normal;
+    text-align: left;
+    margin: 0 auto;
+    max-width: 350px;
+}
+
+footer>hr {
+    background-color: #000;
+    width: 80%;
+    margin: 0 auto;
+    height: 0.5px;
+    border: 0;
+}
+
+/***Freepik***/
+.freepik {
+    padding-bottom: 1em;
+}
+
+.freepik>a {
+    font-family: "PoppinsLight";
+    font-weight: 300;
+}
+
+
+/************
+RESPONSIVE
+************/
+// Mobile (portrait)
+@media screen and (max-width: 480px) {
+    .parent-logo {
+        width: 25%;
+    }
+
+    .logo-text {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .parent-text {
+        width: 100%;
+        justify-content: center;
+        margin: 15px 0 15px 0;
+    }
+
+    .text>p {
+        text-align: center;
+    }
+}
+
+// Tablette (portrait)
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .parent-logo {
+        width: 20%;
+    }
+
+    .logo-text {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    footer>hr {
+        background-color: #000;
+        width: 90%;
+        margin: 0 auto;
+        height: 0.5px;
+        border: 0;
+    }
+    
+    .parent-text {
+        width: 100%;
+        justify-content: center;
+        margin: 15px 0 15px 0;
+    }
+
+    .text>p {
+        text-align: center;
+    }
+}
+
+// Tablette (paysage)
+@media screen and (min-width: 769px) and (max-width: 1024x) {}

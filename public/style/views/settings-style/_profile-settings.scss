@@ -1,0 +1,291 @@
+@use '../../other/variables';
+
+.settings-container {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.settings-parent {
+    flex-direction: row;
+    margin: 50px 0 50px 0;
+    border: 1px solid #A0A0A0;
+}
+
+// all-settings
+.all-settings {
+    flex-direction: column;
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.all-settings>li {
+    padding: 25px 5em 25px 20px;
+}
+
+.all-settings li>a {
+    flex-direction: row;
+    align-items: center;
+}
+
+// Icons (ul li>a)
+.all-settings li a>i {
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+// border-left
+.border-left {
+    border-left: 2px solid #000;
+}
+
+.separator {
+    border-left: 1px solid #A0A0A0;
+    padding: 30px 0 30px 40px;
+}
+
+// profile-picture
+.profile-picture {
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-picture>figure {
+    width: 10%;
+}
+
+.profile-picture figure>img {
+    border-radius: 50%;
+}
+
+.profile-picture>ul {
+    line-height: 2em;
+}
+
+.profile-picture ul>li:first-child {
+    font-size: 18px;
+}
+
+.profile-picture ul li>a {
+    font-family: "PoppinsLight", sans-serif;
+    color: #608DFF;
+}
+
+// profile-form
+.profile-form {
+    margin-top: 50px;
+}
+
+.profile-form form>.param {
+    margin-bottom: 2em;
+}
+
+.param {
+    flex-direction: row;
+}
+
+.param label,
+.profile-input,
+.profile-textarea,
+.profile-select {
+    flex-shrink: 0;
+}
+
+.param>.profile-input,
+.profile-textarea,
+.profile-select {
+    width: 100%;
+    background-color: variables.$input-bg-color;
+    color: variables.$input-text-color;
+    border: 1px solid variables.$input-border-color;
+    border-radius: 5px;
+    margin-left: 15px;
+}
+
+.param>.profile-input,
+.profile-select {
+    font-family: "PoppinsLight", sans-serif;
+    height: 30px;
+}
+
+.param>.profile-input {
+    padding-left: 10px;
+}
+
+.param>.profile-textarea {
+    font-family: "PoppinsLight", sans-serif;
+    height: 150px;
+    overflow: auto;
+    padding: 5px 15px 5px 15px;
+}
+
+// submit-changes
+.submit-changes {
+    margin-top: 3em;
+}
+
+.submit-changes>button {
+    background-color: variables.$form-btn-bg-color;
+    border: 1px solid variables.$form-btn-bg-color;
+    transition: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.submit-changes>button:hover {
+    background-color: variables.$form-btn-bg-color-active;
+    border: 1px solid variables.$form-btn-bg-color-active;
+    transition: none;
+    cursor: pointer;
+}
+
+
+// ANCIEN CODE
+
+// .table-form {
+//     display: table;
+//     width: 100%;
+// }
+
+// .param {
+//     display: table-row;
+// }
+
+// .param label,
+// input,
+// textarea,
+// select {
+//     flex-shrink: 0;
+//     // display: table-cell;
+// }
+
+// .param>input,
+// textarea,
+// select {
+//     display: table-cell;
+//     width: 100%;
+//     background-color: variables.$input-bg-color;
+//     color: variables.$input-text-color;
+//     border: 1px solid variables.$input-border-color;
+//     border-radius: 5px;
+//     margin-left: 15px;
+// }
+
+
+/************
+RESPONSIVE
+************/
+// Mobile (portrait)
+@media screen and (max-width: 480px) {
+    .settings-container {
+        width: 378px;
+        margin: 0 auto;
+    }
+
+    .all-settings>li {
+        padding: 25px 1em 25px 20px;
+    }
+
+    .all-settings li>a {
+        font-size: 0; // Pour cacher le texte associé à l'icône
+    }
+
+    .all-settings li a>i {
+        font-size: 22px; // Pour garder l'icône visible
+        margin-right: 0;
+    }
+
+    .separator {
+        padding: 30px 0 30px 0;
+    }
+
+    .profile-picture {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .profile-picture>figure {
+        width: 25%;
+    }
+
+    .profile-picture figure>img {
+        border-radius: 50%;
+    }
+
+    .profile-picture>ul {
+        line-height: 2em;
+    }
+
+    .profile-picture ul>li:first-child {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .profile-picture ul li>a {
+        font-family: "PoppinsLight", sans-serif;
+        color: #608DFF;
+        text-align: center;
+    }
+
+    // profile-form
+    .profile-form {
+        margin-top: 50px;
+    }
+
+    .profile-form form>.param {
+        flex-direction: column;
+    }
+
+    .param {
+        margin-left: 40px;
+    }
+
+    .param label,
+    input,
+    textarea,
+    select {
+        flex-shrink: 0;
+    }
+
+    .param>.profile-input,
+    .profile-textarea,
+    .profile-select {
+        width: 70%;
+        margin-left: 0;
+    }
+
+    .param>input,
+    select {
+        font-family: "PoppinsLight", sans-serif;
+        height: 30px;
+    }
+
+    .param>input {
+        margin-top: 10px;
+    }
+
+    .param>textarea {
+        font-family: "PoppinsLight", sans-serif;
+        height: 150px;
+        overflow: auto;
+        padding: 5px 15px 5px 15px;
+        margin-top: 10px;
+    }
+
+    // submit-changes
+    .submit-changes {
+        margin-left: 40px;
+    }
+
+    .submit-changes>button {
+        font-size: 13px;
+    }
+}
+
+// Tablette (portrait)
+@media screen and (min-width: 481px) and (max-width: 768px) {}
+
+// Tablette (paysage)
+@media screen and (min-width: 769px) and (max-width: 1024px) {}

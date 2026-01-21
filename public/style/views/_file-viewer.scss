@@ -1,0 +1,181 @@
+.file-viewer-header {
+    background-color: #000000;
+    position: sticky;
+    top: 0;
+    padding: 1em;
+}
+
+.file-viewer-header ul {
+    list-style: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-viewer-header ul>li:first-child {
+    margin-right: 30px;
+}
+
+// Floppy
+.file-viewer-header ul li>.floppy {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.file-viewer-header ul li>.floppy:before {
+    font-family: "FontAwesome";
+    content: "\f019";
+    font-size: 22px;
+    align-content: center;
+    margin-right: 8px;
+}
+
+// Print
+.file-viewer-header ul li>.print {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.file-viewer-header ul li>.print:before {
+    font-family: "FontAwesome";
+    content: "\f02f";
+    font-size: 22px;
+    align-content: center;
+    margin-right: 8px;
+}
+
+
+// file viewer body
+.file-viewer-body {
+    background-color: #171717;
+}
+
+.file-viewer-container {
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.pdf-viewer {
+    background-color: #fff;
+    margin: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+
+// file viewer footer
+.file-viewer-footer {
+    background-color: #000000;
+    position: sticky;
+    bottom: 0;
+    padding: 1em;
+}
+
+.pdf-pages {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    color: #eee;
+    font-size: 1.4rem;
+}
+
+.pdf-pages span {
+    font-size: 1.1rem;
+}
+
+.pdf-pages button {
+    font-size: 1.5rem;
+}
+
+.file-view-button,
+#next,
+#previous {
+    cursor: pointer;
+    padding: 2px 5px;
+    color: #fff;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.file-viewer-footer ul li>#previous {
+    margin-right: 20px;
+}
+
+.file-viewer-footer ul li>#next {
+    margin-left: 20px;
+}
+
+
+/************
+RESPONSIVE
+************/
+// Mobile (portrait)
+@media screen and (max-width: 480px) {
+
+    // Floppy
+    .file-viewer-header ul li>.floppy {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 15px;
+    }
+
+    .file-viewer-header ul li>.floppy:before {
+        font-family: "FontAwesome";
+        content: "\f019";
+        font-size: 18px;
+        align-content: center;
+        margin-right: 8px;
+    }
+
+    // Print
+    .file-viewer-header ul li>.print {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 15px;
+    }
+
+    .file-viewer-header ul li>.print:before {
+        font-family: "FontAwesome";
+        content: "\f02f";
+        font-size: 18px;
+        align-content: center;
+        margin-right: 8px;
+    }
+
+    .file-viewer-footer ul li>#previous {
+        margin-right: 20px;
+        font-size: 18px;
+    }
+
+    .file-viewer-footer ul li>#next {
+        margin-left: 20px;
+        font-size: 18px;
+    }
+
+    .pdf-pages span {
+        font-size: 15px;
+    }
+}
+
+// Tablette (portrait)
+@media screen and (min-width: 481px) and (max-width: 768px) {}
+
+// Tablette (paysage)
+@media screen and (min-width: 769px) and (max-width: 1024px) {}
