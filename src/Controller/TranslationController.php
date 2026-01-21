@@ -2,13 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Translation;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+#[Route('', name: 'translation_')]
 final class TranslationController extends AbstractController
 {
-    #[Route('/translation', name: 'app_translation')]
+    #[Route('', name: 'landing')]
     public function index(): Response
     {
         return $this->render('translation/index.html.twig', [
