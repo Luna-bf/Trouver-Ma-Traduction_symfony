@@ -1,0 +1,76 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Profil - Trouver Ma Traduction{% endblock %}
+
+{% block head %}
+	{{ parent() }}
+{% endblock %}
+
+{% block cdn %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+{% endblock %}
+
+{# Header #}
+{% block header %}
+	{% include "inc/_header.html.twig" %}
+{% endblock %}
+
+{% block main %}
+	<main class="profile-container">
+		<div class="profile-banner d-flex">
+			<figure class="user-pfp-figure">
+				<img src="/assets/imgs/placeholders/default-pfp.png" alt="User profile picture">
+			</figure>
+		</div>
+
+		<section class="profile-infos d-flex">
+			<article class="user-profile">
+				<div class="parameters-icons d-flex">
+					{#
+                    <div>
+                        <a href="settings-pages/profile-settings.php" class="logout">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>Paramètres du profil</a>
+					</div>
+                    #}
+					<a href="/settings/profile-settings" class="fa-solid fa-gear"></a>
+					<a href="/" class="fa-solid fa-right-from-bracket"></a>
+				</div>
+
+				<div class="username-and-description">
+					<h1>John Doe</h1>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A molestias asperiores alias suscipit
+					voluptas nisi quisquam tenetur, eos exercitationem ipsa. Placeat sed cupiditate repudiandae sequi.</p>
+				</div>
+
+				<div class="hr-profile d-flex">
+					<hr id="separator">
+				</div>
+
+				<div class="activity-infos d-flex">
+					<div class="translations d-flex">
+						<p>Traductions postées : 6</p>
+					</div>
+				</div>
+			</article>
+		</section>
+
+		<section class="buttons-and-songs d-flex">
+			<div class="posts-btns d-flex">
+				<a href="/posts/new-upload" class="create-post"><i class="fa-solid fa-plus"></i>Créer un nouveau post</a>
+				<a href="#" class="delete-posts"><i class="fa-solid fa-minus"></i>Supprimer des posts</a>
+			</div>
+
+			{% include "inc/_simple-card.html.twig" %}
+		</main>
+	{% endblock %}
+
+
+	{# Footer #}
+    {% block footer %}
+	    {% include "inc/_footer.html.twig" %}
+    {% endblock %}
+
+	{# Mon fichier JS #}
+    {% block script %}
+	    <script src="/js/app.js"></script>
+    {% endblock %}
