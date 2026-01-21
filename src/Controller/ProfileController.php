@@ -18,13 +18,13 @@ final class ProfileController extends AbstractController
         ]);
     }
 
-    #[Route('/posts/new_upload', name: 'new_upload')]
-    public function newUpload(): Response
-    {
-        return $this->render('profile/posts/newUpload.html.twig', [
-            'controller_name' => 'ProfileController',
-        ]);
-    }
+    // #[Route('/posts/new_upload', name: 'new_upload')]
+    // public function newUpload(): Response
+    // {
+    //     return $this->render('profile/posts/newUpload.html.twig', [
+    //         'controller_name' => 'ProfileController',
+    //     ]);
+    // }
 
     #[Route('/settings-pages/profile_settings', name: 'profile_settings')]
     public function profileSettings(): Response
