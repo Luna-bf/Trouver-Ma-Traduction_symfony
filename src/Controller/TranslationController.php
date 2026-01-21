@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Translation;
+use App\Form\TranslationType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -55,6 +58,34 @@ final class TranslationController extends AbstractController
     {
         return $this->render('translation/file/fileViewer.html.twig', [
             'controller_name' => 'TranslationController',
+        ]);
+    }
+
+    #[Route('/posts/new_upload', name: 'new_upload')]
+    public function newUpload(Request $request, EntityManagerInterface $em): Response
+    {
+        // Création d'une nouvelle instance de Translation
+        $translation = new Translation;
+
+        // Initialisation du formulaire
+        $translationForm = $this->createForm(TranslationType::class, $translation);
+
+        // Traitement du formulaire
+        $translationForm->handleRequest($request);
+
+        // Vérifie si le formulaire est valide
+        if($translationForm->isSubmitted() && $translationForm->isValid()) {
+
+            $em->persist($translation); // Prépare la requête
+            $em->flush(); // Exécute la requête
+
+            $this->addFlash('success', 'Traduction publiée avec succès.');
+
+            return $this->redirectToRoute('profile_index');
+        }
+
+        return $this->render('translation/posts/newUpload.html.twig', [
+            'translationForm' => $translationForm,
         ]);
     }
 }
