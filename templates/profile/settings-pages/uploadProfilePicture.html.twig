@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Nouvelle photo de profil - Trouver Ma Traduction{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block script %}
+    <script src="/js/settings-js/profile-picture-upload.js" defer></script>
+{% endblock %}
+
+{% block cdn %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block main %}
+    <main class="upload-file-container d-flex">
+        <section class="app d-flex">
+            <div class="heading">
+                <h1>Nouvelle photo de profil</h1>
+            </div>
+
+            <div class="d-flex preview">
+                {# <div id="image"></div> #}
+                <figure>
+                    <img src="/assets/imgs/placeholders/placeholder-picture.png" alt="Choisissez un fichier">
+                </figure>
+            </div>
+
+            <div class="d-flex choose-container">
+                <label for="choose-image" class="file-label" id="cloud">Choisissez un fichier</label>
+                <input type="file" id="choose-image" />
+                <p id="img-restrictions"></p>
+                <p>(Formats acceptés : jpeg, jpg, png.)</p>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+
+{% block footer %}{% endblock %}
