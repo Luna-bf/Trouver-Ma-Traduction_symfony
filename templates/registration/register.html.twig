@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription - Trouver Ma Traduction
+{% endblock %}
+
+{% block body %}
+	<body class="forms-body">
+		{% block main %}
+			<main class="form-container d-flex">
+				<div class="form-parent d-flex">
+					<h1>Inscription</h1>
+
+					{{ form_errors(registrationForm) }}
+					{{ form_start(registrationForm, { 'attr': {'class': 'd-flex'} }) }}
+					{{ form_row(registrationForm.email) }}
+					{{ form_row(registrationForm.plainPassword, {
+                        label: 'Password'
+                    }) }}
+					{{ form_row(registrationForm.agreeTerms) }}
+					{{ form_end(registrationForm) }}
+				</div>
+			</main>
+		{% endblock %}
+	</body>
+{% endblock %}

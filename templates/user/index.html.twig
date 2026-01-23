@@ -1,0 +1,379 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Profil - Trouver Ma Traduction
+{% endblock %}
+
+{% block cdn %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+{% endblock %}
+
+{# Mon fichier JS #}
+{% block script %}
+	<script src="/js/app.js" defer></script>
+{% endblock %}
+
+{# Header #}
+{% block header %}
+	{% include "inc/_header.html.twig" %}
+{% endblock %}
+
+{% block main %}
+	<main class="profile-container">
+		<div class="profile-banner d-flex">
+			<figure class="user-pfp-figure">
+				<img src="/assets/imgs/placeholders/default-pfp.png" alt="User profile picture">
+			</figure>
+		</div>
+
+		<section class="profile-infos d-flex">
+			<article class="user-profile">
+				<div class="parameters-icons d-flex">
+					<a href="{{ path('profile_profile_settings') }}" class="fa-solid fa-gear"></a>
+					<a href="{{ path('translation_landing') }}" class="fa-solid fa-right-from-bracket"></a>
+				</div>
+
+				<div class="username-and-description">
+					<h1>John Doe</h1>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A molestias asperiores alias suscipit voluptas nisi quisquam tenetur, eos exercitationem ipsa. Placeat sed cupiditate repudiandae sequi.</p>
+				</div>
+
+				<div class="hr-profile d-flex">
+					<hr id="separator">
+				</div>
+
+				<div class="activity-infos d-flex">
+					<div class="translations d-flex">
+						<p>Traductions postées : 6</p>
+					</div>
+				</div>
+			</article>
+		</section>
+
+		<section class="buttons-and-songs d-flex">
+			<div class="posts-btns d-flex">
+				<a href="{{ path('translation_new_upload') }}" class="create-post">
+					<i class="fa-solid fa-plus"></i>Créer un nouveau post</a>
+				<a href="#" class="delete-posts">
+					<i class="fa-solid fa-minus"></i>Supprimer des posts</a>
+			</div>
+
+			<section class='song-container d-flex'>
+				<div class='simple-card-item'>
+					<div class='simple-card-content'>
+						<figure><img src='/assets/imgs/general/slider/docx-file-extension.png' alt='File extension'/>
+						</figure>
+
+						<div class='simple-title'>
+							<h3>Nom de la traduction</h3>
+							<h4 class='see-translation-link'>
+								<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
+							</h4>
+						</div>
+
+						<ul class='simple-text'>
+							<li>Type : (Type de contenu)</li>
+							<li>Style : (Style)</li>
+							<li>Auteur : (Nom de l'auteur)</li>
+							<li>Langue : (Langue)</li>
+						</ul>
+
+						<ul class='simple-other-infos'>
+							<li>Par : Nom de l'utilisateur</li>
+							<li>Postée le : JJ/MM/AAAA</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class='simple-card-item'>
+					<div class='simple-card-content'>
+						<figure><img src='/assets/imgs/general/slider/pdf-file-extension.png' alt='File extension'/>
+						</figure>
+
+						<div class='simple-title'>
+							<h3>Nom de la traduction</h3>
+							<h4 class='see-translation-link'>
+								<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
+							</h4>
+						</div>
+
+						<ul class='simple-text'>
+							<li>Type : (Type de contenu)</li>
+							<li>Style : (Style)</li>
+							<li>Auteur : (Nom de l'auteur)</li>
+							<li>Langue : (Langue)</li>
+						</ul>
+
+						<ul class='simple-other-infos'>
+							<li>Par : Nom de l'utilisateur</li>
+							<li>Postée le : JJ/MM/AAAA</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class='simple-card-item'>
+					<div class='simple-card-content'>
+						<figure><img src='/assets/imgs/general/slider/docx-file-extension.png' alt='File extension'/>
+						</figure>
+
+						<div class='simple-title'>
+							<h3>Nom de la traduction</h3>
+							<h4 class='see-translation-link'>
+								<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
+							</h4>
+						</div>
+
+						<ul class='simple-text'>
+							<li>Type : (Type de contenu)</li>
+							<li>Style : (Style)</li>
+							<li>Auteur : (Nom de l'auteur)</li>
+							<li>Langue : (Langue)</li>
+						</ul>
+
+						<ul class='simple-other-infos'>
+							<li>Par : Nom de l'utilisateur</li>
+							<li>Postée le : JJ/MM/AAAA</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section class="song-container d-flex">
+				<div class="simple-card-item">
+					<div class="simple-card-content">
+						<figure><img src="/assets/imgs/general/slider/pdf-file-extension.png" alt="File extension"/>
+						</a>
+					</figure>
+
+					<div class="simple-title">
+						<h3>Nom de la traduction</h3>
+						<h4 class="see-translation-link">
+							<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
+						</h4>
+					</div>
+
+					<ul class="simple-text">
+						<li>Type : (Type de contenu)</li>
+						<li>Style : (Style)</li>
+						<li>Auteur : (Nom de l'auteur)</li>
+						<li>Langue : (Langue)</li>
+					</ul>
+
+					<ul class="simple-other-infos">
+						<li>Par : Nom de l'utilisateur</li>
+						<li>Postée le : JJ/MM/AAAA</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="simple-card-item">
+				<div class="simple-card-content">
+					<figure><img src="/assets/imgs/general/slider/pdf-file-extension.png" alt="File extension"/>
+					</figure>
+
+					<div class="simple-title">
+						<h3>Nom de la traduction</h3>
+						<h4 class="see-translation-link">
+							<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
+						</h4>
+					</div>
+
+					<ul class="simple-text">
+						<li>Type : (Type de contenu)</li>
+						<li>Style : (Style)</li>
+						<li>Auteur : (Nom de l'auteur)</li>
+						<li>Langue : (Langue)</li>
+					</ul>
+
+					<ul class="simple-other-infos">
+						<li>Par : Nom de l'utilisateur</li>
+						<li>Postée le : JJ/MM/AAAA</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="simple-card-item">
+				<div class="simple-card-content">
+					<figure><img src="/assets/imgs/general/slider/docx-file-extension.png" alt="File extension"/>
+					</figure>
+
+					<div class="simple-title">
+						<h3>Nom de la traduction</h3>
+						<h4 class="see-translation-link">
+							<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
+						</h4>
+					</div>
+
+					<ul class="simple-text">
+						<li>Type : (Type de contenu)</li>
+						<li>Style : (Style)</li>
+						<li>Auteur : (Nom de l'auteur)</li>
+						<li>Langue : (Langue)</li>
+					</ul>
+
+					<ul class="simple-other-infos">
+						<li>Par : Nom de l'utilisateur</li>
+						<li>Postée le : JJ/MM/AAAA</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section class="song-container d-flex">
+			<div class="simple-card-item">
+				<div class="simple-card-content">
+					<figure><img src="/assets/imgs/general/slider/docx-file-extension.png" alt="File extension"/>
+					</figure>
+
+					<div class="simple-title">
+						<h3>Nom de la traduction</h3>
+						<h4 class="see-translation-link">
+							<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
+						</h4>
+					</div>
+
+					<ul class="simple-text">
+						<li>Type : (Type de contenu)</li>
+						<li>Style : (Style)</li>
+						<li>Auteur : (Nom de l'auteur)</li>
+						<li>Langue : (Langue)</li>
+					</ul>
+
+					<ul class="simple-other-infos">
+						<li>Par : Nom de l'utilisateur</li>
+						<li>Postée le : JJ/MM/AAAA</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="simple-card-item">
+				<div class="simple-card-content">
+					<figure><img src="/assets/imgs/general/slider/docx-file-extension.png" alt="File extension"/>
+					</figure>
+
+					<div class="simple-title">
+						<h3>Nom de la traduction</h3>
+						<h4 class="see-translation-link">
+							<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
+						</h4>
+					</div>
+
+					<ul class="simple-text">
+						<li>Type : (Type de contenu)</li>
+						<li>Style : (Style)</li>
+						<li>Auteur : (Nom de l'auteur)</li>
+						<li>Langue : (Langue)</li>
+					</ul>
+
+					<ul class="simple-other-infos">
+						<li>Par : Nom de l'utilisateur</li>
+						<li>Postée le : JJ/MM/AAAA</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="simple-card-item">
+				<div class="simple-card-content">
+					<figure><img src="/assets/imgs/general/slider/pdf-file-extension.png" alt="File extension"/>
+					</figure>
+
+					<div class="simple-title">
+						<h3>Nom de la traduction</h3>
+						<h4 class="see-translation-link">
+							<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
+						</h4>
+					</div>
+
+					<ul class="simple-text">
+						<li>Type : (Type de contenu)</li>
+						<li>Style : (Style)</li>
+						<li>Auteur : (Nom de l'auteur)</li>
+						<li>Langue : (Langue)</li>
+					</ul>
+
+					<ul class="simple-other-infos">
+						<li>Par : Nom de l'utilisateur</li>
+						<li>Postée le : JJ/MM/AAAA</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section class='song-container d-flex'>
+			<div class='simple-card-item'>
+				<div class='simple-card-content'>
+					<figure><img src='/assets/imgs/general/slider/docx-file-extension.png' alt='File extension'/>
+					</figure>
+
+					<div class='simple-title'>
+						<h3>Nom de la traduction</h3>
+						<h4 class='see-translation-link'>
+							<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
+						</h4>
+					</div>
+
+					<ul class='simple-text'>
+						<li>Type : (Type de contenu)</li>
+						<li>Style : (Style)</li>
+						<li>Auteur : (Nom de l'auteur)</li>
+						<li>Langue : (Langue)</li>
+					</ul>
+
+					<ul class='simple-other-infos'>
+						<li>Par : Nom de l'utilisateur</li>
+						<li>Postée le : JJ/MM/AAAA</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class='simple-card-item'>
+				<div class='simple-card-content'>
+					<figure><img src='/assets/imgs/general/slider/pdf-file-extension.png' alt='File extension'/>
+					</figure>
+
+					<div class='simple-title'>
+						<h3>Nom de la traduction</h3>
+						<h4 class='see-translation-link'>
+							<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
+						</h4>
+					</div>
+
+					<ul class='simple-text'>
+						<li>Type : (Type de contenu)</li>
+						<li>Style : (Style)</li>
+						<li>Auteur : (Nom de l'auteur)</li>
+						<li>Langue : (Langue)</li>
+					</ul>
+
+					<ul class='simple-other-infos'>
+						<li>Par : Nom de l'utilisateur</li>
+						<li>Postée le : JJ/MM/AAAA</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class='simple-card-item'>
+				<div class='simple-card-content'>
+					<figure><img src='/assets/imgs/general/slider/docx-file-extension.png' alt='File extension'/>
+					</figure>
+
+					<div class='simple-title'>
+						<h3>Nom de la traduction</h3>
+						<h4 class='see-translation-link'>
+							<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
+						</h4>
+					</div>
+
+					<ul class='simple-text'>
+						<li>Type : (Type de contenu)</li>
+						<li>Style : (Style)</li>
+						<li>Auteur : (Nom de l'auteur)</li>
+						<li>Langue : (Langue)</li>
+					</ul>
+
+					<ul class='simple-other-infos'>
+						<li>Par : Nom de l'utilisateur</li>
+						<li>Postée le : JJ/MM/AAAA</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+	</main>
+{% endblock %}
