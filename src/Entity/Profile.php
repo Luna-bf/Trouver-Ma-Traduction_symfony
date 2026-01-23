@@ -36,9 +36,9 @@ class Profile
     #[ORM\OneToMany(targetEntity: Translation::class, mappedBy: 'profile')]
     private Collection $translations;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'profile_id', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Account $account = null;
+    private ?User $user = null;
 
     public function __construct()
     {
@@ -140,14 +140,14 @@ class Profile
         return $this;
     }
 
-    public function getAccount(): ?Account
+    public function getUser(): ?User
     {
-        return $this->account;
+        return $this->user;
     }
 
-    public function setAccount(Account $account): static
+    public function setUser(User $user): static
     {
-        $this->account = $account;
+        $this->user = $user;
 
         return $this;
     }
