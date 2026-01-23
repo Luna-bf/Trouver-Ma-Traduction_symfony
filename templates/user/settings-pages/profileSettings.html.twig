@@ -19,13 +19,13 @@
     <section class="settings-parent d-flex">
         {# Settings pages links #}
         <ul class="all-settings d-flex">
-            <li class="border-left"><a href="{{ path('profile_profile_settings') }}" class="d-flex"><i
+            <li class="border-left"><a href="{{ path('user_profile_settings') }}" class="d-flex"><i
                         class="fa-solid fa-user"></i>Profil</a></li>
-            <li><a href="{{ path('profile_preferences_settings') }}" class="d-flex"><i class="fa-solid fa-paperclip"></i>Préférences de
+            <li><a href="{{ path('user_preferences_settings') }}" class="d-flex"><i class="fa-solid fa-paperclip"></i>Préférences de
                     contenu</a></li>
-            <li><a href="{{ path('profile_accessibility_settings') }}" class="d-flex"><i
+            <li><a href="{{ path('user_accessibility_settings') }}" class="d-flex"><i
                         class="fa-solid fa-universal-access"></i>Accessibilité</a></li>
-            <li><a href="{{ path('profile_account_settings') }}" class="d-flex"><i class="fa-solid fa-gear"></i>Votre compte</a></li>
+            <li><a href="{{ path('user_account_settings') }}" class="d-flex"><i class="fa-solid fa-gear"></i>Votre compte</a></li>
         </ul>
 
         <div class="profile-params separator">
@@ -33,7 +33,7 @@
                 <figure><img src="/assets/imgs/placeholders/default-pfp.png" alt="Profile picture"></figure>
                 <ul>
                     <li>John Doe</li>
-                    <li><a href="{{ path('profile_picture_settings') }}">Changer votre photo de profil</a></li>
+                    <li><a href="{{ path('user_picture_settings') }}">Changer votre photo de profil</a></li>
                 </ul>
             </div>
 
