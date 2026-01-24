@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -19,6 +20,22 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('username', TextType::class, [
+                // Attributs de la div générée par $builder
+                'row_attr' => [
+                    'class' => 'w-50-percent d-i-flex form-input-parent'
+                ],
+
+                // Attributs du label
+                'label_attr' => [
+                    'class' => 'w-50-percent mb-10 mt-first-label sign-label'
+                ],
+
+                // Attributs de l'input
+                'attr' => [
+                    'class' => 'form-input',
+                ]
+            ])
             ->add('email', EmailType::class, [
                 // Attributs de la div générée par $builder
                 'row_attr' => [
