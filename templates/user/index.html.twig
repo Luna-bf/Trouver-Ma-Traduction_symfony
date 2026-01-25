@@ -70,7 +70,7 @@
 			<section class='song-container d-flex'>
 				{% for translation in translations %}
 					{% if app.user.id == translation.user.id %}
-						<div class='simple-card-item'>
+						<div class='simple-card-item' id="{{ translation.id }}">
 							<div class='simple-card-content'>
 								<figure><img src='/assets/imgs/placeholders/placeholder-file.png' alt='File extension'/>
 								</figure>
