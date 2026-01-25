@@ -1540,6 +1540,11 @@ RESPONSIVE
   margin-bottom: 3.5em;
 }
 
+.no-content-message {
+  font-family: "PoppinsRegular", sans-serif;
+  margin-bottom: 5em;
+}
+
 /************
 RESPONSIVE
 ************/
