@@ -103,6 +103,10 @@
 						</div>
 					{% endif %}
 				{% endfor %}
+				
+				{% if app.user.translation|length == 0 %}
+					<p class="no-content-message">Vous n'avez aucune traduction.</p>
+				{% endif %}
 			</section>
 		</main>
 	{% endblock %}
