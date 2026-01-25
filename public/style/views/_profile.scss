@@ -116,7 +116,7 @@
     margin-bottom: 5em;
 }
 
-.fa-plus, .fa-minus, .fa-arrow-right-from-bracket {
+.fa-plus, .fa-minus, .fa-arrow-right-from-bracket, .fa-screwdriver-wrench {
     font-size: 14px;
     margin-right: 8px;
 }
@@ -148,6 +148,22 @@
 
 .delete-posts:hover {
     background-color: #b22222;
+    color: #fff;
+    transition: all 0.2s;
+}
+
+.admin {
+    border: 1px solid #1c1e7b;
+    color: #1c1e7b;
+    padding: 8px 18px 8px 18px;
+    border-radius: 5px;
+    font-size: 15.5px;
+    transition: all 0.2s;
+    margin-left: 35px;
+}
+
+.admin:hover {
+    background-color: #1c1e7b;
     color: #fff;
     transition: all 0.2s;
 }
