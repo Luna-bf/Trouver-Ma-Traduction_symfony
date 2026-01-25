@@ -64,9 +64,9 @@ class TranslationType extends AbstractType
                     'class' => 'form-input',
                 ],
                 'choices' => [
-                    'Chanson' => 1,
-                    'Livre' => 2,
-                    'Texte' => 3,
+                    'Chanson' => 'Chanson',
+                    'Livre' => 'Livre',
+                    'Texte' => 'Texte',
                 ],
             ])
             ->add('translationStyle', ChoiceType::class, [
@@ -82,9 +82,9 @@ class TranslationType extends AbstractType
                     'class' => 'form-input',
                 ],
                 'choices' => [
-                    'Electro Swing' => 1,
-                    'Fantasy' => 2,
-                    'Poème' => 3,
+                    'Electro Swing' => 'Electro Swing',
+                    'Fantasy' => 'Fantasy',
+                    'Poème' => 'Poème',
                 ],
             ])
             ->add('author', TextType::class, [
@@ -113,9 +113,9 @@ class TranslationType extends AbstractType
                     'class' => 'form-input',
                 ],
                 'choices' => [
-                    'Français' => 1,
-                    'Anglais' => 2,
-                    'Espagnol' => 3,
+                    'Français' => 'Français',
+                    'Anglais' => 'Anglais',
+                    'Espagnol' => 'Espagnol',
                 ],
             ])
             // ->add('createdAt', null, [
