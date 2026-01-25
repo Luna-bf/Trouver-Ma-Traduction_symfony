@@ -31,7 +31,7 @@ class TranslationType extends AbstractType
                 'label_attr' => [
                     'class' => 'w-50-percent mb-10 mt-first-label sign-label'
                 ],
-                
+
                 // Attributs de l'input
                 'attr' => [
                     'class' => 'form-input',
@@ -84,10 +84,18 @@ class TranslationType extends AbstractType
                     'class' => 'form-input',
                 ],
                 'choices' => [
-                    'Electro Swing' => 'Electro Swing',
-                    'Fantasy' => 'Fantasy',
-                    'Poème' => 'Poème',
-                ],
+                    'Chanson' => [
+                        'Electro Swing' => 'Electro Swing',
+                        'Rock' => 'Rock',
+                        'Pop' => 'Pop'
+                    ],
+                    'Livre' => [
+                        'Fantasy' => 'Fantasy',
+                    ],
+                    'Texte' => [
+                        'Poème' => 'Poème',
+                    ]
+                ]
             ])
             ->add('author', TextType::class, [
                 'row_attr' => [
