@@ -29,11 +29,11 @@
 			<article class="user-profile">
 				<div class="parameters-icons d-flex">
 					<a href="{{ path('user_profile_settings') }}" class="fa-solid fa-gear"></a>
-					<a href="{{ path('translation_landing') }}" class="fa-solid fa-right-from-bracket"></a>
+					<a href="{{ logout_path() }}" class="fa-solid fa-right-from-bracket"></a>
 				</div>
 
 				<div class="username-and-description">
-					<h1>John Doe</h1>
+					<h1>{{ app.user.username }}</h1>
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A molestias asperiores alias suscipit voluptas nisi quisquam tenetur, eos exercitationem ipsa. Placeat sed cupiditate repudiandae sequi.</p>
 				</div>
 
@@ -55,6 +55,10 @@
 					<i class="fa-solid fa-plus"></i>Créer un nouveau post</a>
 				<a href="#" class="delete-posts">
 					<i class="fa-solid fa-minus"></i>Supprimer des posts</a>
+				{% if is_granted(("ROLE_ADMIN")) %}
+					<a href="#" class="admin">
+						<i class="fa-solid fa-screwdriver-wrench"></i>Administration</a>
+				{% endif %}
 			</div>
 
 			<section class='song-container d-flex'>
