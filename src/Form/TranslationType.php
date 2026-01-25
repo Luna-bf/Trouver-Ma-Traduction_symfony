@@ -64,14 +64,9 @@ class TranslationType extends AbstractType
                     'class' => 'form-input',
                 ],
                 'choices' => [
-                    'Apple' => 1,
-                    'Banana' => 2,
-                    'Durian' => 3,
-                ],
-                'choice_attr' => [
-                    'Apple' => ['data-color' => 'Red'],
-                    'Banana' => ['data-color' => 'Yellow'],
-                    'Durian' => ['data-color' => 'Green'],
+                    'Chanson' => 1,
+                    'Livre' => 2,
+                    'Texte' => 3,
                 ],
             ])
             ->add('translationStyle', ChoiceType::class, [
@@ -87,15 +82,10 @@ class TranslationType extends AbstractType
                     'class' => 'form-input',
                 ],
                 'choices' => [
-                    'Apple' => 1,
-                    'Banana' => 2,
-                    'Durian' => 3,
+                    'Electro Swing' => 1,
+                    'Fantasy' => 2,
+                    'Poème' => 3,
                 ],
-                'choice_attr' => [
-                    'Apple' => ['data-color' => 'Red'],
-                    'Banana' => ['data-color' => 'Yellow'],
-                    'Durian' => ['data-color' => 'Green'],
-                ]
             ])
             ->add('author', TextType::class, [
                 'row_attr' => [
@@ -123,39 +113,15 @@ class TranslationType extends AbstractType
                     'class' => 'form-input',
                 ],
                 'choices' => [
-                    'Apple' => 1,
-                    'Banana' => 2,
-                    'Durian' => 3,
+                    'Français' => 1,
+                    'Anglais' => 2,
+                    'Espagnol' => 3,
                 ],
-                'choice_attr' => [
-                    'Apple' => ['data-color' => 'Red'],
-                    'Banana' => ['data-color' => 'Yellow'],
-                    'Durian' => ['data-color' => 'Green'],
-                ]
-            ])
-            ->add('createdAt', null, [
-                'row_attr' => [
-                    'class' => 'w-50-percent d-i-flex form-input-parent',
-                ],
-
-                'label' => 'Date de publication',
-                'label_attr' => [
-                    'class' => 'w-50-percent mb-10 mt-first-label sign-label'
-                ],
-                'attr' => [
-                    'class' => 'form-input',
-                ],
-                'widget' => 'single_text'
-            ])
-            ->add('user', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
             ])
             ->add('save', SubmitType::class, [
                 'row_attr' => [
                     'class' => 'w-50-percent d-i-flex form-input-parent',
                 ],
-
                 'label' => 'Publier',
                 'attr' => [
                     'class' => 'submit-btn',
