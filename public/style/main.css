@@ -1269,7 +1269,7 @@ RESPONSIVE
 }
 
 .simple-card-item .simple-card-content > .simple-text {
-  font-family: "PoppinsLight", sans-serif;
+  font-family: "PoppinsRegular", sans-serif;
   font-size: 16px;
   margin: 50px 0 50px 0;
   color: var(--text-color);
@@ -1277,13 +1277,23 @@ RESPONSIVE
   line-height: 2.5em;
 }
 
-.simple-card-item .simple-card-content > .simple-other-infos {
+.simple-card-item .simple-card-content .simple-text li > span {
   font-family: "PoppinsLight", sans-serif;
+  font-weight: 300;
+}
+
+.simple-card-item .simple-card-content > .simple-other-infos {
+  font-family: "PoppinsRegular", sans-serif;
   font-size: 15px;
   margin: 20px 0 10px 0;
   color: var(--text-color);
   list-style: none;
   line-height: 2em;
+}
+
+.simple-card-item .simple-card-content .simple-other-infos li > span {
+  font-family: "PoppinsLight", sans-serif;
+  font-weight: 300;
 }
 
 .search-result-container > :first-child {

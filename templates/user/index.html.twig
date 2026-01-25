@@ -43,7 +43,7 @@
 
 				<div class="activity-infos d-flex">
 					<div class="translations d-flex">
-						<p>Traductions postées : 6</p>
+						<p>Traductions postées : {{ app.user.translation|length}}</p>
 					</div>
 				</div>
 			</article>
@@ -69,37 +69,39 @@
 
 			<section class='song-container d-flex'>
 				{% for translation in translations %}
-					<div class='simple-card-item'>
-						<div class='simple-card-content'>
-							<figure><img src='/assets/imgs/general/slider/pdf-file-extension.png' alt='File extension'/>
-							</figure>
+					{% if app.user.id == translation.user.id %}
+						<div class='simple-card-item'>
+							<div class='simple-card-content'>
+								<figure><img src='/assets/imgs/general/slider/pdf-file-extension.png' alt='File extension'/>
+								</figure>
 
-							<div class='simple-title'>
-								<h3>{{ translation.name }}</h3>
-								<h4 class='see-translation-link'>
-									<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
-								</h4>
+								<div class='simple-title'>
+									<h3>{{ translation.name }}</h3>
+									<h4 class='see-translation-link'>
+										<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
+									</h4>
+								</div>
+
+								<ul class='simple-text'>
+									<li>Type :
+										<span>{{ translation.translationType }}</span></li>
+									<li>Style :
+										<span>{{ translation.translationStyle }}</span></li>
+									<li>Auteur :
+										<span>{{ translation.author }}</span></li>
+									<li>Langue :
+										<span>{{ translation.language }}</span></li>
+								</ul>
+
+								<ul class='simple-other-infos'>
+									<li>Par :
+										<span>{{ app.user.username }}</span></li>
+									<li>Postée le :
+										<span>{{ translation.createdAt | date("d/m/Y") }}</span></li>
+								</ul>
 							</div>
-
-							<ul class='simple-text'>
-								<li>Type :
-									{{ translation.translationType }}</li>
-								<li>Style :
-									{{ translation.translationStyle }}</li>
-								<li>Auteur :
-									{{ translation.author }}</li>
-								<li>Langue :
-									{{ translation.language }}</li>
-							</ul>
-
-							<ul class='simple-other-infos'>
-								<li>Par :
-									{{ app.user.username }}</li>
-								<li>Postée le :
-									{{ translation.createdAt | date("d/m/Y") }}</li>
-							</ul>
 						</div>
-					</div>
+					{% endif %}
 				{% endfor %}
 			</section>
 		</main>
