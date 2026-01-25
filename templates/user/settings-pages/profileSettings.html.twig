@@ -41,17 +41,17 @@
                 <form> {# class="table-form" #}
                     <div class="d-flex param">
                         <label for="profile-username">Nom d'utilisateur</label>
-                        <input type="text" name="profile-username" class="profile-input" id="profile-username" placeholder="John Doe">
+                        <input type="text" name="profile-username" class="profile-input" id="profile-username" placeholder="{{ app.user.username }}">
                     </div>
 
                     <div class="d-flex param">
                         <label for="description">Description</label>
-                        <textarea name="description" id="description" class="profile-textarea" placeholder="Lorem ipsum arcu congue ut venenatis tortor eu viverra leo dolor hendrerit quis faucibus venenatis ac leo in aliquetLorem ipsum arcu congue ut venenatis tortor eu viverra leo dolor hendrerit quis faucibus venenatis ac leo in aliquetLorem ipsum arcu congue ut venenatis tortor eu viverra leo dolor hendrerit quis faucibus venenatis ac leo in aliquet tristique mollis dictum arcu ultricies ..."></textarea>
+                        <textarea name="description" id="description" class="profile-textarea" placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. A molestias asperiores alias suscipit voluptas nisi quisquam tenetur, eos exercitationem ipsa. Placeat sed cupiditate repudiandae sequi."></textarea>
                     </div>
 
                     <div class="d-flex param">
                         <label for="email">Email</label>
-                        <input type="email" name="email" id="email" class="profile-input" placeholder="johnDoe@exemple.com">
+                        <input type="email" name="email" id="email" class="profile-input" placeholder="{{ app.user.email }}">
                     </div>
 
                     <div class="d-flex param">
