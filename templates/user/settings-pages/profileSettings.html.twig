@@ -32,7 +32,7 @@
             <div class="profile-picture d-flex">
                 <figure><img src="/assets/imgs/placeholders/default-pfp.png" alt="Profile picture"></figure>
                 <ul>
-                    <li>John Doe</li>
+                    <li>{{ app.user.username }}</li>
                     <li><a href="{{ path('user_picture_settings') }}">Changer votre photo de profil</a></li>
                 </ul>
             </div>
