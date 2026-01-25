@@ -57,7 +57,7 @@ final class TranslationController extends AbstractController
     public function newUpload(Request $request, EntityManagerInterface $em): Response
     {
         // Création d'une nouvelle instance de Translation
-        $translation = new Translation;
+        $translation = new Translation();
 
         // Initialisation du formulaire
         $translationForm = $this->createForm(TranslationType::class, $translation);
@@ -66,18 +66,23 @@ final class TranslationController extends AbstractController
         $translationForm->handleRequest($request);
 
         // Vérifie si le formulaire est valide
-        if($translationForm->isSubmitted() && $translationForm->isValid()) {
+        if ($translationForm->isSubmitted() && $translationForm->isValid()) {
+            
+            $fullTranslation = $translationForm->getData(); // revoir à quoi ça sert
+            $fullTranslation->setCreatedAt(new \DateTimeImmutable()); // enregistre la date du jour
+            $user = $this->getUser(); // récupère les données l'utilisateur connecté
+            $fullTranslation->setUser($user); // enregistre les données de l'utilisateur connecté
 
-            $em->persist($translation); // Prépare la requête
+            $em->persist($fullTranslation); // Prépare la requête
             $em->flush(); // Exécute la requête
 
             $this->addFlash('success', 'Traduction publiée avec succès.');
 
-            return $this->redirectToRoute('profile_index');
+            return $this->redirectToRoute('user_index');
         }
 
         return $this->render('translation/posts/newUpload.html.twig', [
-            'translationForm' => $translationForm,
+            'translationForm' => $translationForm->createView(),
         ]);
     }
 }
