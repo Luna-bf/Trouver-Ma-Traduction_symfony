@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Translation;
 use App\Form\TranslationType;
+use App\Repository\TranslationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,10 +31,10 @@ final class TranslationController extends AbstractController
     }
 
     #[Route('home', name: 'home')]
-    public function home(): Response
+    public function home(TranslationRepository $repo): Response
     {
         return $this->render('translation/home/home.html.twig', [
-            'controller_name' => 'TranslationController',
+            'translations' => $repo->findAll(),
         ]);
     }
 
