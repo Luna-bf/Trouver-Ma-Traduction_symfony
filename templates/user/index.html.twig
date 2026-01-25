@@ -43,7 +43,8 @@
 
 				<div class="activity-infos d-flex">
 					<div class="translations d-flex">
-						<p>Traductions postées : {{ app.user.translation|length}}</p>
+						<p>Traductions postées :
+							{{ app.user.translation|length}}</p>
 					</div>
 				</div>
 			</article>
@@ -84,26 +85,44 @@
 
 								<ul class='simple-text'>
 									<li>Type :
-										<span>{{ translation.translationType }}</span></li>
+										<span>{{ translation.translationType }}</span>
+									</li>
 									<li>Style :
-										<span>{{ translation.translationStyle }}</span></li>
+										<span>{{ translation.translationStyle }}</span>
+									</li>
 									<li>Auteur :
-										<span>{{ translation.author }}</span></li>
+										<span>{{ translation.author }}</span>
+									</li>
 									<li>Langue :
-										<span>{{ translation.language }}</span></li>
+										<span>{{ translation.language }}</span>
+									</li>
 								</ul>
 
 								<ul class='simple-other-infos'>
 									<li>Par :
-										<span>{{ app.user.username }}</span></li>
+										<span>{{ app.user.username }}</span>
+									</li>
 									<li>Postée le :
-										<span>{{ translation.createdAt | date("d/m/Y") }}</span></li>
+										<span>{{ translation.createdAt | date("d/m/Y") }}</span>
+									</li>
 								</ul>
+
+								<div
+									class="action-buttons d-flex">
+									{# {{ path('tasks_edit', {id:task.id}) }} #}
+									<div class="edit d-flex">
+										<a href="#"><i class="fa-solid fa-pen"></i>Modifier</a>
+									</div>
+									{# {{ path('tasks_delete', {id:task.id}) }} #}
+									<form action="" method="delete" onsubmit="return confirm('Voulez-vous vraiment supprimer cette traduction ?')">
+										<button><i class="fa-solid fa-ban"></i>Supprimer</button>
+									</form>
+								</div>
 							</div>
 						</div>
 					{% endif %}
 				{% endfor %}
-				
+
 				{% if app.user.translation|length == 0 %}
 					<p class="no-content-message">Vous n'avez aucune traduction.</p>
 				{% endif %}

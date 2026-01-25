@@ -116,7 +116,7 @@
     margin-bottom: 5em;
 }
 
-.fa-plus, .fa-minus, .fa-arrow-right-from-bracket, .fa-screwdriver-wrench {
+.fa-plus, .fa-minus, .fa-arrow-right-from-bracket, .fa-screwdriver-wrench, .fa-pen, .fa-ban {
     font-size: 14px;
     margin-right: 8px;
 }
@@ -134,6 +134,7 @@
     background-color: #198754;
     color: #fff;
     transition: all 0.2s;
+    cursor: pointer;
 }
 
 .delete-posts {
@@ -150,6 +151,7 @@
     background-color: #b22222;
     color: #fff;
     transition: all 0.2s;
+    cursor: pointer;
 }
 
 .admin {
@@ -166,6 +168,7 @@
     background-color: #1c1e7b;
     color: #fff;
     transition: all 0.2s;
+    cursor: pointer;
 }
 
 #translation-success {

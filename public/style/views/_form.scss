@@ -49,7 +49,7 @@
 }
 
 // form
-form {
+.form-parent>form {
     // background-color: #fff;
     flex-direction: column;
     width: 50%;
@@ -170,6 +170,7 @@ input[type="checkbox"]:checked {
     color: variables.$form-btn-bg-color-active;
     text-decoration: underline;
     transition: none;
+    cursor: pointer;
 }
 
 
