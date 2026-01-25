@@ -68,7 +68,7 @@ final class TranslationController extends AbstractController
 
         // Vérifie si le formulaire est valide
         if ($translationForm->isSubmitted() && $translationForm->isValid()) {
-            
+
             $fullTranslation = $translationForm->getData(); // revoir à quoi ça sert
             $fullTranslation->setCreatedAt(new \DateTimeImmutable()); // enregistre la date du jour
             $user = $this->getUser(); // récupère les données l'utilisateur connecté
@@ -85,5 +85,44 @@ final class TranslationController extends AbstractController
         return $this->render('translation/posts/newUpload.html.twig', [
             'translationForm' => $translationForm->createView(),
         ]);
+    }
+
+
+    #[Route('translation/posts/edit/{id}', name: 'edit')]
+    public function edit(Translation $translation, Request $request, EntityManagerInterface $em): Response
+    {
+        // Initialisation du formulaire
+        $translationForm = $this->createForm(TranslationType::class, $translation);
+
+        // Traitement du formulaire
+        $translationForm->handleRequest($request);
+
+        // Vérifie si le formulaire est valide
+        if ($translationForm->isSubmitted() && $translationForm->isValid()) {
+
+            $em->persist($translation);
+            $em->flush();
+
+            $this->addFlash('success', 'Traduction modifiée avec succès.');
+
+            return $this->redirectToRoute('user_index', ["id" => $translation->getId()]);
+        }
+
+        return $this->render('translation/posts/edit.html.twig', [
+            'translationForm' => $translationForm->createView()
+        ]);
+    }
+
+    #[Route('translation/posts/{id}/delete', name: 'delete', methods: ['GET'])]
+    public function delete($id, TranslationRepository $repo, EntityManagerInterface $em): Response
+    {
+        $translation = $repo->find($id);
+        $em->remove($translation);
+
+        $em->flush();
+
+        $this->addFlash('success', 'Traduction supprimée avec succès.');
+
+        return $this->redirectToRoute('user_index');
     }
 }

@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Modifier une traduction - Trouver Ma Traduction
+{% endblock %}
+
+{% block body %}
+	<body class="forms-body">
+		{% block main %}
+			<main class="form-container d-flex">
+				<div class="form-parent d-flex">
+					{{ form_start(translationForm, {'attr': {'class': 'd-flex'}}) }}
+						{{ form_row(translationForm.name) }}
+						{{ form_row(translationForm.translationFileName) }}
+						{{ form_row(translationForm.translationType) }}
+						{{ form_row(translationForm.translationStyle) }}
+						{{ form_row(translationForm.author) }}
+						{{ form_row(translationForm.language) }}
+						{{ form_row(translationForm.save) }}
+					{{ form_end(translationForm) }}
+				</div>
+			</main>
+		{% endblock %}
+
+		{# <script src="../assets/js/file-visualiser.js"></script> #}
+	</body>
+{% endblock %}

@@ -1325,29 +1325,29 @@ RESPONSIVE
   align-items: center;
   border: 1px solid #198754;
   background-color: #fff;
+  color: #198754;
   padding: 4px 12px 4px 12px;
   border-radius: 5px;
   transition: all 0.2s;
-}
-
-.action-buttons .edit > a {
   font-size: 14px;
-  color: #198754;
 }
 
 .action-buttons > .edit:hover {
   border: 1px solid #198754;
   background-color: #198754;
+  color: #fff;
   transition: all 0.2s;
   cursor: pointer;
 }
 
-.action-buttons .edit > a:hover {
+.action-buttons .edit > p:hover {
   color: #fff;
   cursor: pointer;
 }
 
 .action-buttons form > button {
+  flex-direction: row;
+  align-items: center;
   border: 1px solid #b22222;
   background-color: #fff;
   color: #b22222;
@@ -1536,7 +1536,7 @@ RESPONSIVE
   margin-bottom: 5em;
 }
 
-.fa-plus, .fa-minus, .fa-arrow-right-from-bracket, .fa-screwdriver-wrench, .fa-pen, .fa-ban {
+.fa-plus, .fa-arrow-right-from-bracket, .fa-screwdriver-wrench, .fa-pen, .fa-ban {
   font-size: 14px;
   margin-right: 8px;
 }
