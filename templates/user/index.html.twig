@@ -62,7 +62,7 @@
 			</div>
 
 			{% for message in app.flashes('success') %}
-				<div class="flash-success">
+				<div class="flash-success" id="translation-success">
 					{{ message }}
 				</div>
 			{% endfor %}
@@ -72,7 +72,7 @@
 					{% if app.user.id == translation.user.id %}
 						<div class='simple-card-item'>
 							<div class='simple-card-content'>
-								<figure><img src='/assets/imgs/general/slider/pdf-file-extension.png' alt='File extension'/>
+								<figure><img src='/assets/imgs/placeholders/placeholder-file.png' alt='File extension'/>
 								</figure>
 
 								<div class='simple-title'>
