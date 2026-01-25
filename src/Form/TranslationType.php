@@ -118,6 +118,33 @@ class TranslationType extends AbstractType
                     'Espagnol' => 3,
                 ],
             ])
+            // ->add('createdAt', null, [
+            //     'row_attr' => [
+            //         'class' => 'w-50-percent d-i-flex form-input-parent',
+            //     ],
+
+            //     'label' => 'Date de publication',
+            //     'label_attr' => [
+            //         'class' => 'w-50-percent mb-10 mt-first-label sign-label'
+            //     ],
+            //     'attr' => [
+            //         'class' => 'form-input',
+            //     ],
+            //     'widget' => 'single_text'
+            // ])
+            // ->add('user', EntityType::class, [
+            //     'class' => User::class,
+            //     'choice_label' => 'id',
+            //     'row_attr' => [
+            //         'class' => 'w-50-percent d-i-flex form-input-parent',
+            //     ],
+            //     'label_attr' => [
+            //         'class' => 'w-50-percent mb-10 mt-first-label sign-label'
+            //     ],
+            //     'attr' => [
+            //         'class' => 'form-input',
+            //     ],
+            // ])
             ->add('save', SubmitType::class, [
                 'row_attr' => [
                     'class' => 'w-50-percent d-i-flex form-input-parent',
