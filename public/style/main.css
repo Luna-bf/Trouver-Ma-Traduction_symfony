@@ -1235,9 +1235,9 @@ RESPONSIVE
 .song-container {
   flex-direction: row;
   justify-content: center;
+  flex-wrap: wrap;
   -moz-column-gap: 10em;
        column-gap: 10em;
-  margin-bottom: 5em;
 }
 
 .simple-card-item {
@@ -1247,7 +1247,7 @@ RESPONSIVE
   border: 3px solid #DCAC4D;
   border-radius: 6px;
   padding: 10px 0 10px 0;
-  margin-bottom: 10px;
+  margin-bottom: 5em;
 }
 
 .simple-card-content {

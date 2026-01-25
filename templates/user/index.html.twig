@@ -61,323 +61,46 @@
 				{% endif %}
 			</div>
 
+			{% for message in app.flashes('success') %}
+				<div class="flash-success">
+					{{ message }}
+				</div>
+			{% endfor %}
+
 			<section class='song-container d-flex'>
-				<div class='simple-card-item'>
-					<div class='simple-card-content'>
-						<figure><img src='/assets/imgs/general/slider/docx-file-extension.png' alt='File extension'/>
-						</figure>
+				{% for translation in translations %}
+					<div class='simple-card-item'>
+						<div class='simple-card-content'>
+							<figure><img src='/assets/imgs/general/slider/pdf-file-extension.png' alt='File extension'/>
+							</figure>
 
-						<div class='simple-title'>
-							<h3>Nom de la traduction</h3>
-							<h4 class='see-translation-link'>
-								<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
-							</h4>
+							<div class='simple-title'>
+								<h3>{{ translation.name }}</h3>
+								<h4 class='see-translation-link'>
+									<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
+								</h4>
+							</div>
+
+							<ul class='simple-text'>
+								<li>Type :
+									{{ translation.translationType }}</li>
+								<li>Style :
+									{{ translation.translationStyle }}</li>
+								<li>Auteur :
+									{{ translation.author }}</li>
+								<li>Langue :
+									{{ translation.language }}</li>
+							</ul>
+
+							<ul class='simple-other-infos'>
+								<li>Par :
+									{{ app.user.username }}</li>
+								<li>Postée le :
+									{{ translation.createdAt | date("d/m/Y") }}</li>
+							</ul>
 						</div>
-
-						<ul class='simple-text'>
-							<li>Type : (Type de contenu)</li>
-							<li>Style : (Style)</li>
-							<li>Auteur : (Nom de l'auteur)</li>
-							<li>Langue : (Langue)</li>
-						</ul>
-
-						<ul class='simple-other-infos'>
-							<li>Par : Nom de l'utilisateur</li>
-							<li>Postée le : JJ/MM/AAAA</li>
-						</ul>
 					</div>
-				</div>
-
-				<div class='simple-card-item'>
-					<div class='simple-card-content'>
-						<figure><img src='/assets/imgs/general/slider/pdf-file-extension.png' alt='File extension'/>
-						</figure>
-
-						<div class='simple-title'>
-							<h3>Nom de la traduction</h3>
-							<h4 class='see-translation-link'>
-								<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
-							</h4>
-						</div>
-
-						<ul class='simple-text'>
-							<li>Type : (Type de contenu)</li>
-							<li>Style : (Style)</li>
-							<li>Auteur : (Nom de l'auteur)</li>
-							<li>Langue : (Langue)</li>
-						</ul>
-
-						<ul class='simple-other-infos'>
-							<li>Par : Nom de l'utilisateur</li>
-							<li>Postée le : JJ/MM/AAAA</li>
-						</ul>
-					</div>
-				</div>
-
-				<div class='simple-card-item'>
-					<div class='simple-card-content'>
-						<figure><img src='/assets/imgs/general/slider/docx-file-extension.png' alt='File extension'/>
-						</figure>
-
-						<div class='simple-title'>
-							<h3>Nom de la traduction</h3>
-							<h4 class='see-translation-link'>
-								<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
-							</h4>
-						</div>
-
-						<ul class='simple-text'>
-							<li>Type : (Type de contenu)</li>
-							<li>Style : (Style)</li>
-							<li>Auteur : (Nom de l'auteur)</li>
-							<li>Langue : (Langue)</li>
-						</ul>
-
-						<ul class='simple-other-infos'>
-							<li>Par : Nom de l'utilisateur</li>
-							<li>Postée le : JJ/MM/AAAA</li>
-						</ul>
-					</div>
-				</div>
+				{% endfor %}
 			</section>
-
-			<section class="song-container d-flex">
-				<div class="simple-card-item">
-					<div class="simple-card-content">
-						<figure><img src="/assets/imgs/general/slider/pdf-file-extension.png" alt="File extension"/>
-						</a>
-					</figure>
-
-					<div class="simple-title">
-						<h3>Nom de la traduction</h3>
-						<h4 class="see-translation-link">
-							<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
-						</h4>
-					</div>
-
-					<ul class="simple-text">
-						<li>Type : (Type de contenu)</li>
-						<li>Style : (Style)</li>
-						<li>Auteur : (Nom de l'auteur)</li>
-						<li>Langue : (Langue)</li>
-					</ul>
-
-					<ul class="simple-other-infos">
-						<li>Par : Nom de l'utilisateur</li>
-						<li>Postée le : JJ/MM/AAAA</li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="simple-card-item">
-				<div class="simple-card-content">
-					<figure><img src="/assets/imgs/general/slider/pdf-file-extension.png" alt="File extension"/>
-					</figure>
-
-					<div class="simple-title">
-						<h3>Nom de la traduction</h3>
-						<h4 class="see-translation-link">
-							<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
-						</h4>
-					</div>
-
-					<ul class="simple-text">
-						<li>Type : (Type de contenu)</li>
-						<li>Style : (Style)</li>
-						<li>Auteur : (Nom de l'auteur)</li>
-						<li>Langue : (Langue)</li>
-					</ul>
-
-					<ul class="simple-other-infos">
-						<li>Par : Nom de l'utilisateur</li>
-						<li>Postée le : JJ/MM/AAAA</li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="simple-card-item">
-				<div class="simple-card-content">
-					<figure><img src="/assets/imgs/general/slider/docx-file-extension.png" alt="File extension"/>
-					</figure>
-
-					<div class="simple-title">
-						<h3>Nom de la traduction</h3>
-						<h4 class="see-translation-link">
-							<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
-						</h4>
-					</div>
-
-					<ul class="simple-text">
-						<li>Type : (Type de contenu)</li>
-						<li>Style : (Style)</li>
-						<li>Auteur : (Nom de l'auteur)</li>
-						<li>Langue : (Langue)</li>
-					</ul>
-
-					<ul class="simple-other-infos">
-						<li>Par : Nom de l'utilisateur</li>
-						<li>Postée le : JJ/MM/AAAA</li>
-					</ul>
-				</div>
-			</div>
-		</section>
-		<section class="song-container d-flex">
-			<div class="simple-card-item">
-				<div class="simple-card-content">
-					<figure><img src="/assets/imgs/general/slider/docx-file-extension.png" alt="File extension"/>
-					</figure>
-
-					<div class="simple-title">
-						<h3>Nom de la traduction</h3>
-						<h4 class="see-translation-link">
-							<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
-						</h4>
-					</div>
-
-					<ul class="simple-text">
-						<li>Type : (Type de contenu)</li>
-						<li>Style : (Style)</li>
-						<li>Auteur : (Nom de l'auteur)</li>
-						<li>Langue : (Langue)</li>
-					</ul>
-
-					<ul class="simple-other-infos">
-						<li>Par : Nom de l'utilisateur</li>
-						<li>Postée le : JJ/MM/AAAA</li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="simple-card-item">
-				<div class="simple-card-content">
-					<figure><img src="/assets/imgs/general/slider/docx-file-extension.png" alt="File extension"/>
-					</figure>
-
-					<div class="simple-title">
-						<h3>Nom de la traduction</h3>
-						<h4 class="see-translation-link">
-							<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
-						</h4>
-					</div>
-
-					<ul class="simple-text">
-						<li>Type : (Type de contenu)</li>
-						<li>Style : (Style)</li>
-						<li>Auteur : (Nom de l'auteur)</li>
-						<li>Langue : (Langue)</li>
-					</ul>
-
-					<ul class="simple-other-infos">
-						<li>Par : Nom de l'utilisateur</li>
-						<li>Postée le : JJ/MM/AAAA</li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="simple-card-item">
-				<div class="simple-card-content">
-					<figure><img src="/assets/imgs/general/slider/pdf-file-extension.png" alt="File extension"/>
-					</figure>
-
-					<div class="simple-title">
-						<h3>Nom de la traduction</h3>
-						<h4 class="see-translation-link">
-							<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
-						</h4>
-					</div>
-
-					<ul class="simple-text">
-						<li>Type : (Type de contenu)</li>
-						<li>Style : (Style)</li>
-						<li>Auteur : (Nom de l'auteur)</li>
-						<li>Langue : (Langue)</li>
-					</ul>
-
-					<ul class="simple-other-infos">
-						<li>Par : Nom de l'utilisateur</li>
-						<li>Postée le : JJ/MM/AAAA</li>
-					</ul>
-				</div>
-			</div>
-		</section>
-		<section class='song-container d-flex'>
-			<div class='simple-card-item'>
-				<div class='simple-card-content'>
-					<figure><img src='/assets/imgs/general/slider/docx-file-extension.png' alt='File extension'/>
-					</figure>
-
-					<div class='simple-title'>
-						<h3>Nom de la traduction</h3>
-						<h4 class='see-translation-link'>
-							<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
-						</h4>
-					</div>
-
-					<ul class='simple-text'>
-						<li>Type : (Type de contenu)</li>
-						<li>Style : (Style)</li>
-						<li>Auteur : (Nom de l'auteur)</li>
-						<li>Langue : (Langue)</li>
-					</ul>
-
-					<ul class='simple-other-infos'>
-						<li>Par : Nom de l'utilisateur</li>
-						<li>Postée le : JJ/MM/AAAA</li>
-					</ul>
-				</div>
-			</div>
-
-			<div class='simple-card-item'>
-				<div class='simple-card-content'>
-					<figure><img src='/assets/imgs/general/slider/pdf-file-extension.png' alt='File extension'/>
-					</figure>
-
-					<div class='simple-title'>
-						<h3>Nom de la traduction</h3>
-						<h4 class='see-translation-link'>
-							<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
-						</h4>
-					</div>
-
-					<ul class='simple-text'>
-						<li>Type : (Type de contenu)</li>
-						<li>Style : (Style)</li>
-						<li>Auteur : (Nom de l'auteur)</li>
-						<li>Langue : (Langue)</li>
-					</ul>
-
-					<ul class='simple-other-infos'>
-						<li>Par : Nom de l'utilisateur</li>
-						<li>Postée le : JJ/MM/AAAA</li>
-					</ul>
-				</div>
-			</div>
-
-			<div class='simple-card-item'>
-				<div class='simple-card-content'>
-					<figure><img src='/assets/imgs/general/slider/docx-file-extension.png' alt='File extension'/>
-					</figure>
-
-					<div class='simple-title'>
-						<h3>Nom de la traduction</h3>
-						<h4 class='see-translation-link'>
-							<a href='{{ path('translation_file_viewer') }}'>Voir la traduction</a>
-						</h4>
-					</div>
-
-					<ul class='simple-text'>
-						<li>Type : (Type de contenu)</li>
-						<li>Style : (Style)</li>
-						<li>Auteur : (Nom de l'auteur)</li>
-						<li>Langue : (Langue)</li>
-					</ul>
-
-					<ul class='simple-other-infos'>
-						<li>Par : Nom de l'utilisateur</li>
-						<li>Postée le : JJ/MM/AAAA</li>
-					</ul>
-				</div>
-			</div>
-		</section>
-	</main>
-{% endblock %}
+		</main>
+	{% endblock %}
