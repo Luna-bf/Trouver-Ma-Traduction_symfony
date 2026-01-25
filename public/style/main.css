@@ -1162,7 +1162,7 @@ input[type=checkbox]:checked {
 }
 
 .swiper-slide .card-content > .text {
-  font-family: "PoppinsLight", sans-serif;
+  font-family: "PoppinsRegular", sans-serif;
   font-size: 15px;
   margin: 50px 0 50px 0;
   color: var(--text-color);
@@ -1170,14 +1170,23 @@ input[type=checkbox]:checked {
   line-height: 2.5em;
 }
 
-.swiper-slide .card-content > .other-infos {
+.swiper-slide .card-content .text li > span {
   font-family: "PoppinsLight", sans-serif;
   font-weight: 300;
+}
+
+.swiper-slide .card-content > .other-infos {
+  font-family: "PoppinsRegular", sans-serif;
   font-size: 15px;
   margin: 20px 0 10px 0;
   color: var(--text-color);
   list-style: none;
   line-height: 2em;
+}
+
+.swiper-slide .card-content .other-infos li > span {
+  font-family: "PoppinsLight", sans-serif;
+  font-weight: 300;
 }
 
 .swiper-slide:active {
