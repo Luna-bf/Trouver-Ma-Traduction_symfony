@@ -38,6 +38,8 @@ class TranslationType extends AbstractType
                 ]
             ])
             ->add('translationFileName', FileType::class, [
+                'data_class' => null,
+
                 'row_attr' => [
                     'class' => 'w-50-percent d-i-flex form-input-parent',
                 ],
