@@ -55,7 +55,7 @@
 				<a href="{{ path('translation_new_upload') }}" class="create-post">
 					<i class="fa-solid fa-plus"></i>Nouvelle publication</a>
 				{% if is_granted(("ROLE_ADMIN")) %}
-					<a href="#" class="admin">
+					<a href="{{ path('admin') }}" class="admin">
 						<i class="fa-solid fa-screwdriver-wrench"></i>Administration</a>
 				{% endif %}
 			</div>
