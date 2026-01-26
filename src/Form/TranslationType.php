@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class TranslationType extends AbstractType
 {
@@ -50,7 +51,15 @@ class TranslationType extends AbstractType
                 ],
                 'attr' => [
                     'class' => 'form-input',
-                ]
+                ],
+
+                'constraints' => [
+                    new Assert\File(
+                        maxSize: '1024k',
+                        extensions: ['pdf', 'docx'],
+                        extensionsMessage: 'Please upload a valid document',
+                    )
+                ],
             ])
             ->add('translationType', ChoiceType::class, [
                 // Ajout d'une classe à la balise div générée par $builder
