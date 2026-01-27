@@ -9,6 +9,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -57,7 +59,7 @@ final class TranslationController extends AbstractController
         ]);
     }
 
-    // Pour l'envoi de fichiers PDF : https://stackoverflow.com/questions/43001978/upload-pdf-file-with-symfony
+    // Pour l'envoi de fichiers PDF : https://symfony.com/doc/current/controller/upload_file.html ou https://stackoverflow.com/questions/43001978/upload-pdf-file-with-symfony
     #[Route('/posts/new_upload', name: 'new_upload')]
     public function newUpload(Request $request, EntityManagerInterface $em, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/translations')] string $translationsDirectory): Response
     {
@@ -88,9 +90,9 @@ final class TranslationController extends AbstractController
 
                 // Move the file to the directory where translations are stored
                 try {
-                    $translationFile->move($translationFile, $newFilename);
+                    $translationFile->move($translationsDirectory, $newFilename);
                 } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
+                    dd('Echec');
                 }
 
                 // updates the 'translationFilename' property to store the PDF file name instead of its contents
@@ -109,15 +111,7 @@ final class TranslationController extends AbstractController
             'translationForm' => $translationForm->createView(),
         ]);
     }
-
-    #[Route('translation/posts/show/{id}', name: 'show')]
-    public function show(Translation $translation): Response
-    {
-        return $this->render('translation/posts/show.html.twig', [
-            'translation' => $translation
-        ]);
-    }
-
+    
     #[Route('translation/posts/edit/{id}', name: 'edit')]
     public function edit(Translation $translation, Request $request, EntityManagerInterface $em, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/translations')] string $translationsDirectory): Response
     {
@@ -134,21 +128,22 @@ final class TranslationController extends AbstractController
 
             // Si un fichier est envoyé dans le formulaire
             if ($translationFile) {
-                $originalFilename = pathinfo($translationFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $originalFileName = pathinfo($translationFile->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $translationFile->guessExtension();
+                $safeFileName = $slugger->slug($originalFileName);
+                $newFileName = $safeFileName . '-' . uniqid() . '.' . $translationFile->guessExtension();
 
                 // Move the file to the directory where translations are stored
                 try {
-                    $translationFile->move($translationFile, $newFilename);
+                    $translationFile->move($translationsDirectory, $newFileName);
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
                     $e = "Une erreur est survenue lors de l'envoi de la traduction, veuillez réessayer.";
                 }
 
                 // updates the 'translationFilename' property to store the PDF file name instead of its contents
-                $translation->setTranslationFilename($newFilename);
+                // $translation->setTranslationFilename($newFileName);
+                $translation->setTranslationFilename(new File($translationsDirectory.DIRECTORY_SEPARATOR.$translation->getTranslationFilename()));
             }
 
             $em->persist($translation);
@@ -156,7 +151,7 @@ final class TranslationController extends AbstractController
 
             $this->addFlash('success', 'Traduction modifiée avec succès.');
 
-            return $this->redirectToRoute('user_index', ["id" => $translation->getId()]);
+            return $this->redirectToRoute('user_index');
         }
 
         return $this->render('translation/posts/edit.html.twig', [
