@@ -96,7 +96,7 @@ final class TranslationController extends AbstractController
                 }
 
                 // updates the 'translationFilename' property to store the PDF file name instead of its contents
-                $fullTranslation->setTranslationFilename($newFilename);
+                $fullTranslation->setTranslationFileName($newFilename);
             }
 
             $em->persist($fullTranslation); // Prépare la requête
@@ -111,10 +111,11 @@ final class TranslationController extends AbstractController
             'translationForm' => $translationForm->createView(),
         ]);
     }
-    
+
     #[Route('translation/posts/edit/{id}', name: 'edit')]
     public function edit(Translation $translation, Request $request, EntityManagerInterface $em, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/translations')] string $translationsDirectory): Response
     {
+        // Note : Je n'ai pas besoin de déclarer une nouvelle instance de la classe Translation, car je veux éditer des données déjà existantes
         // Initialisation du formulaire
         $translationForm = $this->createForm(TranslationType::class, $translation);
 
@@ -125,29 +126,24 @@ final class TranslationController extends AbstractController
         if ($translationForm->isSubmitted() && $translationForm->isValid()) {
 
             $translationFile = $translationForm->get('translationFileName')->getData();
+            $translationsDirectory = $this->getParameter('kernel.project_dir') . '/public/uploads/translations';
 
-            // Si un fichier est envoyé dans le formulaire
-            if ($translationFile) {
-                $originalFileName = pathinfo($translationFile->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
-                $safeFileName = $slugger->slug($originalFileName);
-                $newFileName = $safeFileName . '-' . uniqid() . '.' . $translationFile->guessExtension();
+            $originalFilename = pathinfo($translationFile->getClientOriginalName(), PATHINFO_FILENAME);
+            // this is needed to safely include the file name as part of the URL
+            $safeFilename = $slugger->slug($originalFilename);
+            $newFilename = $safeFilename . '-' . uniqid() . '.' . $translationFile->guessExtension();
 
-                // Move the file to the directory where translations are stored
-                try {
-                    $translationFile->move($translationsDirectory, $newFileName);
-                } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
-                    $e = "Une erreur est survenue lors de l'envoi de la traduction, veuillez réessayer.";
-                }
-
-                // updates the 'translationFilename' property to store the PDF file name instead of its contents
-                // $translation->setTranslationFilename($newFileName);
-                $translation->setTranslationFilename(new File($translationsDirectory.DIRECTORY_SEPARATOR.$translation->getTranslationFilename()));
+            // Move the file to the directory where translations are stored
+            try {
+                $translationFile->move($translationsDirectory, $newFilename);
+            } catch (FileException $e) {
+                dd('Echec');
             }
+            
+            $translation->setTranslationFileName($newFilename);
 
-            $em->persist($translation);
-            $em->flush();
+            $em->persist($translation); // Prépare la requête
+            $em->flush(); // Exécute la requête
 
             $this->addFlash('success', 'Traduction modifiée avec succès.');
 
