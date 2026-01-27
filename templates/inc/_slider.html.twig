@@ -1,0 +1,39 @@
+{% for translation in translations %}
+	<div class='swiper-slide'>
+		<div class='card-content' id='{{ translation.id }}'>
+			<figure><img src='/assets/imgs/placeholders/placeholder-file.png' alt='File extension'/>
+			</figure>
+
+			<div class='title'>
+				<h3>{{ translation.name }}</h3>
+				<h4 class='see-translation-link'>
+					<a href='{{ asset('uploads/translations/' ~ translation.translationFilename) }}'>Voir la traduction</a>
+				</h4>
+			</div>
+
+			<ul class='text'>
+				<li>Type :
+					<span>{{ translation.translationType }}</span>
+				</li>
+				<li>Style :
+					<span>{{ translation.translationStyle }}</span>
+				</li>
+				<li>Auteur :
+					<span>{{ translation.author }}</span>
+				</li>
+				<li>Langue :
+					<span>{{ translation.language }}</span>
+				</li>
+			</ul>
+
+			<ul class='other-infos'>
+				<li>Par :
+					<span>{{ translation.user.username }}</span>
+				</li>
+				<li>Postée le :
+					<span>{{ translation.createdAt | date("d/m/Y") }}</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+{% endfor %}
