@@ -110,6 +110,13 @@ final class TranslationController extends AbstractController
         ]);
     }
 
+    #[Route('translation/posts/show/{id}', name: 'show')]
+    public function show(Translation $translation): Response
+    {
+        return $this->render('translation/posts/show.html.twig', [
+            'translation' => $translation
+        ]);
+    }
 
     #[Route('translation/posts/edit/{id}', name: 'edit')]
     public function edit(Translation $translation, Request $request, EntityManagerInterface $em, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/translations')] string $translationsDirectory): Response
@@ -137,6 +144,7 @@ final class TranslationController extends AbstractController
                     $translationFile->move($translationFile, $newFilename);
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
+                    $e = "Une erreur est survenue lors de l'envoi de la traduction, veuillez réessayer.";
                 }
 
                 // updates the 'translationFilename' property to store the PDF file name instead of its contents

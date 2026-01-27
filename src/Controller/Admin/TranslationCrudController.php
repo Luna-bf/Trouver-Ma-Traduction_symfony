@@ -15,6 +15,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\Image;
 
 class TranslationCrudController extends AbstractCrudController
 {
@@ -22,11 +23,17 @@ class TranslationCrudController extends AbstractCrudController
     {
         return Translation::class;
     }
-    
+
     public function configureFields(string $pageName): iterable
     {
         return [
             yield IdField::new('id')->hideOnForm(),
+            
+            // Affichage de l'image dans EasyAdmin
+            yield ImageField::new('translationFileName', 'File')
+                ->onlyOnIndex()
+                // ->setFormType(FileUploadType::class)
+                ->setBasePath('/uploads/translations/'),
 
             yield TextField::new('name'),
             yield ChoiceField::new('translationType')->setChoices([
@@ -44,12 +51,6 @@ class TranslationCrudController extends AbstractCrudController
             ]),
             yield DateTimeField::new('updatedAt')->hideOnForm()->hideOnIndex(),
             yield AssociationField::new('user')->hideOnForm()->autocomplete(),
-            
-            
-            yield ImageField::new('translationFileName', 'File')
-                ->onlyOnIndex()
-                // ->setFormType(FileUploadType::class)
-                ->setBasePath('/uploads/translations/'),
 
             // Upload du fichier
             yield ImageField::new('translationFileName', 'File')
@@ -67,7 +68,7 @@ class TranslationCrudController extends AbstractCrudController
                     ]
                 ])
                 ->setUploadDir('public/uploads/translations/')
-                ->setUploadedFileNamePattern('[name]-[day][month][year]_[timestamp].[extension]'),
+                ->setUploadedFileNamePattern('[slug].[extension]'),
         ];
     }
 
