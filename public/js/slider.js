@@ -1,4 +1,4 @@
-new Swiper('.cards-wrapper', {
+new Swiper('.slider-cards-container', {
     loop: true,
 
     // Flèches de navigation
