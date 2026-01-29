@@ -38,11 +38,21 @@ class TranslationCrudController extends AbstractCrudController
             yield TextField::new('name'),
             yield ChoiceField::new('translationType')->setChoices([
                 'Chanson' => 'Chanson',
+                'Livre' => 'Livre',
+                'Texte' => 'Texte',
             ]),
             yield ChoiceField::new('translationStyle')->setChoices([
-                'Electro Swing' => 'Electro Swing',
-                'Pop' => 'Pop',
-                'Rock' => 'Rock'
+                'Chanson' => [
+                    'Electro Swing' => 'Electro Swing',
+                    'Pop' => 'Pop',
+                    'Rock' => 'Rock'
+                ],
+                'Livre' => [
+                    'Fantasy' => 'Fantasy',
+                ],
+                'Texte' => [
+                    'Poème' => 'Poème',
+                ],
             ]),
             yield TextField::new('author'),
             yield ChoiceField::new('language')->setChoices([
@@ -68,7 +78,7 @@ class TranslationCrudController extends AbstractCrudController
                     ]
                 ])
                 ->setUploadDir('public/uploads/translations/')
-                ->setUploadedFileNamePattern('[slug].[extension]'),
+                ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]'),
         ];
     }
 
