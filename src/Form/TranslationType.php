@@ -3,8 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Translation;
-use App\Entity\User;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -38,8 +36,11 @@ class TranslationType extends AbstractType
                     'class' => 'form-input',
                 ]
             ])
-            ->add('translationFileName', FileType::class, [
-                'data_class' => null,
+            ->add('translationFile', FileType::class, [
+                // 'data_class' => null,
+
+                'mapped' => false,
+                'required' => false, // Optionnel, comme ça je n'aurais pas besoin de republier le document à chaque fois que je modifie une publication
 
                 'row_attr' => [
                     'class' => 'w-50-percent d-i-flex form-input-parent',
@@ -57,7 +58,7 @@ class TranslationType extends AbstractType
                     new Assert\File(
                         maxSize: '1024k',
                         extensions: ['pdf', 'docx'],
-                        extensionsMessage: 'Please upload a valid document',
+                        extensionsMessage: 'Veuillez joindre un document valide.',
                     )
                 ],
             ])
