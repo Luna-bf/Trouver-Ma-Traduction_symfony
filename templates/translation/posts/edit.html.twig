@@ -8,15 +8,15 @@
 		{% block main %}
 			<main class="form-container d-flex">
 				<div class="form-parent d-flex">
-					{{ form_start(translationForm, {'attr': {'class': 'd-flex'}}) }}
-						{{ form_row(translationForm.name) }}
-						{{ form_row(translationForm.translationFile) }}
-						{{ form_row(translationForm.translationType) }}
-						{{ form_row(translationForm.translationStyle) }}
-						{{ form_row(translationForm.author) }}
-						{{ form_row(translationForm.language) }}
-						{{ form_row(translationForm.save) }}
-					{{ form_end(translationForm) }}
+					{{ form_start(editTranslationForm, {'attr': {'class': 'd-flex'}}) }}
+						{{ form_row(editTranslationForm.name) }}
+						{{ form_row(editTranslationForm.translationFile) }}
+						{{ form_row(editTranslationForm.translationType) }}
+						{{ form_row(editTranslationForm.translationStyle) }}
+						{{ form_row(editTranslationForm.author) }}
+						{{ form_row(editTranslationForm.language) }}
+						{{ form_row(editTranslationForm.save) }}
+					{{ form_end(editTranslationForm) }}
 				</div>
 			</main>
 		{% endblock %}
