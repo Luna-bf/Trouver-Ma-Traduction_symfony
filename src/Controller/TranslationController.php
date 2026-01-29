@@ -117,7 +117,7 @@ final class TranslationController extends AbstractController
     {
         // Je n'ai pas besoin de déclarer une nouvelle instance de la classe Translation car je veux modifier des données déjà existantes
         // Initialisation du formulaire
-        $translationForm = $this->createForm(TranslationType::class, $translation);
+        $editTranslationForm = $this->createForm(TranslationType::class, $translation);
 
         // if (!empty($translation->getTranslationFileName())) {
         //     $translation->setTranslationFile(
@@ -126,46 +126,39 @@ final class TranslationController extends AbstractController
         // }
 
         // Traitement du formulaire
-        $translationForm->handleRequest($request);
+        $editTranslationForm->handleRequest($request);
 
         // Vérifie si le formulaire est valide
-        if ($translationForm->isSubmitted() && $translationForm->isValid()) {
+        if ($editTranslationForm->isSubmitted() && $editTranslationForm->isValid()) {
 
-            $translationFile = $translationForm->get('translationFile')->getData(); // Récupère le fichier dans le champs du formulaire
+            $translationFile = $editTranslationForm->get('translationFile')->getData(); // Récupère le fichier dans le champs du formulaire
             $translationsDirectory = $this->getParameter('kernel.project_dir') . '/public/uploads/translations'; // Le dossier où sera stocké le fichier
 
             // $translation->setTranslationFileName($newFilename);
 
             /* 
-            Source utile :
+            Sources utile :
                 https://stackoverflow.com/questions/45060712/symfony-3-file-upload-and-db-if-new-file-not-uploaded-old-file-field-removed
                 https://stackoverflow.com/questions/19563295/symfony2-file-upload-delete-old-and-create-new-in-edit
             */
-            if ($translationFile) {
+            /*
+            Source à checker en priorité !
+                https://stackoverflow.com/questions/43356878/delete-file-when-entity-is-deleted-in-symfony
 
-                // if ($this->translationFile) {
-                //     if ($translationFile = $this->getAbsolutePath()) {
-                //         unlink($file);
-                //     }
-                // }
+                Entity listeners, they are defined as classes with callback methods for the events you want to respond to.
+                They can use services, but they are only called for the entities of a certain class, so they are ideal for
+                complex event logic related to a single entity;
 
+                https://www.doctrine-project.org/projects/doctrine-phpcr-odm/en/latest/reference/events.html#lifecycle-events
+            */
+            if (!empty($translationFile)) {
+                
                 $originalFilename = pathinfo($translationFile->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
-                $safeFilename = $slugger->slug($originalFilename); // Je modifie le nom du fichier avec un slug pour qu'il soit sécurisé
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $translationFile->guessExtension(); // Puis je l'ajoute au fichier uploadé
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $translationFile->guessExtension();
 
-                // if (!empty($translation->getTranslationFileName())) {
-                //     $translation->setTranslationFileName(new File($translationsDirectory . '/' . $translation->getTranslationFileName()));
-                // }
-                $translation->setTranslationFileName(new File($translationsDirectory . '/' . $translation->getTranslationFileName()));
-
-                // Envoi du fichier dans le dossier où les traductions sont stockées
-                try {
-                    $translationFile->move($translationsDirectory, $newFilename);
-                } catch (FileException $e) {
-                    dd('Echec');
-                }
-
+                $translationFile->move($translationsDirectory, $newFilename);
                 $translation->setTranslationFileName($newFilename);
             }
 
@@ -178,7 +171,7 @@ final class TranslationController extends AbstractController
         }
 
         return $this->render('translation/posts/edit.html.twig', [
-            'translationForm' => $translationForm->createView()
+            'editTranslationForm' => $editTranslationForm->createView()
         ]);
     }
 

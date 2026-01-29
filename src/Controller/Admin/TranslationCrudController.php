@@ -13,9 +13,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Validator\Constraints\File;
-use Symfony\Component\Validator\Constraints\Image;
 
 class TranslationCrudController extends AbstractCrudController
 {
@@ -89,7 +87,7 @@ class TranslationCrudController extends AbstractCrudController
         parent::persistEntity($entityManager, $entityInstance);
 
         // Récupère les données l'utilisateur connecté et l'ajoute dans le champ de saisie (caché) du formulaire
-        $user = $this->getUser(); // je récupère l'utilisateur dans l'entité User
+        $user = $this->getUser(); // Je récupère l'utilisateur dans l'entité User
         $entityInstance->setUser($user); // Puis j'enregistre les données de l'utilisateur connecté
         parent::persistEntity($entityManager, $entityInstance);
     }
