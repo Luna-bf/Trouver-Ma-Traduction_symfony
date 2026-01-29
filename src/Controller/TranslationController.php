@@ -10,7 +10,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -59,7 +58,7 @@ final class TranslationController extends AbstractController
         ]);
     }
 
-    // Pour l'envoi de fichiers PDF : https://symfony.com/doc/current/controller/upload_file.html ou https://stackoverflow.com/questions/43001978/upload-pdf-file-with-symfony
+    // Pour l'envoi de fichiers PDF : https://symfony.com/doc/current/controller/upload_file.html
     #[Route('/posts/new_upload', name: 'new_upload')]
     public function newUpload(Request $request, EntityManagerInterface $em, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/translations')] string $translationsDirectory): Response
     {
@@ -75,20 +74,21 @@ final class TranslationController extends AbstractController
         // Vérifie si le formulaire est valide
         if ($translationForm->isSubmitted() && $translationForm->isValid()) {
 
-            $translationFile = $translationForm->get('translationFileName')->getData();
+            $translationFile = $translationForm->get('translationFile')->getData();
 
-            $fullTranslation = $translationForm->getData(); // revoir à quoi ça sert
-            $fullTranslation->setCreatedAt(new \DateTimeImmutable()); // enregistre la date du jour
-            $user = $this->getUser(); // récupère les données l'utilisateur connecté
-            $fullTranslation->setUser($user); // enregistre les données de l'utilisateur connecté
+            $fullTranslation = $translationForm->getData(); // Récupère les données du formulaire
+            $fullTranslation->setCreatedAt(new \DateTimeImmutable()); // Enregistre la date dans le champ du formulaire (setter)
+            $user = $this->getUser(); // Récupère les données l'utilisateur connecté
+            $fullTranslation->setUser($user); // Enregistre les données de l'utilisateur connecté dans le champ du formulaire (setter)
 
+            // Traitement du fichier
             if ($translationFile) {
                 $originalFilename = pathinfo($translationFile->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '-' . uniqid() . '.' . $translationFile->guessExtension();
 
-                // Move the file to the directory where translations are stored
+                // Envoi du fichier dans le dossier où les traductions sont stockées
                 try {
                     $translationFile->move($translationsDirectory, $newFilename);
                 } catch (FileException $e) {
@@ -115,9 +115,15 @@ final class TranslationController extends AbstractController
     #[Route('translation/posts/edit/{id}', name: 'edit')]
     public function edit(Translation $translation, Request $request, EntityManagerInterface $em, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/translations')] string $translationsDirectory): Response
     {
-        // Note : Je n'ai pas besoin de déclarer une nouvelle instance de la classe Translation, car je veux éditer des données déjà existantes
+        // Je n'ai pas besoin de déclarer une nouvelle instance de la classe Translation car je veux modifier des données déjà existantes
         // Initialisation du formulaire
         $translationForm = $this->createForm(TranslationType::class, $translation);
+
+        // if (!empty($translation->getTranslationFileName())) {
+        //     $translation->setTranslationFile(
+        //         new File($translationsDirectory . '/' . $translation->getTranslationFileName())
+        //     );
+        // }
 
         // Traitement du formulaire
         $translationForm->handleRequest($request);
@@ -125,22 +131,43 @@ final class TranslationController extends AbstractController
         // Vérifie si le formulaire est valide
         if ($translationForm->isSubmitted() && $translationForm->isValid()) {
 
-            $translationFile = $translationForm->get('translationFileName')->getData();
-            $translationsDirectory = $this->getParameter('kernel.project_dir') . '/public/uploads/translations';
+            $translationFile = $translationForm->get('translationFile')->getData(); // Récupère le fichier dans le champs du formulaire
+            $translationsDirectory = $this->getParameter('kernel.project_dir') . '/public/uploads/translations'; // Le dossier où sera stocké le fichier
 
-            $originalFilename = pathinfo($translationFile->getClientOriginalName(), PATHINFO_FILENAME);
-            // this is needed to safely include the file name as part of the URL
-            $safeFilename = $slugger->slug($originalFilename);
-            $newFilename = $safeFilename . '-' . uniqid() . '.' . $translationFile->guessExtension();
+            // $translation->setTranslationFileName($newFilename);
 
-            // Move the file to the directory where translations are stored
-            try {
-                $translationFile->move($translationsDirectory, $newFilename);
-            } catch (FileException $e) {
-                dd('Echec');
+            /* 
+            Source utile :
+                https://stackoverflow.com/questions/45060712/symfony-3-file-upload-and-db-if-new-file-not-uploaded-old-file-field-removed
+                https://stackoverflow.com/questions/19563295/symfony2-file-upload-delete-old-and-create-new-in-edit
+            */
+            if ($translationFile) {
+
+                // if ($this->translationFile) {
+                //     if ($translationFile = $this->getAbsolutePath()) {
+                //         unlink($file);
+                //     }
+                // }
+
+                $originalFilename = pathinfo($translationFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename); // Je modifie le nom du fichier avec un slug pour qu'il soit sécurisé
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $translationFile->guessExtension(); // Puis je l'ajoute au fichier uploadé
+
+                // if (!empty($translation->getTranslationFileName())) {
+                //     $translation->setTranslationFileName(new File($translationsDirectory . '/' . $translation->getTranslationFileName()));
+                // }
+                $translation->setTranslationFileName(new File($translationsDirectory . '/' . $translation->getTranslationFileName()));
+
+                // Envoi du fichier dans le dossier où les traductions sont stockées
+                try {
+                    $translationFile->move($translationsDirectory, $newFilename);
+                } catch (FileException $e) {
+                    dd('Echec');
+                }
+
+                $translation->setTranslationFileName($newFilename);
             }
-            
-            $translation->setTranslationFileName($newFilename);
 
             $em->persist($translation); // Prépare la requête
             $em->flush(); // Exécute la requête
