@@ -3,9 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\TranslationRepository;
+use Doctrine\Bundle\DoctrineBundle\Attribute\AsEntityListener;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Event\PostUpdateEventArgs;
+use Doctrine\ORM\Events;
 
 #[ORM\Entity(repositoryClass: TranslationRepository::class)]
+// #[AsEntityListener(event: Events::postUpdate, method: 'postUpdate', entity: Translation::class)]
 class Translation
 {
     #[ORM\Id]
@@ -137,4 +141,44 @@ class Translation
 
         return $this;
     }
+
+    /**
+    * Called before saving the entity
+    * 
+    * @ORM\PrePersist()
+    * @ORM\PreUpdate()
+    */
+    // public function preUpload()
+    // {
+    //     $oldFile = $this->translationFileName;
+    //     $oldFilePath = $this->getUploadRootDir().'/'.$oldFile;
+
+    //     if (null !== $this->translationFileName) {
+    //         if($oldFile && file_exists($oldFilePath)) unlink($oldFilePath); // not working correctly
+    //         $translationFileName = sha1(uniqid(mt_rand(), true));
+    //         $this->translationFileName = $translationFileName . '.' . $this->translationFile->guessExtension();
+    //     }
+    // }
+
+    /**
+    * Called before entity removal
+    *
+    * @ORM\PostRemove()
+    */
+    // public function removeUpload()
+    // {
+    //     if ($file = $this->getAbsolutePath()) {
+    //         unlink($file);
+    //     }
+    // }
+
+    /*
+    Source utile :
+        https://stackoverflow.com/questions/19563295/symfony2-file-upload-delete-old-and-create-new-in-edit
+    */
+    // public function postUpdate(Translation $translation, PostUpdateEventArgs $event): void
+    // {
+    //     // ... do something to notify the changes
+
+    // }
 }
