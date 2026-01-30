@@ -20,14 +20,6 @@ final class UserController extends AbstractController
         ]);
     }
 
-    // #[Route('/posts/new_upload', name: 'new_upload')]
-    // public function newUpload(): Response
-    // {
-    //     return $this->render('user/posts/newUpload.html.twig', [
-    //         'controller_name' => 'UserController',
-    //     ]);
-    // }
-
     #[Route('/settings-pages/profile_settings', name: 'profile_settings')]
     public function profileSettings(): Response
     {
