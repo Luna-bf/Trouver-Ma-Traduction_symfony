@@ -26,14 +26,6 @@ final class TranslationController extends AbstractController
         ]);
     }
 
-    #[Route('form/login', name: 'login')]
-    public function login(): Response
-    {
-        return $this->render('translation/form/login.html.twig', [
-            'controller_name' => 'TranslationController',
-        ]);
-    }
-
     #[Route('home', name: 'home')]
     public function home(TranslationRepository $repo): Response
     {
@@ -46,14 +38,6 @@ final class TranslationController extends AbstractController
     public function searchResult(): Response
     {
         return $this->render('translation/home/searchResult.html.twig', [
-            'controller_name' => 'TranslationController',
-        ]);
-    }
-
-    #[Route('file/file_viewer', name: 'file_viewer')]
-    public function fileViewer(): Response
-    {
-        return $this->render('translation/file/fileViewer.html.twig', [
             'controller_name' => 'TranslationController',
         ]);
     }
