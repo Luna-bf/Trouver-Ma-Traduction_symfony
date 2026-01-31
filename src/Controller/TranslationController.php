@@ -18,8 +18,8 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 #[Route('', name: 'translation_')]
 final class TranslationController extends AbstractController
 {
-    #[Route('', name: 'landing')]
-    public function landing(): Response
+    #[Route('', name: 'index')]
+    public function index(): Response
     {
         return $this->render('translation/index.html.twig', [
             'controller_name' => 'TranslationController',
