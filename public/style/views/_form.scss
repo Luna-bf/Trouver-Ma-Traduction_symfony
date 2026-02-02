@@ -205,7 +205,7 @@ input[type="checkbox"]:checked {
         display: none;
     }
 
-    form {
+    .form-parent>form {
         width: 100%;
     }
 
