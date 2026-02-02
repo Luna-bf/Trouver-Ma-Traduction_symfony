@@ -3,6 +3,10 @@
     width: 100vw;
 }
 
+.accessibility-form>form {
+    width: 50%;
+}
+
 .accessibility-form form>.param,
 .font-size-param {
     margin-bottom: 1.5em;
@@ -23,6 +27,10 @@ RESPONSIVE
 ************/
 // Mobile (portrait)
 @media screen and (max-width: 480px) {
+
+    .accessibility-form>form {
+        width: 100%;
+    }
 
     .accessibility-form form>.param {
         flex-direction: column;

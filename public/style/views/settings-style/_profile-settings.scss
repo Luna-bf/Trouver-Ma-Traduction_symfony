@@ -178,6 +178,10 @@ RESPONSIVE
 ************/
 // Mobile (portrait)
 @media screen and (max-width: 480px) {
+    .profile-form>form {
+        width: 100%;
+    }
+
     .settings-container {
         width: 378px;
         margin: 0 auto;

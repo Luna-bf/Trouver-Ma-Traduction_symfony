@@ -1805,6 +1805,9 @@ RESPONSIVE
 RESPONSIVE
 ************/
 @media screen and (max-width: 480px) {
+  .profile-form > form {
+    width: 100%;
+  }
   .settings-container {
     width: 378px;
     margin: 0 auto;
@@ -1893,6 +1896,10 @@ RESPONSIVE
   width: 100vw;
 }
 
+.accessibility-form > form {
+  width: 50%;
+}
+
 .accessibility-form form > .param,
 .font-size-param {
   margin-bottom: 1.5em;
@@ -1910,6 +1917,9 @@ input[type=range] {
 RESPONSIVE
 ************/
 @media screen and (max-width: 480px) {
+  .accessibility-form > form {
+    width: 100%;
+  }
   .accessibility-form form > .param {
     flex-direction: column;
   }
