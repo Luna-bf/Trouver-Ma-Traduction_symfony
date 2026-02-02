@@ -18,7 +18,7 @@
 }
 
 .user-pfp-figure {
-    width: 7%;
+    width: 6%;
     position: absolute;
     bottom: 330px;
 }
@@ -137,17 +137,52 @@
     cursor: pointer;
 }
 
-.delete-posts {
-    border: 1px solid #b22222;
-    color: #b22222;
-    padding: 8px 18px 8px 18px;
-    border-radius: 5px;
-    font-size: 15.5px;
-    transition: all 0.2s;
-    margin-left: 35px;
+.action-buttons {
+    margin: 30px 0 10px 0;
+    justify-content: center;
 }
 
-.delete-posts:hover {
+.action-buttons>form {
+    margin-left: 10px;
+}
+
+.action-buttons>.edit {
+    align-items: center;
+    border: 1px solid #198754;
+    background-color: #fff;
+    color: #198754;
+    padding: 4px 12px 4px 12px;
+    border-radius: 5px;
+    transition: all 0.2s;
+    font-size: 14px;
+}
+
+.action-buttons>.edit:hover {
+    border: 1px solid #198754;
+    background-color: #198754;
+    color: #fff;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.action-buttons .edit>p:hover {
+    color: #fff;
+    cursor: pointer;
+}
+
+.action-buttons form>button {
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid #b22222;
+    background-color: #fff;
+    color: #b22222;
+    padding: 6px 14px 6px 14px;
+    border-radius: 5px;
+    transition: all 0.2s;
+    font-size: 13.8px;
+}
+
+.action-buttons form>button:hover {
     background-color: #b22222;
     color: #fff;
     transition: all 0.2s;
@@ -190,9 +225,9 @@ RESPONSIVE
 @media screen and (max-width: 480px) {
 
     .user-pfp-figure {
-        width: 21%;
+        width: 17%;
         position: absolute;
-        top: 440px;
+        top: 378px;
     }
 
     .user-pfp-figure>img {
@@ -246,6 +281,39 @@ RESPONSIVE
 
     .parameters-icons>a {
         font-size: 18px;
+    }
+
+    .posts-btns {
+        flex-direction: column;
+    }
+
+    .posts-btns>.create-post {
+        align-self: flex-start;
+        margin: 0 auto;
+        font-size: 14px;
+    }
+
+    .posts-btns>.admin {
+        align-self: flex-start;
+        margin: 0 auto;
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .action-buttons>.edit {
+        align-self: flex-start;
+        margin: 0 auto;
+        padding: 6px 14px 6px 14px;
+    }
+
+    .action-buttons>form {
+        margin-left: 0;
+        margin-top: 10px;
+        justify-content: center;
     }
 }
 
