@@ -41,7 +41,8 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Trouver Ma Traduction');
+            ->setTitle('Trouver Ma Traduction')
+            ->setFaviconPath('assets/imgs/favicon/favicon-48x48.png');
     }
 
     public function configureMenuItems(): iterable
