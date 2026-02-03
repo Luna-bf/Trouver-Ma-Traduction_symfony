@@ -447,7 +447,7 @@ RESPONSIVE
 ************/
 @media screen and (max-width: 480px) {
   .parent-logo {
-    width: 25%;
+    width: 24%;
   }
   .logo-text {
     flex-direction: column;
@@ -461,6 +461,16 @@ RESPONSIVE
   }
   .text > p {
     text-align: center;
+    font-size: 15.5px;
+  }
+  footer > hr {
+    width: 95%;
+  }
+  .freepik {
+    padding-top: 2em;
+    margin: 0 auto;
+    font-size: 15.5px;
+    width: 80%;
   }
 }
 @media screen and (min-width: 481px) and (max-width: 768px) {
@@ -1828,10 +1838,10 @@ RESPONSIVE
   .profile-picture {
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 5px;
   }
   .profile-picture > figure {
-    width: 25%;
+    width: 23%;
   }
   .profile-picture figure > img {
     border-radius: 50%;
@@ -1971,6 +1981,7 @@ RESPONSIVE
   }
   .other-actions {
     margin-left: 20px;
+    font-size: 15.5px;
   }
   .other-actions > li i {
     font-size: 0;

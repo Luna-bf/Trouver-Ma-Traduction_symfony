@@ -86,7 +86,7 @@ RESPONSIVE
 // Mobile (portrait)
 @media screen and (max-width: 480px) {
     .parent-logo {
-        width: 25%;
+        width: 24%;
     }
 
     .logo-text {
@@ -103,6 +103,18 @@ RESPONSIVE
 
     .text>p {
         text-align: center;
+        font-size: 15.5px;
+    }
+
+    footer>hr {
+        width: 95%;
+    }
+
+    .freepik {
+        padding-top: 2em;
+        margin: 0 auto;
+        font-size: 15.5px;
+        width: 80%;
     }
 }
 
