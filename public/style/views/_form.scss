@@ -98,9 +98,9 @@
 }
 
 // checkbox
-#remember {
+#remember-me {
     flex-direction: row;
-    margin-top: 1.5em;
+    margin-top: 1em;
 }
 
 .remember-input {
@@ -193,6 +193,15 @@ input[type="checkbox"]:checked {
 .account-parent div {
     font-family: "PoppinsExtraLight", sans-serif;
     font-weight: 300;
+}
+
+.mb-last-input {
+    margin-bottom: 1em;
+}
+
+#remember {
+    margin-left: 9.7em;
+    margin-top: 1.5em;
 }
 
 // Mobile (portrait)
