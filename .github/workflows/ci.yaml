@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
     verification-basique:
-        runs-on: windows-latest
+        runs-on: unbutu-latest
 
         steps:
             - name: Recuperation du code
