@@ -7,4 +7,6 @@
 /public/bundles/
 /var/
 /vendor/
+Procfile
+ignore
 ###< symfony/framework-bundle ###
