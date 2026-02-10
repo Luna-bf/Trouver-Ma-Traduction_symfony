@@ -1136,9 +1136,8 @@ input[type=checkbox]:checked {
 }
 
 .swiper {
-  max-width: 1400px;
+  max-width: 1450px;
   margin: 0 auto;
-  background-color: #fff;
   flex-direction: column;
   margin-bottom: 5em;
 }
