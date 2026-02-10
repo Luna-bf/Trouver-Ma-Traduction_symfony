@@ -3,10 +3,6 @@
 {% block title %}Accueil - Trouver Ma Traduction
 {% endblock %}
 
-{% block head %}
-	{{ parent() }}
-{% endblock %}
-
 {% block cdn %}
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -16,14 +12,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 	<script src="{{ asset('/js/slider.js') }}" defer></script>
 	<script src="{{ asset('/js/app.js') }}" defer></script>
-{% endblock %}
-
-{% block body %}
-	{{ parent() }}
-{% endblock %}
-
-{% block header %}
-	{{ parent() }}
 {% endblock %}
 
 {% block main %}
@@ -42,9 +30,4 @@
 			<div class="swiper-slide-button swiper-button-next"></div>
 		</div>
 	</main>
-{% endblock %}
-
-{# Footer #}
-{% block footer %}
-	{{ parent() }}
 {% endblock %}
