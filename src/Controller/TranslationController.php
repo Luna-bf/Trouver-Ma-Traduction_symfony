@@ -159,7 +159,7 @@ final class TranslationController extends AbstractController
         ]);
     }
 
-    #[Route('translation/posts/{id}/delete', name: 'delete', methods: ['GET'])]
+    #[Route('translation/posts/{id}/delete', name: 'delete', methods: ['POST'])]
     public function delete($id, TranslationRepository $repo, EntityManagerInterface $em): Response
     {
         $translation = $repo->find($id);

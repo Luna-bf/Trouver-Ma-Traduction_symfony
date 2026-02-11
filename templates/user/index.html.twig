@@ -104,7 +104,7 @@
 									<a href="{{ path('translation_edit', {id: translation.id}) }}" class="edit d-flex">
 										<i class="fa-solid fa-pen"></i>Modifier
 									</a>
-									<form action="{{ path('translation_delete', {id: translation.id}) }}" method="get" onsubmit="return confirm('Voulez-vous vraiment supprimer cette traduction ?')" class="d-flex">
+									<form action="{{ path('translation_delete', {id: translation.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cette traduction ?')" class="d-flex">
 										<button><i class="fa-solid fa-ban"></i>Supprimer</button>
 									</form>
 								</div>
