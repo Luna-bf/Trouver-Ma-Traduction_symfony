@@ -104,7 +104,7 @@ class RegistrationFormType extends AbstractType
                     'class' => 'w-50-percent mb-10 mt-first-label sign-label'
                 ],
             ])
-            ->add('Inscription', SubmitType::class, [
+            ->add('submit', SubmitType::class, [
                 'row_attr' => [
                     'class' => 'd-i-flex'
                 ],
