@@ -6,10 +6,10 @@ use App\Entity\Translation;
 use App\Form\TranslationType;
 use App\Repository\TranslationRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -136,7 +136,7 @@ final class TranslationController extends AbstractController
                 https://www.doctrine-project.org/projects/doctrine-phpcr-odm/en/latest/reference/events.html#lifecycle-events
             */
             if (!empty($translationFile)) {
-                
+
                 $originalFilename = pathinfo($translationFile->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
                 $safeFilename = $slugger->slug($originalFilename);
@@ -160,15 +160,19 @@ final class TranslationController extends AbstractController
     }
 
     #[Route('translation/posts/{id}/delete', name: 'delete', methods: ['POST'])]
-    public function delete($id, TranslationRepository $repo, EntityManagerInterface $em): Response
+    public function delete(Translation $translation, EntityManagerInterface $em, Request $request): Response
     {
-        $translation = $repo->find($id);
-        $em->remove($translation);
+        $submittedToken = $request->getPayload()->get('token'); // Récupère la valeur du champ nommé "token"
 
-        $em->flush();
+        // Si le CRSF est valide
+        if ($this->isCsrfTokenValid('delete-item', $submittedToken)) {
+            $em->remove($translation);
+            $em->flush();
 
-        $this->addFlash('success', 'Traduction supprimée avec succès.');
+            $this->addFlash('success', 'Traduction supprimée avec succès.');
+            return $this->redirectToRoute('user_index');
+        }
 
-        return $this->redirectToRoute('user_index');
+        throw new Exception('Erreur : Formulaire invalide.'); // Si le CSRF est invalide
     }
 }

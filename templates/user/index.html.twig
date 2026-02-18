@@ -105,6 +105,10 @@
 										<i class="fa-solid fa-pen"></i>Modifier
 									</a>
 									<form action="{{ path('translation_delete', {id: translation.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cette traduction ?')" class="d-flex">
+										{# Le token sert à sécuriser l'application #}
+										{# Le token se nomme "delete-item" #}
+										<input type="hidden" name="token" value="{{ csrf_token('delete-item') }}"> 
+										
 										<button><i class="fa-solid fa-ban"></i>Supprimer</button>
 									</form>
 								</div>
