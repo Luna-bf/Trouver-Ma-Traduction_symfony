@@ -21,6 +21,9 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('username', TextType::class, [
+                // Label personnalisé
+                'label' => 'Nom d\'utilisateur',
+
                 // Attributs de la div générée par $builder
                 'row_attr' => [
                     'class' => 'w-50-percent d-i-flex form-input-parent'
@@ -37,6 +40,8 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
             ->add('email', EmailType::class, [
+                'label' => 'Adresse mail',
+
                 // Attributs de la div générée par $builder
                 'row_attr' => [
                     'class' => 'w-50-percent d-i-flex form-input-parent'
@@ -76,6 +81,7 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
             ->add('plainPassword', PasswordType::class, [
+                'label' => 'Mot de passe',
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
@@ -104,7 +110,9 @@ class RegistrationFormType extends AbstractType
                     'class' => 'w-50-percent mb-10 mt-first-label sign-label'
                 ],
             ])
+
             ->add('submit', SubmitType::class, [
+                'label' => 'S\'inscrire',
                 'row_attr' => [
                     'class' => 'd-i-flex'
                 ],
