@@ -84,8 +84,8 @@ final class TranslationController extends AbstractController
                 $fullTranslation->setTranslationFileName($newFilename);
             }
 
-            $em->persist($fullTranslation); // Prépare la requête
-            $em->flush(); // Exécute la requête
+            $em->persist($fullTranslation); // Crée le nouvel élément
+            $em->flush(); // Exécute la requête (ici, elle ajoute la ligne dans la BDD)
 
             $this->addFlash('success', 'Traduction publiée avec succès.');
 
@@ -171,8 +171,8 @@ final class TranslationController extends AbstractController
 
             // Si le CRSF est valide
             if ($this->isCsrfTokenValid('delete-item', $submittedToken)) {
-                $em->remove($translation);
-                $em->flush();
+                $em->remove($translation); // Supprime la traduction
+                $em->flush(); // Enregistre les changements
 
                 $this->addFlash('success', 'Traduction supprimée avec succès.');
                 return $this->redirectToRoute('user_index');
