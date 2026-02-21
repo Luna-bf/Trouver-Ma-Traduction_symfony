@@ -163,7 +163,7 @@ final class TranslationController extends AbstractController
     #[IsGranted("ROLE_USER")]
     public function delete(Translation $translation, EntityManagerInterface $em, Request $request): Response
     {
-        // Si l'id de l'utilisateur connecté n'est pas le même que le "user_id" présent dans la traduction
+        // Si l'id de l'utilisateur connecté n'est pas le même que l'identifiant présent dans la traduction
         if ($this->getUser() !== $translation->getUser()) {
             throw new Exception("Suppression impossible.");
         } else {
