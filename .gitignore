@@ -9,4 +9,5 @@
 /vendor/
 Procfile
 ignore
+node_modules
 ###< symfony/framework-bundle ###
