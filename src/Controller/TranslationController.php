@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('', name: 'translation_')]
@@ -83,8 +84,8 @@ final class TranslationController extends AbstractController
                 $fullTranslation->setTranslationFileName($newFilename);
             }
 
-            $em->persist($fullTranslation); // Prépare la requête
-            $em->flush(); // Exécute la requête
+            $em->persist($fullTranslation); // Crée le nouvel élément
+            $em->flush(); // Exécute la requête (ici, elle ajoute la ligne dans la BDD)
 
             $this->addFlash('success', 'Traduction publiée avec succès.');
 
@@ -145,9 +146,8 @@ final class TranslationController extends AbstractController
                 $translationFile->move($translationsDirectory, $newFilename);
                 $translation->setTranslationFileName($newFilename);
             }
-
-            $em->persist($translation); // Prépare la requête
-            $em->flush(); // Exécute la requête
+            
+            $em->flush(); // Modifie la ligne en BDD
 
             $this->addFlash('success', 'Traduction modifiée avec succès.');
 
@@ -160,17 +160,23 @@ final class TranslationController extends AbstractController
     }
 
     #[Route('translation/posts/{id}/delete', name: 'delete', methods: ['POST'])]
+    #[IsGranted("ROLE_USER")]
     public function delete(Translation $translation, EntityManagerInterface $em, Request $request): Response
     {
-        $submittedToken = $request->getPayload()->get('token'); // Récupère la valeur du champ nommé "token"
+        // Si l'id de l'utilisateur connecté n'est pas le même que l'identifiant présent dans la traduction
+        if ($this->getUser() !== $translation->getUser()) {
+            throw new Exception("Suppression impossible.");
+        } else {
+            $submittedToken = $request->getPayload()->get('token'); // Récupère la valeur du champ nommé "token"
 
-        // Si le CRSF est valide
-        if ($this->isCsrfTokenValid('delete-item', $submittedToken)) {
-            $em->remove($translation);
-            $em->flush();
+            // Si le CRSF est valide
+            if ($this->isCsrfTokenValid('delete-item', $submittedToken)) {
+                $em->remove($translation); // Supprime la traduction
+                $em->flush(); // Enregistre les changements
 
-            $this->addFlash('success', 'Traduction supprimée avec succès.');
-            return $this->redirectToRoute('user_index');
+                $this->addFlash('success', 'Traduction supprimée avec succès.');
+                return $this->redirectToRoute('user_index');
+            }
         }
 
         throw new Exception('Erreur : Formulaire invalide.'); // Si le CSRF est invalide
