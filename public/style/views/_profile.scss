@@ -98,10 +98,8 @@
     font-size: 17px;
 }
 
-.activity-infos .translations:before {
-    font-family: "FontAwesome";
-    content: "\f31c";
-    font-size: 20px;
+.activity-infos .translations p>i {
+    font-size: 21.5px;
     align-content: center;
     color: #1B9675;
     margin-right: 8px;
@@ -171,6 +169,7 @@
 }
 
 .action-buttons form>button {
+    display: flex;
     flex-direction: row;
     align-items: center;
     border: 1px solid #b22222;
