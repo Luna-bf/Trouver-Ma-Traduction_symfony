@@ -1,6 +1,7 @@
 // Importations
 @forward "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @forward "../../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+// @forward "../../node_modules/bootstrap/scss/grid";
 @forward "fonts/fonts";
 @forward "other/variables";
 @forward "other/params";
@@ -8,10 +9,10 @@
 @forward "views/components/footer";
 @forward "themes/themes";
 @forward "views/landing";
-@forward "views/form";
-@forward "views/home";
-@forward "views/search-result";
-@forward "views/profile";
+@forward "views/user/form";
+@forward "views/user/home";
+@forward "views/user/search-result";
+@forward "views/user/profile";
 @forward "views/settings-style/profile-settings";
 @forward "views/settings-style/accessibility-settings";
 @forward "views/settings-style/account-settings";
