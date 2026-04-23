@@ -10,4 +10,5 @@
 Procfile
 ignore
 node_modules
+test
 ###< symfony/framework-bundle ###
