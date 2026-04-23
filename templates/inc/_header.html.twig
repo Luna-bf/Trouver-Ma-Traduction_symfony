@@ -1,32 +1,21 @@
 <header>
-	<nav class="d-flex">
-		<figure class="nav-logo-figure">
+	<nav class="d-flex align-items-center">
+		{# <figure class="nav-logo-figure">
 			<a href="#"><img src="/assets/imgs/logo-160x160.png" alt="Website logo" class="nav-logo-img"></a>
-		</figure>
-
-		<input type="checkbox" id="check">
+		</figure> #}
 
 		<div class="d-flex input-and-profile">
-			<label for="check" class="close-menu">
-				<i class="fa-solid fa-xmark"></i>
-			</label>
-
 			<form action="#" class="search-form">
 				<div class="d-flex input-wrapper">
 					<input type="search" name="search" id="search" class="input-icon" placeholder="Recherche...">
 				</div>
 			</form>
 
-			<figure class="d-flex profile-picture-figure">
+			<figure class="d-flex profile-picture-figure my-0">
 				{% if is_granted(("ROLE_USER")) %}
-					{# <a href="{{ path('user_index') }}">Bienvenue, {{ app.user.username }}</a> #}
 					<a href="{{ path('user_index') }}"><img src="/assets/imgs/placeholders/default-pfp.png" alt="Profile picture"></a>
 				{% endif %}
 			</figure>
 		</div>
-
-		<label for="check" class="open-menu">
-			<i class="fa-solid fa-bars"></i>
-		</label>
 	</nav>
 </header>
