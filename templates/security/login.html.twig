@@ -6,29 +6,26 @@
 {% block body %}
 	<body class="forms-body">
 		{% block main %}
-			<main class="form-container d-flex">
-				<div class="form-parent d-flex">
-					<h1>Connexion</h1>
+			<main>
+				<section class="d-flex flex-column align-items-center justify-content-center text-white">
+					<h1 class="mb-3">Connexion</h1>
 
-					<form method="post" class="d-flex">
-						{% if error %}
-							<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-						{% endif %}
+					<form method="post" class="d-flex flex-column mt-2 form-width">
 
-						<div class="w-50-percent d-i-flex form-input-parent mt-first-input">
-							<label for="username" class="w-50-percent mb-10 mt-first-label sign-label">Adresse mail</label>
+						<div class="d-flex flex-column form-parent-row">
+							<label for="username" class="mt-label">Adresse mail</label>
 							<input type="email" value="{{ last_username }}" name="_username" id="username" class="form-input mb-50" autocomplete="email" required autofocus>
 						</div>
-						<div class="w-50-percent d-i-flex form-input-parent mt-first-input">
-							<label for="password" class="w-50-percent mb-10 mt-first-label sign-label">Mot de passe</label>
-							<input
-							type="password" name="_password" id="password" class="form-input mb-last-input" autocomplete="current-password" required>
+
+						<div class="d-flex flex-column form-parent-row">
+							<label for="password" class="mt-label">Mot de passe</label>
+							<input type="password" name="_password" id="password" class="form-input mb-last-input" autocomplete="current-password" required>
 
 							{# Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
 																					See https://symfony.com/doc/current/security/remember_me.html #}
 
 							<div class="checkbox mb-3" id="remember-me">
-								<input type="checkbox" name="_remember_me" id="_remember_me" class="remember-input">
+								<input type="checkbox" name="_remember_me" id="_remember_me" class="form-checkbox">
 								<span class="checkmark"></span>
 								<label for="_remember_me" class="sign-label">Se souvenir de moi</label>
 							</div>
@@ -36,17 +33,21 @@
 
 						<input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
 
-						<div class="d-i-flex">
-							<button type="submit" class="btn btn-lg btn-primary submit-btn">Se connecter</button>
+						{% if error %}
+							<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+						{% endif %}
+
+						<div class="d-flex">
+							<button type="submit" class="submit-btn text-white w-50 rounded">Se connecter</button>
 						</div>
 
-						<div class="account-parent d-flex">
+						<div class="d-flex flex-column align-items-center account-parent">
 							<a href="#">Mot de passe oublié ?</a>
 							<div>Vous n'avez pas de compte ?&ensp;<a href="{{ path('app_register') }}" class="connect-register-link">Inscrivez-vous</a>
 							</div>
 						</div>
 					</form>
-				</div>
+				</section>
 			</main>
 		{% endblock %}
 	</body>

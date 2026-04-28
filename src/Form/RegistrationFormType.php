@@ -26,36 +26,26 @@ class RegistrationFormType extends AbstractType
 
                 // Attributs de la div générée par $builder
                 'row_attr' => [
-                    'class' => 'w-50-percent d-i-flex form-input-parent'
+                    'class' => 'd-flex flex-column form-parent-row'
                 ],
 
                 // Attributs du label
                 'label_attr' => [
-                    'class' => 'w-50-percent mb-10 mt-first-label sign-label'
+                    'class' => 'mt-label'
                 ],
-
-                // Attributs de l'input
-                'attr' => [
-                    'class' => 'form-input',
-                ]
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Adresse mail',
 
                 // Attributs de la div générée par $builder
                 'row_attr' => [
-                    'class' => 'w-50-percent d-i-flex form-input-parent'
+                    'class' => 'd-flex flex-column form-parent-row'
                 ],
 
                 // Attributs du label
                 'label_attr' => [
-                    'class' => 'w-50-percent mb-10 mt-first-label sign-label'
+                    'class' => 'mt-label'
                 ],
-
-                // Attributs de l'input
-                'attr' => [
-                    'class' => 'form-input',
-                ]
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
@@ -77,18 +67,16 @@ class RegistrationFormType extends AbstractType
 
                 // Attributs de l'input
                 'attr' => [
-                    'id' => 'remember-input',
+                    'class' => 'form-checkbox',
                 ]
             ])
             ->add('plainPassword', PasswordType::class, [
                 'label' => 'Mot de passe',
+
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-                'attr' => [
-                    'autocomplete' => 'new-password',
-                    'class' => 'form-input'
-                ],
+
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez définir un mot de passe.',
@@ -102,22 +90,27 @@ class RegistrationFormType extends AbstractType
                 ],
 
                 'row_attr' => [
-                    'class' => 'w-50-percent d-i-flex form-input-parent'
+                    'class' => 'd-flex flex-column form-parent-row'
                 ],
 
-                // Attributs du label
                 'label_attr' => [
-                    'class' => 'w-50-percent mb-10 mt-first-label sign-label'
+                    'class' => 'mt-label'
+                ],
+                
+                'attr' => [
+                    'autocomplete' => 'new-password'
                 ],
             ])
 
             ->add('submit', SubmitType::class, [
                 'label' => 'S\'inscrire',
+
                 'row_attr' => [
-                    'class' => 'd-i-flex'
+                    'class' => 'd-flex'
                 ],
+
                 'attr' => [
-                    'class' => 'submit-btn'
+                    'class' => 'submit-btn text-white w-50 rounded'
                 ]
             ])
         ;
