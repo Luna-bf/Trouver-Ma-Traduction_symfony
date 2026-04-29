@@ -9,6 +9,8 @@
 				{% endblock %}
 			</title>
 			<link rel="stylesheet" href="{{ asset('style/main.css') }}">
+			{% block extraCSS %}{% endblock %}
+			<link rel="icon" type="image/x-icon" href="#">
 		</head>
 	{% endblock %}
 
@@ -25,6 +27,8 @@
 			{% block footer %}
 				{% include "inc/_footer.html.twig" %}
 			{% endblock %}
+
+			{% block javascripts %}{% endblock %}
 		</body>
 	{% endblock %}
 </html>
