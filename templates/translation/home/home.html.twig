@@ -3,15 +3,13 @@
 {% block title %}Accueil - Trouver Ma Traduction
 {% endblock %}
 
-{% block cdn %}
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+{% block extraCSS %}
+	<link rel="stylesheet" href="{{ asset('/assets/libs/swiper/swiper-bundle.css') }}"/>
 {% endblock %}
 
-{% block script %}
-	{# Télécharger Swiper (c'est mieux pour l'optimisation) #}
-	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-	<script src="{{ asset('/js/slider.js') }}" defer></script>
-	<script src="{{ asset('/js/app.js') }}" defer></script>
+{% block javascripts %}	
+	<script src="{{ asset('/assets/libs/swiper/swiper-bundle.js') }}"></script>
+	<script type="module" src="{{ asset('/js/slider.js') }}"></script>
 {% endblock %}
 
 {% block main %}
