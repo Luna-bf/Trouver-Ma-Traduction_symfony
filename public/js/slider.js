@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const swiper = new Swiper('.slider-cards-container', {
+    
+    new Swiper('.slider-cards-container', {
         loop: true,
 
         // Flèches de navigation
