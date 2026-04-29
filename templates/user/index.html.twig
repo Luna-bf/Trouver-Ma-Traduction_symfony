@@ -35,7 +35,7 @@
 				<div class="activity-infos d-flex">
 					<div class="translations d-flex">
 						<p><i class="fa-solid fa-file-pen"></i>Traductions postées :
-							{{ app.user.translation|length}}</p>
+							{{ translations|length }}</p>
 					</div>
 				</div>
 			</article>
@@ -59,63 +59,55 @@
 
 			<section class='song-container d-flex'>
 				{% for translation in translations %}
-					{% if app.user.id == translation.user.id %}
-						<div class='simple-card-item' id="{{ translation.id }}">
-							<div class='simple-card-content'>
-							{# guessExtension() #}
-								<figure><img src='/assets/imgs/placeholders/placeholder-file.png' alt='File extension'/>
-								</figure>
+					<article class='simple-card-item' id="{{ translation.id }}">
+						<div class='simple-card-content'>
+							<figure><img src='/assets/imgs/placeholders/placeholder-file.png' alt='File extension'/>
+							</figure>
 
-								<div class='simple-title'>
-									<h3>{{ translation.name }}</h3>
-									<h4 class='see-translation-link'>
-										<a href='{{ asset("uploads/translations/#{translation.translationFilename}") }}'>Voir la traduction</a>
-									</h4>
-								</div>
+							<div class='text-center simple-title'>
+								<h3>{{ translation.name }}</h3>
+								<h4 class='see-translation-link'>
+									<a href='{{ asset("uploads/translations/#{translation.translationFilename}") }}'>Voir la traduction</a>
+								</h4>
+							</div>
 
-								<ul class='simple-text'>
-									<li>Type :
-										<span>{{ translation.translationType }}</span>
-									</li>
-									<li>Style :
-										<span>{{ translation.translationStyle }}</span>
-									</li>
-									<li>Auteur :
-										<span>{{ translation.author }}</span>
-									</li>
-									<li>Langue :
-										<span>{{ translation.language }}</span>
-									</li>
-								</ul>
+							<ul class='simple-text'>
+								<li>Type :
+									<span>{{ translation.translationType }}</span>
+								</li>
+								<li>Style :
+									<span>{{ translation.translationStyle }}</span>
+								</li>
+								<li>Auteur :
+									<span>{{ translation.author }}</span>
+								</li>
+								<li>Langue :
+									<span>{{ translation.language }}</span>
+								</li>
+							</ul>
 
-								<ul class='simple-other-infos'>
-									<li>Par :
-										<span>{{ app.user.username }}</span>
-									</li>
-									<li>Postée le :
-										<span>{{ translation.createdAt | date("d/m/Y") }}</span>
-									</li>
-								</ul>
-								<div class="action-buttons d-flex">
-									<a href="{{ path('translation_edit', {id: translation.id}) }}" class="edit d-flex">
-										<i class="fa-solid fa-pen"></i>Modifier
-									</a>
-									<form action="{{ path('translation_delete', {id: translation.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cette traduction ?')" class="d-flex">
-										{# Le token sert à sécuriser l'application #}
-										{# Le token se nomme "delete-item" #}
-										<input type="hidden" name="token" value="{{ csrf_token('delete-item') }}">
-										
-										<button><i class="fa-solid fa-ban"></i>Supprimer</button>
-									</form>
-								</div>
+							<ul class='simple-other-infos'>
+								<li>Par :
+									<span>{{ app.user.username }}</span>
+								</li>
+								<li>Postée le :
+									<span>{{ translation.createdAt | date("d/m/Y") }}</span>
+								</li>
+							</ul>
+							<div class="action-buttons d-flex">
+								<a href="{{ path('translation_edit', {id: translation.id}) }}" class="edit d-flex">
+									<i class="fa-solid fa-pen"></i>Modifier
+								</a>
+								<form action="{{ path('translation_delete', {id: translation.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cette traduction ?')" class="d-flex">
+									{# Le token sert à sécuriser l'application #}
+									{# Le token se nomme "delete-item" #}
+									<input type="hidden" name="token" value="{{ csrf_token('delete-item') }}"> <button>
+										<i class="fa-solid fa-ban"></i>Supprimer</button>
+								</form>
 							</div>
 						</div>
-					{% endif %}
+					</article>
 				{% endfor %}
-
-				{% if app.user.translation|length == 0 %}
-					<p class="no-content-message">Vous n'avez aucune traduction.</p>
-				{% endif %}
 			</section>
 		</main>
 	{% endblock %}
