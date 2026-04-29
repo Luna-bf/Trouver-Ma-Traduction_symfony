@@ -4,19 +4,28 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\TranslationRepository;
-use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\CurrentUser;
 
 #[Route('/user', name: 'user_')]
 final class UserController extends AbstractController
 {
     #[Route('', name: 'index')]
-    public function index(TranslationRepository $repo): Response
+    public function index(#[CurrentUser] User $user, TranslationRepository $repo): Response
     {
+        $user_id = $user->getId(); // Récupère l'identifiant de l'utilisateur actuellement connecté
+        $translations = $repo->findBy(['user' => $user_id]); // Je récupère les traductions associées à l'utilisateur
+        $message = "";
+
+        if ($translations === []) {
+            $message = "Vous n'avez aucune traduction.";
+        }
+
         return $this->render('user/index.html.twig', [
-            'translations' => $repo->findAll(),
+            'translations' => $translations,
+            'message' => $message
         ]);
     }
 
