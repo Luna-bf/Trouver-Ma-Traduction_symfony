@@ -69,7 +69,6 @@ final class TranslationController extends AbstractController
             // Traitement du fichier
             if ($translationFile) {
                 $originalFilename = pathinfo($translationFile->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '-' . uniqid() . '.' . $translationFile->guessExtension();
 
@@ -100,15 +99,12 @@ final class TranslationController extends AbstractController
     #[Route('translation/posts/edit/{id}', name: 'edit')]
     public function edit(Translation $translation, Request $request, EntityManagerInterface $em, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/translations')] string $translationsDirectory): Response
     {
+        $oldTranslationFile = $translationsDirectory . '/' . $translation->getTranslationFileName();
+        $newTranslationFile = "";
+
         // Je n'ai pas besoin de déclarer une nouvelle instance de la classe Translation car je veux modifier des données déjà existantes
         // Initialisation du formulaire
         $editTranslationForm = $this->createForm(TranslationType::class, $translation);
-
-        // if (!empty($translation->getTranslationFileName())) {
-        //     $translation->setTranslationFile(
-        //         new File($translationsDirectory . '/' . $translation->getTranslationFileName())
-        //     );
-        // }
 
         // Traitement du formulaire
         $editTranslationForm->handleRequest($request);
@@ -116,37 +112,22 @@ final class TranslationController extends AbstractController
         // Vérifie si le formulaire est valide
         if ($editTranslationForm->isSubmitted() && $editTranslationForm->isValid()) {
 
-            $translationFile = $editTranslationForm->get('translationFile')->getData(); // Récupère le fichier dans le champs du formulaire
-            $translationsDirectory = $this->getParameter('kernel.project_dir') . '/public/uploads/translations'; // Le dossier où sera stocké le fichier
+            // Récupère la valeur du champ "translationFile" (le fichier) dans le formulaire
+            $newTranslationFile = $editTranslationForm->get('translationFile')->getData();
 
-            // $translation->setTranslationFileName($newFilename);
+            // Si un nouveau fichier est envoyé dans le formulaire
+            if ($newTranslationFile) {
+                unlink($oldTranslationFile); // Je supprime l'ancien fichier associé à la publication
 
-            /* 
-            Sources utile :
-                https://stackoverflow.com/questions/45060712/symfony-3-file-upload-and-db-if-new-file-not-uploaded-old-file-field-removed
-                https://stackoverflow.com/questions/19563295/symfony2-file-upload-delete-old-and-create-new-in-edit
-            */
-            /*
-            Source à checker en priorité !
-                https://stackoverflow.com/questions/43356878/delete-file-when-entity-is-deleted-in-symfony
-
-                Entity listeners, they are defined as classes with callback methods for the events you want to respond to.
-                They can use services, but they are only called for the entities of a certain class, so they are ideal for
-                complex event logic related to a single entity;
-
-                https://www.doctrine-project.org/projects/doctrine-phpcr-odm/en/latest/reference/events.html#lifecycle-events
-            */
-            if (!empty($translationFile)) {
-
-                $originalFilename = pathinfo($translationFile->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
+                // Puis je relie le nouveau fichier à la publication
+                $originalFilename = pathinfo($newTranslationFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $translationFile->guessExtension();
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $newTranslationFile->guessExtension();
 
-                $translationFile->move($translationsDirectory, $newFilename);
+                $newTranslationFile->move($translationsDirectory, $newFilename);
                 $translation->setTranslationFileName($newFilename);
             }
-            
+
             $em->flush(); // Modifie la ligne en BDD
 
             $this->addFlash('success', 'Traduction modifiée avec succès.');
@@ -161,16 +142,18 @@ final class TranslationController extends AbstractController
 
     #[Route('translation/posts/{id}/delete', name: 'delete', methods: ['POST'])]
     #[IsGranted("ROLE_USER")]
-    public function delete(Translation $translation, EntityManagerInterface $em, Request $request): Response
+    public function delete(Translation $translation, EntityManagerInterface $em, Request $request, #[Autowire('%kernel.project_dir%/public/uploads/translations')] string $translationsDirectory): Response
     {
         // Si l'id de l'utilisateur connecté n'est pas le même que l'identifiant présent dans la traduction
         if ($this->getUser() !== $translation->getUser()) {
             throw new Exception("Suppression impossible.");
         } else {
             $submittedToken = $request->getPayload()->get('token'); // Récupère la valeur du champ nommé "token"
+            $translationFile = $translationsDirectory . '/' . $translation->getTranslationFileName();
 
             // Si le CRSF est valide
             if ($this->isCsrfTokenValid('delete-item', $submittedToken)) {
+                unlink($translationFile); // Supprime le fichier associé à la traduction
                 $em->remove($translation); // Supprime la traduction
                 $em->flush(); // Enregistre les changements
 
