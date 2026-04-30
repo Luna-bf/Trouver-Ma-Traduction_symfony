@@ -43,7 +43,7 @@ final class TranslationController extends AbstractController
         ]);
     }
 
-    // Pour l'envoi de fichiers PDF : https://symfony.com/doc/current/controller/upload_file.html
+    #[IsGranted("ROLE_USER")]
     #[Route('/posts/new_upload', name: 'new_upload')]
     public function newUpload(Request $request, EntityManagerInterface $em, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/translations')] string $translationsDirectory): Response
     {
@@ -98,6 +98,7 @@ final class TranslationController extends AbstractController
         ]);
     }
 
+    #[IsGranted("ROLE_USER")]
     #[Route('translation/posts/edit/{id}', name: 'edit')]
     public function edit(Translation $translation, Request $request, EntityManagerInterface $em, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/translations')] string $translationsDirectory): Response
     {
@@ -144,8 +145,8 @@ final class TranslationController extends AbstractController
         ]);
     }
 
-    #[Route('translation/posts/{id}/delete', name: 'delete', methods: ['POST'])]
     #[IsGranted("ROLE_USER")]
+    #[Route('translation/posts/{id}/delete', name: 'delete', methods: ['POST'])]
     public function delete(Translation $translation, EntityManagerInterface $em, Request $request, #[Autowire('%kernel.project_dir%/public/uploads/translations')] string $translationsDirectory): Response
     {
         // Si l'id de l'utilisateur connecté n'est pas le même que l'identifiant présent dans la traduction
