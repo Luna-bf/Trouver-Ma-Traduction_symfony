@@ -38,12 +38,12 @@ class TranslationType extends AbstractType
                 'required' => $options['is_file_required'],
 
                 'row_attr' => [
-                    'class' => 'w-50-percent d-i-flex form-input-parent',
+                    'class' => 'd-flex flex-column form-parent-row',
                 ],
 
                 'label' => 'Votre fichier',
                 'label_attr' => [
-                    'class' => 'w-50-percent mb-10 mt-first-label sign-label'
+                    'class' => 'mt-label'
                 ],
                 'attr' => [
                     'class' => 'form-input',
@@ -60,12 +60,12 @@ class TranslationType extends AbstractType
             ->add('translationType', ChoiceType::class, [
                 // Ajout d'une classe à la balise div générée par $builder
                 'row_attr' => [
-                    'class' => 'w-50-percent d-i-flex form-input-parent',
+                    'class' => 'd-flex flex-column form-parent-row',
                 ],
 
                 'label' => 'Type de contenu',
                 'label_attr' => [
-                    'class' => 'w-50-percent mb-10 mt-first-label sign-label'
+                    'class' => 'mt-label'
                 ],
                 'attr' => [
                     'class' => 'form-input',
@@ -78,12 +78,12 @@ class TranslationType extends AbstractType
             ])
             ->add('translationStyle', ChoiceType::class, [
                 'row_attr' => [
-                    'class' => 'w-50-percent d-i-flex form-input-parent',
+                    'class' => 'd-flex flex-column form-parent-row',
                 ],
 
                 'label' => 'Style de la traduction',
                 'label_attr' => [
-                    'class' => 'w-50-percent mb-10 mt-first-label sign-label'
+                    'class' => 'mt-label'
                 ],
                 'attr' => [
                     'class' => 'form-input',
@@ -104,12 +104,12 @@ class TranslationType extends AbstractType
             ])
             ->add('author', TextType::class, [
                 'row_attr' => [
-                    'class' => 'w-50-percent d-i-flex form-input-parent',
+                    'class' => 'd-flex flex-column form-parent-row',
                 ],
 
                 'label' => 'Auteur(rice)',
                 'label_attr' => [
-                    'class' => 'w-50-percent mb-10 mt-first-label sign-label'
+                    'class' => 'mt-label'
                 ],
                 'attr' => [
                     'class' => 'form-input',
@@ -117,12 +117,12 @@ class TranslationType extends AbstractType
             ])
             ->add('language', ChoiceType::class, [
                 'row_attr' => [
-                    'class' => 'w-50-percent d-i-flex form-input-parent',
+                    'class' => 'd-flex flex-column form-parent-row',
                 ],
 
                 'label' => 'Langue',
                 'label_attr' => [
-                    'class' => 'w-50-percent mb-10 mt-first-label sign-label'
+                    'class' => 'mt-label'
                 ],
                 'attr' => [
                     'class' => 'form-input',
@@ -135,11 +135,11 @@ class TranslationType extends AbstractType
             ])
             ->add('save', SubmitType::class, [
                 'row_attr' => [
-                    'class' => 'w-50-percent d-i-flex form-input-parent',
+                    'class' => 'd-flex'
                 ],
                 'label' => 'Publier',
                 'attr' => [
-                    'class' => 'submit-btn',
+                    'class' => 'submit-btn text-white w-50 rounded',
                     'name' => 'publier',
                     'id' => 'publier',
                 ],
