@@ -21,15 +21,15 @@
     width: 30%;
 }
 
-.form-parent-row>input {
+.form-parent-row>input, .form-parent-row>select {
     font-family: "PoppinsLight", sans-serif;
+    background-color: #fff;
     border: 1px solid #B8B8B8;
     border-radius: 3px;
     height: 35px;
     font-size: 14.5px;
     direction: left;
     text-indent: 10px;
-    background-color: #F5F5F5;
 }
 
 .mt-label {
@@ -85,10 +85,20 @@
     font-weight: 300;
 }
 
-.mb-last-input {
-    margin-bottom: 1em;
+input[type="file"] {
+    text-indent: 0;
 }
 
-.form-checkbox {
-    margin-top: 2.5em;
+input[type="file"]::file-selector-button {
+    font-family: "PoppinsLight", sans-serif;
+    border: 2px solid #B8B8B8;
+    background-color: #B8B8B8;
+    height: 35px;
+    padding: 0 10px 0 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+input[type=checkbox] {
+    transform: scale(1.4);
 }
