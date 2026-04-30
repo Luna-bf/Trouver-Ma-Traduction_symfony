@@ -26,11 +26,8 @@ class Profile
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 20, nullable: true)]
-    private ?string $phone = null;
-
     #[ORM\OneToOne(inversedBy: 'profile', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?User $user = null;
 
     public function getId(): ?int
@@ -62,12 +59,12 @@ class Profile
         return $this;
     }
 
-    public function getThumnailName(): ?string
+    public function getThumbnailName(): ?string
     {
         return $this->thumbnailName;
     }
 
-    public function setThumnailName(?string $thumbnailName): static
+    public function setThumbnailName(?string $thumbnailName): static
     {
         $this->thumbnailName = $thumbnailName;
 
@@ -82,18 +79,6 @@ class Profile
     public function setDescription(?string $description): static
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
-
-    public function setPhone(?string $phone): static
-    {
-        $this->phone = $phone;
 
         return $this;
     }
