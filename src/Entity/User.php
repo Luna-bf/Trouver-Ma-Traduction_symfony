@@ -38,18 +38,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $username = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $profilePictureName = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $thumbnailName = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $description = null;
-
-    #[ORM\Column(length: 20, nullable: true)]
-    private ?string $phone = null;
-
     /**
      * @var Collection<int, Translation>
      */
@@ -150,54 +138,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUsername(string $username): static
     {
         $this->username = $username;
-
-        return $this;
-    }
-
-    public function getProfilePictureName(): ?string
-    {
-        return $this->profilePictureName;
-    }
-
-    public function setProfilePictureName(string $profilePictureName): static
-    {
-        $this->profilePictureName = $profilePictureName;
-
-        return $this;
-    }
-
-    public function getThumbnailName(): ?string
-    {
-        return $this->thumbnailName;
-    }
-
-    public function setThumbnailName(string $thumbnailName): static
-    {
-        $this->thumbnailName = $thumbnailName;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): static
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
-
-    public function setPhone(string $phone): static
-    {
-        $this->phone = $phone;
 
         return $this;
     }
