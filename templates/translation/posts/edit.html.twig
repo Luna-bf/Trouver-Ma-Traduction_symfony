@@ -6,21 +6,20 @@
 {% block body %}
 	<body class="forms-body">
 		{% block main %}
-			<main class="form-container d-flex">
-				<div class="form-parent d-flex">
-					{{ form_start(editTranslationForm, {'attr': {'class': 'd-flex'}}) }}
+			<main>
+				<section class="d-flex flex-column align-items-center justify-content-center text-white">
+					<h1 class="mt-1">Modifier la publication</h1>
+					{{ form_start(editTranslationForm, {'attr': {'class': 'd-flex flex-column mt-2 form-width'}}) }}
 						{{ form_row(editTranslationForm.name) }}
 						{{ form_row(editTranslationForm.translationFile) }}
 						{{ form_row(editTranslationForm.translationType) }}
 						{{ form_row(editTranslationForm.translationStyle) }}
 						{{ form_row(editTranslationForm.author) }}
 						{{ form_row(editTranslationForm.language) }}
-						{{ form_row(editTranslationForm.save) }}
+						{{ form_row(editTranslationForm.save, { 'label': 'Enregistrer' }) }}
 					{{ form_end(editTranslationForm) }}
-				</div>
+				</section>
 			</main>
 		{% endblock %}
-
-		{# <script src="../assets/js/file-visualiser.js"></script> #}
 	</body>
 {% endblock %}

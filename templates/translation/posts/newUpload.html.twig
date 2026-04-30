@@ -6,9 +6,10 @@
 {% block body %}
 	<body class="forms-body">
 		{% block main %}
-			<main class="form-container d-flex">
-				<div class="form-parent d-flex">
-					{{ form_start(translationForm, {'attr': {'class': 'd-flex'}}) }}
+			<main>
+				<section class="d-flex flex-column align-items-center justify-content-center text-white">
+					<h1 class="mt-1">Nouvelle publication</h1>
+					{{ form_start(translationForm, {'attr': {'class': 'd-flex flex-column mt-2 form-width'}}) }}
 						{{ form_row(translationForm.name) }}
 						{{ form_row(translationForm.translationFile) }}
 						{{ form_row(translationForm.translationType) }}
@@ -17,7 +18,7 @@
 						{{ form_row(translationForm.language) }}
 						{{ form_row(translationForm.save) }}
 					{{ form_end(translationForm) }}
-				</div>
+				</section>
 			</main>
 		{% endblock %}
 
