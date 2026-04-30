@@ -34,6 +34,8 @@ class ProfileType extends AbstractType
                 // Label personnalisé
                 'label' => 'Photo de profil (optionnel)',
 
+                'required' => false,
+
                 // Attributs de la div générée par $builder
                 'row_attr' => [
                     'class' => 'd-flex flex-column form-parent-row'
@@ -48,6 +50,8 @@ class ProfileType extends AbstractType
                 // Label personnalisé
                 'label' => 'Bannière de profil (optionnel)',
 
+                'required' => false,
+
                 // Attributs de la div générée par $builder
                 'row_attr' => [
                     'class' => 'd-flex flex-column form-parent-row'
@@ -61,6 +65,8 @@ class ProfileType extends AbstractType
             ->add('description', TextareaType::class, [
                 // Label personnalisé
                 'label' => 'Description (optionnel)',
+
+                'required' => false,
 
                 // Attributs de la div générée par $builder
                 'row_attr' => [
