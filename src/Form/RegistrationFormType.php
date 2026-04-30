@@ -20,20 +20,6 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('username', TextType::class, [
-                // Label personnalisé
-                'label' => 'Nom d\'utilisateur',
-
-                // Attributs de la div générée par $builder
-                'row_attr' => [
-                    'class' => 'd-flex flex-column form-parent-row'
-                ],
-
-                // Attributs du label
-                'label_attr' => [
-                    'class' => 'mt-label'
-                ],
-            ])
             ->add('email', EmailType::class, [
                 'label' => 'Adresse mail',
 
