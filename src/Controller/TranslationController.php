@@ -51,7 +51,9 @@ final class TranslationController extends AbstractController
         $translation = new Translation();
 
         // Initialisation du formulaire
-        $translationForm = $this->createForm(TranslationType::class, $translation);
+        $translationForm = $this->createForm(TranslationType::class, $translation, [
+            'is_file_required' => true // Ici, le champ "translation_file_name" est requis
+        ]);
 
         // Traitement du formulaire
         $translationForm->handleRequest($request);
@@ -104,7 +106,9 @@ final class TranslationController extends AbstractController
 
         // Je n'ai pas besoin de déclarer une nouvelle instance de la classe Translation car je veux modifier des données déjà existantes
         // Initialisation du formulaire
-        $editTranslationForm = $this->createForm(TranslationType::class, $translation);
+        $editTranslationForm = $this->createForm(TranslationType::class, $translation, [
+            'is_file_required' => false // Ici, le champ "translation_file_name" n'est pas requis
+        ]);
 
         // Traitement du formulaire
         $editTranslationForm->handleRequest($request);
