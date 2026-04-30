@@ -20,7 +20,7 @@ class TranslationType extends AbstractType
             ->add('name', TextType::class, [
                 // Ajout d'une classe à la balise div générée par $builder
                 'row_attr' => [
-                    'class' => 'w-50-percent d-i-flex form-input-parent',
+                    'class' => 'd-flex flex-column form-parent-row',
                 ],
 
                 // Définition d'un nouveau texte pour le label
@@ -28,19 +28,14 @@ class TranslationType extends AbstractType
 
                 // Attributs du label
                 'label_attr' => [
-                    'class' => 'w-50-percent mb-10 mt-first-label sign-label'
-                ],
-
-                // Attributs de l'input
-                'attr' => [
-                    'class' => 'form-input',
+                    'class' => 'mt-label'
                 ]
             ])
             ->add('translationFile', FileType::class, [
-                // 'data_class' => null,
 
                 'mapped' => false,
-                'required' => false, // Optionnel, comme ça je n'aurais pas besoin de republier le document à chaque fois que je modifie une publication
+                
+                'required' => $options['is_file_required'],
 
                 'row_attr' => [
                     'class' => 'w-50-percent d-i-flex form-input-parent',
@@ -138,33 +133,6 @@ class TranslationType extends AbstractType
                     'Espagnol' => 'Espagnol',
                 ],
             ])
-            // ->add('createdAt', null, [
-            //     'row_attr' => [
-            //         'class' => 'w-50-percent d-i-flex form-input-parent',
-            //     ],
-
-            //     'label' => 'Date de publication',
-            //     'label_attr' => [
-            //         'class' => 'w-50-percent mb-10 mt-first-label sign-label'
-            //     ],
-            //     'attr' => [
-            //         'class' => 'form-input',
-            //     ],
-            //     'widget' => 'single_text'
-            // ])
-            // ->add('user', EntityType::class, [
-            //     'class' => User::class,
-            //     'choice_label' => 'id',
-            //     'row_attr' => [
-            //         'class' => 'w-50-percent d-i-flex form-input-parent',
-            //     ],
-            //     'label_attr' => [
-            //         'class' => 'w-50-percent mb-10 mt-first-label sign-label'
-            //     ],
-            //     'attr' => [
-            //         'class' => 'form-input',
-            //     ],
-            // ])
             ->add('save', SubmitType::class, [
                 'row_attr' => [
                     'class' => 'w-50-percent d-i-flex form-input-parent',
@@ -183,5 +151,6 @@ class TranslationType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Translation::class,
         ]);
+        $resolver->setRequired('is_file_required');
     }
 }
