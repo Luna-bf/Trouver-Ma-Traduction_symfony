@@ -77,6 +77,10 @@ class ProfileType extends AbstractType
                 'label_attr' => [
                     'class' => 'mt-label'
                 ],
+
+                'attr' => [
+                    'rows' => '5'
+                ]
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Enregistrer',
