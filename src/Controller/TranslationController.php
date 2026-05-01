@@ -90,7 +90,7 @@ final class TranslationController extends AbstractController
 
             $this->addFlash('success', 'Traduction publiée avec succès.');
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('profile_show');
         }
 
         return $this->render('translation/posts/newUpload.html.twig', [
@@ -137,7 +137,7 @@ final class TranslationController extends AbstractController
 
             $this->addFlash('success', 'Traduction modifiée avec succès.');
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('profile_show');
         }
 
         return $this->render('translation/posts/edit.html.twig', [
@@ -163,7 +163,7 @@ final class TranslationController extends AbstractController
                 $em->flush(); // Enregistre les changements
 
                 $this->addFlash('success', 'Traduction supprimée avec succès.');
-                return $this->redirectToRoute('user_index');
+                return $this->redirectToRoute('profile_show');
             }
         }
 
