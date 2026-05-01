@@ -1,17 +1,7 @@
 @use '../../other/variables';
 
-/********************
-HEADER & NAV
-********************/
-
-/***HEADER***/
-header {
-    width: 100%;
-}
-
 /***NAV***/
 nav {
-    align-items: center;
     padding: 8px;
 }
 
@@ -20,7 +10,6 @@ nav {
 }
 
 .nav-logo-img {
-    width: 100%;
     border-radius: 5px;
 }
 
@@ -46,21 +35,6 @@ nav {
     display: none;
     font-size: 1.5rem;
     cursor: pointer;
-}
-
-.open-menu {
-    color: #000000;
-}
-
-.close-menu {
-    position: absolute;
-    color: #fff;
-    top: 20px;
-    right: 20px;
-}
-
-#check {
-    display: none;
 }
 
 .search-form {
