@@ -14,23 +14,6 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/user', name: 'user_')]
 final class UserController extends AbstractController
 {
-    #[Route('', name: 'index')]
-    public function index(#[CurrentUser] User $user, TranslationRepository $repo): Response
-    {
-        $user_id = $user->getId(); // Récupère l'identifiant de l'utilisateur actuellement connecté
-        $translations = $repo->findBy(['user' => $user_id]); // Je récupère les traductions associées à l'utilisateur
-        $message = "";
-
-        if ($translations === []) {
-            $message = "Vous n'avez aucune traduction.";
-        }
-
-        return $this->render('user/index.html.twig', [
-            'translations' => $translations,
-            'message' => $message
-        ]);
-    }
-
     #[Route('/settings-pages/profile_settings', name: 'profile_settings')]
     public function profileSettings(): Response
     {
