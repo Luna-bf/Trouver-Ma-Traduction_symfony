@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création du profil - Trouver Ma Traduction
+{% endblock %}
+
+{% block body %}
+	<body class="forms-body">
+		{% block main %}
+			<main>
+				<section class="d-flex flex-column align-items-center justify-content-center text-white">
+					<h1 class="mb-3">Créez votre profil</h1>
+					{{ form_start(profileForm, {'attr': {'class': 'd-flex flex-column mt-2 form-width'}}) }}
+						{{ form_row(profileForm.username) }}
+						{{ form_row(profileForm.profilePictureName) }}
+						{{ form_row(profileForm.thumbnailName) }}
+						{{ form_row(profileForm.description) }}
+
+						{{ form_errors(profileForm) }}
+
+						{{ form_row(profileForm.submit) }}
+					{{ form_end(profileForm) }}
+
+					<div class="d-flex account-parent">
+						<div>Vous avez déjà un compte ?
+							<a href="{{ path('app_login') }}" class="connect-register-link">Connectez-vous</a>
+						</div>
+					</div>
+				</section>
+			</main>
+		{% endblock %}
+	</body>
+{% endblock %}
