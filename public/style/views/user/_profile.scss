@@ -205,7 +205,7 @@
     cursor: pointer;
 }
 
-#translation-success {
+.flash-success, .message {
     font-family: "PoppinsRegular", sans-serif;
     text-align: center;
     font-size: 18px;
@@ -215,8 +215,4 @@
 .no-content-message {
     font-family: "PoppinsRegular", sans-serif;
     margin-bottom: 5em;
-}
-
-.message-mb {
-    margin-bottom: 4em;
 }
