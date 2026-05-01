@@ -46,7 +46,7 @@ class TranslationType extends AbstractType
                     'class' => 'mt-label'
                 ],
                 'attr' => [
-                    'class' => 'form-input',
+                    'class' => 'form-input text-black',
                 ],
 
                 'constraints' => [
