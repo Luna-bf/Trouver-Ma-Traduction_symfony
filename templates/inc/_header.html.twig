@@ -13,7 +13,7 @@
 
 			<figure class="d-flex profile-picture-figure my-0">
 				{% if is_granted(("ROLE_USER")) %}
-					<a href="{{ path('user_index') }}"><img src="/assets/imgs/placeholders/default-pfp.png" alt="Profile picture"></a>
+					<a href="{{ path('profile_show') }}"><img src="/assets/imgs/placeholders/default-pfp.png" alt="Profile picture"></a>
 				{% endif %}
 			</figure>
 		</div>
