@@ -1,0 +1,120 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Profil - Trouver Ma Traduction
+{% endblock %}
+
+{# Mon fichier JS #}
+{% block script %}
+	<script src="{{ asset('/js/app.js') }}" defer></script>
+{% endblock %}
+
+{% block main %}
+	<main class="profile-container">
+		<div class="profile-banner d-flex">
+			<figure class="user-pfp-figure">
+				<img src="/assets/imgs/placeholders/default-pfp.png" alt="User profile picture">
+			</figure>
+		</div>
+
+		<section class="profile-infos d-flex">
+			<article class="user-profile">
+				<div class="parameters-icons d-flex">
+					<a href="{{ path('user_profile_settings') }}" class="fa-solid fa-gear"></a>
+					<a href="{{ logout_path() }}" class="fa-solid fa-right-from-bracket"></a>
+				</div>
+
+				<div class="username-and-description">
+					<h1>{{ profile.username }}</h1>
+					{% if profile.description is not null %}
+						<p>{{ profile.description }}</p>
+					{% else %}
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A molestias asperiores alias suscipit voluptas nisi quisquam tenetur, eos exercitationem ipsa. Placeat sed cupiditate repudiandae sequi.</p>
+					{% endif %}
+				</div>
+
+				<div class="hr-profile d-flex">
+					<hr id="separator">
+				</div>
+
+				<div class="activity-infos d-flex">
+					<div class="translations d-flex">
+						<p>
+							<i class="fa-solid fa-file-pen"></i>Traductions postées :
+							{{ translations|length }}</p>
+					</div>
+				</div>
+			</article>
+		</section>
+
+		<section class="buttons-and-songs d-flex">
+			<div class="posts-btns d-flex">
+				<a href="{{ path('translation_new_upload') }}" class="create-post">
+					<i class="fa-solid fa-plus"></i>Nouvelle publication</a>
+				{% if is_granted("ROLE_ADMIN") %}
+					<a href="{{ path('admin') }}" class="admin">
+						<i class="fa-solid fa-screwdriver-wrench"></i>Administration</a>
+				{% endif %}
+			</div>
+
+			{% for message in app.flashes('success') %}
+				<div class="flash-success">
+					{{ message }}
+				</div>
+			{% endfor %}
+
+			<section class="d-flex flex-row justify-content-center flex-wrap justify-content-evenly">
+				{% for translation in translations %}
+					<article class='simple-card-item' id="{{ translation.id }}">
+						<div class='simple-card-content'>
+							<figure><img src='/assets/imgs/placeholders/placeholder-file.png' alt='File extension'/>
+							</figure>
+
+							<div class='text-center simple-title'>
+								<h3>{{ translation.name }}</h3>
+								<h4 class='see-translation-link'>
+									<a href='{{ asset("uploads/translations/#{translation.translationFilename}") }}'>Voir la traduction</a>
+								</h4>
+							</div>
+
+							<ul class='simple-text'>
+								<li>Type :
+									<span>{{ translation.translationType }}</span>
+								</li>
+								<li>Style :
+									<span>{{ translation.translationStyle }}</span>
+								</li>
+								<li>Auteur :
+									<span>{{ translation.author }}</span>
+								</li>
+								<li>Langue :
+									<span>{{ translation.language }}</span>
+								</li>
+							</ul>
+
+							<ul class='simple-other-infos'>
+								<li>Par :
+									<span>{{ profile.username }}</span>
+								</li>
+								<li>Postée le :
+									<span>{{ translation.createdAt | date("d/m/Y") }}</span>
+								</li>
+							</ul>
+							<div class="action-buttons d-flex">
+								<a href="{{ path('translation_edit', {id: translation.id}) }}" class="edit d-flex">
+									<i class="fa-solid fa-pen"></i>Modifier
+								</a>
+								<form action="{{ path('translation_delete', {id: translation.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cette traduction ?')" class="d-flex">
+									{# Le token sert à sécuriser l'application #}
+									{# Le token se nomme "delete-item" #}
+									<input type="hidden" name="token" value="{{ csrf_token('delete-item') }}"> <button>
+										<i class="fa-solid fa-ban"></i>Supprimer</button>
+								</form>
+							</div>
+						</div>
+					</article>
+				{% endfor %}
+			</section>
+			
+			<p class="fs-5 fw-regular message">{{ message }}</p>
+		</main>
+	{% endblock %}
