@@ -38,8 +38,9 @@ class Translation
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
-    #[ORM\ManyToOne(inversedBy: 'translation')]
-    private ?User $user = null;
+    #[ORM\ManyToOne(inversedBy: 'translations')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Profile $profile = null;
 
     public function getId(): ?int
     {
@@ -130,18 +131,6 @@ class Translation
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): static
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
     /**
     * Called before saving the entity
     * 
@@ -181,4 +170,16 @@ class Translation
     //     // ... do something to notify the changes
 
     // }
+
+    public function getProfile(): ?Profile
+    {
+        return $this->profile;
+    }
+
+    public function setProfile(?Profile $profile): static
+    {
+        $this->profile = $profile;
+
+        return $this;
+    }
 }
