@@ -45,7 +45,7 @@ final class ProfileController extends AbstractController
     #[Route('/myProfile', name: 'show')]
     public function profile(#[CurrentUser] User $user, TranslationRepository $repo): Response
     {
-        $profile = $user->getProfile(); // Récupère le nom de l'utilisateur à partir de l'entité User (ici, l'utilisateur actuellement connecté)      
+        $profile = $user->getProfile(); // Récupère le profil de l'utilisateur à partir de l'entité User (l'utilisateur actuellement connecté)      
         $translations = $repo->findBy(['profile' => $profile]); // Je récupère les traductions associées à l'utilisateur
         $message = "";
 
