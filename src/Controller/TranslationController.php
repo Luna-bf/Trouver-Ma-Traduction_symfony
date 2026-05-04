@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Translation;
+use App\Entity\User;
 use App\Form\TranslationType;
 use App\Repository\TranslationRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -13,6 +14,7 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\CurrentUser;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
@@ -45,7 +47,7 @@ final class TranslationController extends AbstractController
 
     #[IsGranted("ROLE_USER")]
     #[Route('/posts/new_upload', name: 'new_upload')]
-    public function newUpload(Request $request, EntityManagerInterface $em, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/translations')] string $translationsDirectory): Response
+    public function newUpload(Request $request, #[CurrentUser] User $user, EntityManagerInterface $em, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/translations')] string $translationsDirectory): Response
     {
         // Création d'une nouvelle instance de Translation
         $translation = new Translation();
@@ -65,8 +67,8 @@ final class TranslationController extends AbstractController
 
             $fullTranslation = $translationForm->getData(); // Récupère les données du formulaire
             $fullTranslation->setCreatedAt(new \DateTimeImmutable()); // Enregistre la date dans le champ du formulaire (setter)
-            $user = $this->getUser(); // Récupère les données l'utilisateur connecté
-            $fullTranslation->setUser($user); // Enregistre les données de l'utilisateur connecté dans le champ du formulaire (setter)
+            $profile = $user->getProfile(); // Récupère les données l'utilisateur connecté
+            $fullTranslation->setProfile($profile); // Enregistre les données de l'utilisateur connecté dans le champ du formulaire (setter)
 
             // Traitement du fichier
             if ($translationFile) {
@@ -147,10 +149,10 @@ final class TranslationController extends AbstractController
 
     #[IsGranted("ROLE_USER")]
     #[Route('translation/posts/{id}/delete', name: 'delete', methods: ['POST'])]
-    public function delete(Translation $translation, EntityManagerInterface $em, Request $request, #[Autowire('%kernel.project_dir%/public/uploads/translations')] string $translationsDirectory): Response
+    public function delete(#[CurrentUser] User $user, Translation $translation, EntityManagerInterface $em, Request $request, #[Autowire('%kernel.project_dir%/public/uploads/translations')] string $translationsDirectory): Response
     {
-        // Si l'id de l'utilisateur connecté n'est pas le même que l'identifiant présent dans la traduction
-        if ($this->getUser() !== $translation->getUser()) {
+        // Si l'id du profil de l'utilisateur connecté n'est pas le même que l'identifiant du profil présent dans la traduction
+        if ($user->getProfile()->getId() !== $translation->getProfile()->getId()) {
             throw new Exception("Suppression impossible.");
         } else {
             $submittedToken = $request->getPayload()->get('token'); // Récupère la valeur du champ nommé "token"
@@ -164,9 +166,9 @@ final class TranslationController extends AbstractController
 
                 $this->addFlash('success', 'Traduction supprimée avec succès.');
                 return $this->redirectToRoute('profile_show');
+            } else {
+                throw new Exception('Erreur : Jeton CSRF invalide.'); // Si le jeton CSRF est invalide
             }
         }
-
-        throw new Exception('Erreur : Formulaire invalide.'); // Si le CSRF est invalide
     }
 }
