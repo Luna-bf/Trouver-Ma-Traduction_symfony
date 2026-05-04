@@ -36,8 +36,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "PoppinsMedium", sans-serif;
-  font-weight: 500;
+  font-family: "PoppinsRegular", sans-serif;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 1.27rem;
 }
 
 span,
@@ -59,11 +63,13 @@ p {
 
 a {
   color: #000000;
+  font-size: 1.125rem;
   text-decoration: none;
 }
 
 ul {
   list-style-type: none;
+  padding: 0;
 }
 
 img {
