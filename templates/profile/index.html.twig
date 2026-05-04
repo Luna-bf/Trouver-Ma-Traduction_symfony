@@ -10,25 +10,20 @@
 
 {% block main %}
 	<main class="profile-container">
-		<div class="profile-banner d-flex">
-			{% if profile.profilePictureName is same as(null) %}
-				<figure class="user-pfp-figure">
-					<img src="/assets/imgs/placeholders/default-pfp.png" alt="User profile picture">
-				</figure>
-			{% else %}
-				<figure class="user-pfp-figure">
-					<img src="{{ asset('uploads/profile/profilePictures/' ~ profile.profilePictureName) }}" alt="User profile picture">
-				</figure>
-			{% endif %}
-		</div>
+		<div class="profile-banner d-flex"></div>
 
 		<section class="profile-infos d-flex">
-			<article class="user-profile">
-				<div class="parameters-icons d-flex">
-					<a href="{{ path('profile_settings') }}" class="fa-solid fa-gear"></a>
-					<a href="{{ logout_path() }}" class="fa-solid fa-right-from-bracket"></a>
-				</div>
+			<div class="parameters-icons d-flex">
+				<a href="{{ path('profile_settings') }}" class="fa-solid fa-gear"></a>
+				<a href="{{ logout_path() }}" class="fa-solid fa-right-from-bracket"></a>
+			</div>
+			{% if profile.profilePictureName is same as(null) %}
+				<div class="user-pfp-profile rounded-circle mb-2" style="background-image: url('/assets/imgs/placeholders/default-pfp.png')"></div>
+			{% else %}
+				<div class="user-pfp-profile rounded-circle mb-2" style="background-image: url({{ asset('uploads/profile/profilePictures/' ~ profile.profilePictureName) }})"></div>
+			{% endif %}
 
+			<article class="user-profile">
 				<div class="username-and-description">
 					<h1>{{ profile.username }}</h1>
 					{% if profile.description is not null %}
