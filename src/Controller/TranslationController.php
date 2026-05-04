@@ -30,18 +30,24 @@ final class TranslationController extends AbstractController
     }
 
     #[Route('home', name: 'home')]
-    public function home(TranslationRepository $repo): Response
+    public function home(#[CurrentUser] User $user, TranslationRepository $repo): Response
     {
+        $profile = $user->getProfile();
+
         return $this->render('translation/home/home.html.twig', [
             'translations' => $repo->findAll(),
+            'profile' => $profile
         ]);
     }
 
     #[Route('home/search_result', name: 'search_result')]
-    public function searchResult(): Response
+    public function searchResult(#[CurrentUser] User $user): Response
     {
+        $profile = $user->getProfile();
+
         return $this->render('translation/home/searchResult.html.twig', [
             'controller_name' => 'TranslationController',
+            'profile' => $profile
         ]);
     }
 
