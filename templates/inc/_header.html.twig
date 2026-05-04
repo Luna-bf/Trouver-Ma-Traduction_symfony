@@ -12,8 +12,10 @@
 			</form>
 
 			<figure class="d-flex profile-picture-figure my-0">
-				{% if is_granted(("ROLE_USER")) %}
+				{% if profile.profilePictureName is same as(null) %}
 					<a href="{{ path('profile_show') }}"><img src="/assets/imgs/placeholders/default-pfp.png" alt="Profile picture"></a>
+				{% else %}
+					<a href="{{ path('profile_show') }}"><img src="{{ asset('uploads/profile/profilePictures/' ~ profile.profilePictureName) }}" alt="Profile picture"></a>
 				{% endif %}
 			</figure>
 		</div>
