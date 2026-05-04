@@ -34,6 +34,8 @@ class ProfileType extends AbstractType
                 // Label personnalisé
                 'label' => 'Photo de profil (optionnel)',
 
+                'mapped' => false,
+
                 'required' => false,
 
                 // Attributs de la div générée par $builder
@@ -49,6 +51,8 @@ class ProfileType extends AbstractType
             ->add('thumbnailName', FileType::class, [
                 // Label personnalisé
                 'label' => 'Bannière de profil (optionnel)',
+
+                'mapped' => false,
 
                 'required' => false,
 
