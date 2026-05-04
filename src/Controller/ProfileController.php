@@ -8,11 +8,16 @@ use App\Form\ProfileType;
 use App\Repository\TranslationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
+#[IsGranted("ROLE_USER")]
 #[Route('/profile', name: 'profile_')]
 final class ProfileController extends AbstractController
 {
@@ -26,7 +31,7 @@ final class ProfileController extends AbstractController
 
         $profileForm->handleRequest($request);
 
-        if($profileForm->isSubmitted() && $profileForm->isValid()) {
+        if ($profileForm->isSubmitted() && $profileForm->isValid()) {
 
             $fullProfile = $profileForm->getData();
             $fullProfile->setUser($user);
@@ -57,6 +62,119 @@ final class ProfileController extends AbstractController
             'translations' => $translations,
             'profile' => $profile,
             'message' => $message
+        ]);
+    }
+
+    #[Route('/settings/profileSettings', name: 'settings')]
+    public function profileSettings(#[CurrentUser] User $user, Request $request, EntityManagerInterface $em, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/profile/profilePictures')] string $profilePictures): Response
+    {
+        // Récupère le profil de l'utilisateur
+        $profile = $user->getProfile();
+
+        $oldProfilePicture = $profilePictures . '/' . $profile->getProfilePictureName();
+        $newProfilePicture = "";
+
+        // Initialisation du formulaire
+        $editProfileForm = $this->createForm(ProfileType::class, $profile);
+
+        $editProfileForm->handleRequest($request);
+
+        if ($editProfileForm->isSubmitted() && $editProfileForm->isValid()) {
+
+            // Récupère la valeur du champ "profilePictureName"
+            $newProfilePicture = $editProfileForm->get('profilePictureName')->getData();
+
+            // Si le champ "profilePictureName" contient un fichier (si il n'est pas vide)
+            if ($newProfilePicture) {
+
+                /*
+                Je vérifie ce qui est récupéré, si l'utilisateur n'a pas encore de photo de profil (valeur NULL dans la BDD),
+                alors cela signifie que le chemin récupéré s'arrête au dossier "profilePictures", j'utilise donc la fonction
+                "is_dir()" pour vérifier que le contenu récupéré est bien un dossier, puis j'envoie le fichier dans celui-ci
+                sans utiliser la méthode "unlink()", car je n'ai pas besoin de supprimer une ancienne photo de profil.
+                */
+                if (is_dir($oldProfilePicture)) {
+
+                    $originalFilename = pathinfo($newProfilePicture->getClientOriginalName(), PATHINFO_FILENAME);
+                    $safeFilename = $slugger->slug($originalFilename);
+                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $newProfilePicture->guessExtension();
+
+                    try {
+                        $newProfilePicture->move($profilePictures, $newFilename);
+                    } catch (FileException $e) {
+                        $message = $e;
+                    }
+
+                    // Met à jour le nom du fichier dans la BDD
+                    $profile->setProfilePictureName($newFilename);
+
+                    // Sinon, si je récupère un fichier :
+                } else {
+                    // Je supprime l'ancien fichier
+                    unlink($oldProfilePicture);
+
+                    /*
+                    Puis j'ajoute le nouveau fichier :
+                    
+                    Je commence par récupérer le nom original du fichier : la fonction pathinfo() prend pour paramètre :
+                    - La variable $newProfilePicture (soit le fichier) et son chemin d'accès
+                    */
+                    $originalFilename = pathinfo($newProfilePicture->getClientOriginalName(), PATHINFO_FILENAME);
+
+                    /*
+                    Ensuite, je sécurise le nom du fichier grâce au composant SluggerInterface : celui-ci permet de créer une
+                    chaîne de caractère contenant uniquement des caractères sécurisés.
+                    */
+                    $safeFilename = $slugger->slug($originalFilename);
+                    /*
+                    Enfin, je crée un nouveau nom pour le fichier :
+                    
+                    - J'utilise la chaîne de caractère de la variable $safeFileName ainsi qu'un tiret (-)
+                    - J'ajoute un identifiant unique au fichier (au cas où deux fichiers auraient le même nom) avec la fonction
+                    "uniqid()"
+                    - J'ajoute ensuite un point (pour l'extension du fichier)
+                    - Enfin, j'utilise la fonction guessExtension() pour obtenir l'extension du fichier
+                    */
+                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $newProfilePicture->guessExtension();
+
+                    try {
+                        // Je déplace le fichier dans le dossier adéquat (profilePictures) sous son nouveau nom (newFileName)
+                        $newProfilePicture->move($profilePictures, $newFilename);
+                    } catch (FileException $e) {
+                        $message = $e;
+                    }
+
+                    // Met à jour le nom du fichier dans la BDD
+                    $profile->setProfilePictureName($newFilename);
+                }
+            }
+
+            $em->flush(); // Modifie la ligne en BDD
+
+            $this->addFlash('success', 'Profil mis à jour avec succès.');
+
+            return $this->redirectToRoute('profile_show');
+        }
+
+        return $this->render('profile/settings/profile.html.twig', [
+            'editProfileForm' => $editProfileForm,
+            'profile' => $profile
+        ]);
+    }
+
+    #[Route('/settings-pages/preferences_settings', name: 'preferences_settings')]
+    public function preferencesSettings(): Response
+    {
+        return $this->render('user/settings-pages/preferences.html.twig', [
+            'controller_name' => 'UserController',
+        ]);
+    }
+
+    #[Route('/settings-pages/accessibility_settings', name: 'accessibility_settings')]
+    public function accessibilitySettings(): Response
+    {
+        return $this->render('user/settings-pages/accessibility.html.twig', [
+            'controller_name' => 'UserController',
         ]);
     }
 }
