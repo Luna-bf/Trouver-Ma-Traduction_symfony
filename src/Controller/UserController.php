@@ -14,38 +14,6 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/user', name: 'user_')]
 final class UserController extends AbstractController
 {
-    #[Route('/settings-pages/profile_settings', name: 'profile_settings')]
-    public function profileSettings(): Response
-    {
-        return $this->render('user/settings-pages/profileSettings.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
-    }
-
-    #[Route('/settings-pages/profile_picture_settings', name: 'picture_settings')]
-    public function profilePicture(): Response
-    {
-        return $this->render('user/settings-pages/uploadProfilePicture.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
-    }
-
-    #[Route('/settings-pages/preferences_settings', name: 'preferences_settings')]
-    public function preferencesSettings(): Response
-    {
-        return $this->render('user/settings-pages/preferences.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
-    }
-
-    #[Route('/settings-pages/accessibility_settings', name: 'accessibility_settings')]
-    public function accessibilitySettings(): Response
-    {
-        return $this->render('user/settings-pages/accessibility.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
-    }
-
     #[Route('/settings-pages/account_settings', name: 'account_settings')]
     public function accountSettings(): Response
     {
