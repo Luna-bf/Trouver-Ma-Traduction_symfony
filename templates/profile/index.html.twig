@@ -11,15 +11,21 @@
 {% block main %}
 	<main class="profile-container">
 		<div class="profile-banner d-flex">
-			<figure class="user-pfp-figure">
-				<img src="/assets/imgs/placeholders/default-pfp.png" alt="User profile picture">
-			</figure>
+			{% if profile.profilePictureName is same as(null) %}
+				<figure class="user-pfp-figure">
+					<img src="/assets/imgs/placeholders/default-pfp.png" alt="User profile picture">
+				</figure>
+			{% else %}
+				<figure class="user-pfp-figure">
+					<img src="{{ asset('uploads/profile/profilePictures/' ~ profile.profilePictureName) }}" alt="User profile picture">
+				</figure>
+			{% endif %}
 		</div>
 
 		<section class="profile-infos d-flex">
 			<article class="user-profile">
 				<div class="parameters-icons d-flex">
-					<a href="{{ path('user_profile_settings') }}" class="fa-solid fa-gear"></a>
+					<a href="{{ path('profile_settings') }}" class="fa-solid fa-gear"></a>
 					<a href="{{ logout_path() }}" class="fa-solid fa-right-from-bracket"></a>
 				</div>
 
