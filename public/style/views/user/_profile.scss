@@ -16,6 +16,7 @@
     z-index: -10;
 }
 
+/*** user profile pictures ***/
 .user-pfp-header, .user-pfp-profile, .user-pfp-settings {
     background-position: center;
     background-size: cover;
@@ -37,9 +38,8 @@
     height: 65px;
 }
 
+/*** profile-infos ***/
 .profile-infos {
-    flex-direction: column;
-    align-items: center;
     border-bottom: 1px solid #A0A0A0;
     margin-bottom: 3em;
     margin-top: 19em;
@@ -54,70 +54,72 @@
     margin: 2em 0 2em 0;
 }
 
-.user-profile .hr-profile>#separator {
-    background-color: #A0A0A0;
+.user-profile .hr-profile>hr {
+    background-color: #888888;
     width: 80%;
     height: 0.5px;
     border: 0;
     margin: 0 auto;
 }
 
-// .parameters-icons
-.user-profile>.parameters-icons {
-    padding: 10px 10px 10px 0;
-    justify-content: flex-end;
+// .action-links
+.user-profile>.action-links {
+    padding: 0.625em 0.625em 0.625em 0;
+    margin-bottom: 2em;
     gap: 15px;
 }
 
-.parameters-icons>a {
-    font-size: 21px;
+.action-links li>.settings, .action-links li>.logout, .create-post {
+    padding: 0.52em 1.162em;
+    border-radius: 5px;
+    font-size: 0.969rem;
 }
 
-.username-and-description {
-    text-align: center;
+.action-links li>.settings {
+    border: 1px solid #6c757d;
+    color: #6c757d;
+}
+
+.action-links li>.settings:hover {
+    background-color: #6c757d;
+    color: #fff
+}
+
+.action-links li>.logout {
+    border: 1px solid #b22222;
+    color: #b22222;
+}
+
+.action-links li>.logout:hover {
+    background-color: #b22222;
+    color: #fff
 }
 
 .username-and-description>h1 {
     font-weight: 500;
-    font-size: 24px;
-    margin: 3px 0 0.7em 0;
+    font-size: 1.5rem;
+    margin: 0.13em 0 0.7em 0;
 }
 
 .username-and-description>p {
     font-family: "PoppinsLightItalic", sans-serif;
-    font-weight: 300;
-    font-style: italic;
     max-width: 55%;
     color: #888888;
-    margin: 0 auto;
 }
 
-.activity-infos {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 2.1em;
-}
-
-.activity-infos div>p {
+.user-profile>p {
     font-family: "PoppinsRegular", sans-serif;
-    font-weight: 400;
-    font-size: 17px;
+    font-size: 1.063rem;
+    margin-top: 2em;
 }
 
-.activity-infos .translations p>i {
-    font-size: 21.5px;
-    align-content: center;
+.user-profile p>i {
+    margin-right: 0.5rem;
+    font-size: 1.25rem;
     color: #1B9675;
-    margin-right: 8px;
-}
-
-.buttons-and-songs {
-    flex-direction: column;
 }
 
 .posts-btns {
-    justify-content: center;
     margin-bottom: 5em;
 }
 
@@ -129,9 +131,6 @@
 .create-post {
     border: 1px solid #198754;
     color: #198754;
-    padding: 8px 18px 8px 18px;
-    border-radius: 5px;
-    font-size: 15.5px;
     transition: all 0.2s;
 }
 
@@ -143,23 +142,21 @@
 }
 
 .action-buttons {
-    margin: 30px 0 10px 0;
-    justify-content: center;
+    margin: 1.875em 0 0.625em 0;
 }
 
 .action-buttons>form {
-    margin-left: 10px;
+    margin-left: 0.625em;
 }
 
 .action-buttons>.edit {
-    align-items: center;
     border: 1px solid #198754;
     background-color: #fff;
     color: #198754;
-    padding: 4px 12px 4px 12px;
+    padding: 0.25em 0.75em;
     border-radius: 5px;
     transition: all 0.2s;
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 .action-buttons>.edit:hover {
@@ -170,22 +167,14 @@
     cursor: pointer;
 }
 
-.action-buttons .edit>p:hover {
-    color: #fff;
-    cursor: pointer;
-}
-
 .action-buttons form>button {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     border: 1px solid #b22222;
     background-color: #fff;
     color: #b22222;
-    padding: 6px 14px 6px 14px;
+    padding: 0.45em 1em;
     border-radius: 5px;
     transition: all 0.2s;
-    font-size: 13.8px;
+    font-size: 0.863rem;
 }
 
 .action-buttons form>button:hover {
@@ -198,11 +187,11 @@
 .admin {
     border: 1px solid #1c1e7b;
     color: #1c1e7b;
-    padding: 8px 18px 8px 18px;
+    padding: 0.52em 1.17em;
     border-radius: 5px;
-    font-size: 15.5px;
+    font-size: 0.969rem;
     transition: all 0.2s;
-    margin-left: 35px;
+    margin-left: 2.27em;
 }
 
 .admin:hover {
@@ -215,7 +204,7 @@
 .flash-success, .message {
     font-family: "PoppinsRegular", sans-serif;
     text-align: center;
-    font-size: 18px;
+    font-size: 1.125rem;
     margin-bottom: 3.5em;
 }
 

@@ -16,7 +16,7 @@
 			<div class="profile-banner d-flex" style="background-image: url({{ asset('uploads/profile/profileThumbnails/' ~ profile.thumbnailName) }})"></div>
 		{% endif %}
 
-		<section class="profile-infos d-flex">
+		<section class="profile-infos d-flex flex-column align-items-center">
 			{% if profile.profilePictureName is same as(null) %}
 				<div class="user-pfp-profile rounded-circle mb-2" style="background-image: url('/assets/imgs/placeholders/default-pfp.png')"></div>
 			{% else %}
@@ -24,14 +24,15 @@
 			{% endif %}
 
 			<article class="user-profile">
-				<div class="username-and-description">
+				<div class="username-and-description text-center mb-4">
 					<h1>{{ profile.username }}</h1>
 					{% if profile.description is not null %}
-						<p>{{ profile.description }}</p>
+						<p class="m-auto">{{ profile.description }}</p>
 					{% else %}
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A molestias asperiores alias suscipit voluptas nisi quisquam tenetur, eos exercitationem ipsa. Placeat sed cupiditate repudiandae sequi.</p>
+						<p class="m-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. A molestias asperiores alias suscipit voluptas nisi quisquam tenetur, eos exercitationem ipsa. Placeat sed cupiditate repudiandae sequi.</p>
 					{% endif %}
 				</div>
+
 				<div class="hr-profile d-flex m-auto w-75">
 					<hr>
 				</div>
@@ -49,8 +50,8 @@
 			</article>
 		</section>
 
-		<section class="buttons-and-songs d-flex">
-			<div class="posts-btns d-flex">
+		<section class="d-flex flex-column">
+			<div class="posts-btns d-flex justify-content-center">
 				<a href="{{ path('translation_new_upload') }}" class="create-post">
 					<i class="fa-solid fa-plus"></i>Nouvelle publication</a>
 				{% if is_granted("ROLE_ADMIN") %}
@@ -103,7 +104,7 @@
 								</li>
 							</ul>
 							<div class="action-buttons d-flex">
-								<a href="{{ path('translation_edit', {id: translation.id}) }}" class="edit d-flex">
+								<a href="{{ path('translation_edit', {id: translation.id}) }}" class="edit d-flex align-items-center">
 									<i class="fa-solid fa-pen"></i>Modifier
 								</a>
 								<form action="{{ path('translation_delete', {id: translation.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cette traduction ?')" class="d-flex">
