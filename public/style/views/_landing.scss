@@ -15,8 +15,8 @@
 
 .hero>h1 {
     font-family: "PoppinsLight", sans-serif;
-    font-size: 45px;
-    line-height: 3.5em;
+    font-size: 2.813rem;
+    line-height: 3.5;
 }
 
 .hero>p {
@@ -32,7 +32,7 @@
 .hero ul>li {
     border: 2px solid white;
     border-radius: 7px;
-    padding: 10px 45px 10px 45px;
+    padding: 0.625em 2.8125em;
     transition: none;
 }
 
@@ -51,7 +51,7 @@
 
 .hero ul li>a {
     font-family: "PoppinsLight", sans-serif;
-    font-size: 17px;
+    font-size: 1.063rem;
 }
 
 
@@ -62,7 +62,7 @@
 
 .accueil-container .translation-titles>p {
     font-family: "PoppinsExtraLight", sans-serif;
-    font-size: 24px;
+    font-size: 1.5rem;
     line-height: 70px;
 }
 
@@ -72,11 +72,10 @@
 }
 
 .accueil-container>section .translation-card {
-    background-color: white;
     border: 3px solid #DCAC4D;
     border-radius: 10px;
     width: 20%;
-    padding: 1em 0.5em 1em 0.5em;
+    padding: 1em 0.5em;
 }
 
 .accueil-container>section .translation-card .card-img {
@@ -87,25 +86,22 @@
     max-width: 260px;
 }
 
-.translation-card .summary>span {
-    font-size: 21px;
+.translation-card .summary li>span {
+    font-size: 1.313rem;
     margin-top: 0.8em;
 }
 
-.translation-card .summary>p {
-    margin: 20px 0 25px 0;
-    font-size: 15px;
+.translation-card .summary li>p {
+    margin: 1.25rem 0 1.563rem 0;
 }
 
-.translation-card .summary>a {
-    font-family: "PoppinsLight", sans-serif;
-    transition: none;
-    margin-bottom: 0.5em;
+.translation-card .summary li>a {
     color: variables.$form-btn-bg-color-hover;
-    font-size: 15px;
+    transition: none;
+    font-size: 0.938rem;
 }
 
-.translation-card .summary>a:hover {
+.translation-card .summary li>a:hover {
     transition: none;
     text-decoration: underline;
     color: variables.$form-btn-bg-color-active;
