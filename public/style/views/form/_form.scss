@@ -1,0 +1,110 @@
+@use '../../other/variables';
+
+.forms-body {
+    background-image: url("../../assets/imgs/general/form/paysage.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 60em rgba(0, 0, 0, 0.58) inset;
+}
+
+.forms-body main>section {
+    margin-top: 5em;
+}
+
+.forms-body main section>h1 {
+    font-size: 2.25rem;
+}
+
+.form-width {
+    width: 30%;
+}
+
+.form-parent-row>input, .form-parent-row>select, .form-parent-row>textarea {
+    font-family: "PoppinsLight", sans-serif;
+    background-color: #fff;
+    border: 1px solid #B8B8B8;
+    border-radius: 3px;
+    font-size: 0.906rem;
+    direction: left;
+    text-indent: 10px;
+}
+
+.form-parent-row>input, .form-parent-row>select {
+    height: 35px;
+}
+
+.mt-label {
+    margin-top: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+/*** .submit-btn ***/
+.submit-btn {
+    font-family: "PoppinsLight", sans-serif;
+    font-size: 1rem;
+    background-color: variables.$form-btn-bg-color;
+    border: 1px solid variables.$form-btn-bg-color;
+    padding: 0.5em 0 0.5em 0;
+    margin: 5rem auto 1.563rem auto;
+    transition: none;
+}
+
+.submit-btn:hover {
+    background-color: variables.$form-btn-bg-color-active;
+    border: 1px solid variables.$form-btn-bg-color-active;
+    cursor: pointer;
+}
+
+/*** account-parent ***/
+.account-parent {
+    font-family: "PoppinsExtraLight", sans-serif;
+    font-weight: 300;
+}
+
+.account-parent>.form-redirection-text {
+    margin-top: 0;
+}
+
+/*** form-redirection-text ***/
+.form-redirection-text {
+    margin-top: 3em;
+    margin-bottom: 0.875rem;
+    font-size: 1.063rem;
+    transition: none;
+}
+
+.form-redirection-text>a {
+    color: variables.$form-btn-bg-color;
+    font-size: 1.063rem;
+}
+
+.form-redirection-text>a:hover {
+    color: variables.$form-btn-bg-color-active;
+    text-decoration: underline;
+    transition: none;
+    cursor: pointer;
+}
+
+.forgotten-password {
+    margin-top: 3em;
+    margin-bottom: 0.875rem;
+    font-size: 1.063rem;
+}
+
+input[type="file"] {
+    text-indent: 0;
+}
+
+input[type="file"]::file-selector-button {
+    font-family: "PoppinsLight", sans-serif;
+    border: 2px solid #B8B8B8;
+    background-color: #B8B8B8;
+    height: 35px;
+    padding: 0 0.625em;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+input[type=checkbox] {
+    transform: scale(1.4);
+}
