@@ -1,4 +1,4 @@
-{% for translation in translations %}
+{% for translation in translations %}0
 	<article class='rounded-2 swiper-slide'>
 		<div class='m-auto card-content' id='{{ translation.id }}'>
 			<figure><img src='/assets/imgs/placeholders/placeholder-file.png' alt='File extension' class="rounded-3"/>
@@ -27,7 +27,7 @@
 			</ul>
 
 			<ul class='other-infos'>
-				<li>Postée par :
+				<li>Par :
 					<span>{{ translation.profile.username }}</span>
 				</li>
 				<li>Postée le :
