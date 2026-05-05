@@ -1,5 +1,5 @@
 .accueil-connect-container>h2 {
-  margin: 50px 0 30px 15px;
+  margin: 1.563em 0 1.3em 0.938rem;
 }
 
 // Slider
@@ -10,14 +10,14 @@
 
 .slider-cards-container {
   max-width: 100%;
-  margin: 0 75px 35px 75px;
+  margin: 0 4.688em 2.188em 4.688em;
   overflow: hidden;
 }
 
 // Les paramètres associés à une seule carte du slider
 .swiper-slide {
   border: 3px solid #DCAC4D;
-  padding: 10px 0 10px 0;
+  padding: 0.625em 0;
 }
 
 // Le contenu de la carte
@@ -26,7 +26,7 @@
 }
 
 .swiper-slide .card-content figure>img {
-  margin: 5px 0 15px 0;
+  margin: 0.313em 0 0.938em 0;
 }
 
 .see-translation-link>a {
@@ -35,7 +35,7 @@
 
 .swiper-slide .card-content>.text {
   font-family: "PoppinsRegular", sans-serif;
-  margin: 50px 0 50px 0;
+  margin: 3.125em 0;
   line-height: 2.5em;
 }
 
@@ -46,8 +46,8 @@
 
 .swiper-slide .card-content>.other-infos {
   font-family: "PoppinsRegular", sans-serif;
-  font-size: 15px;
-  margin: 20px 0 10px 0;
+  font-size: 0.938rem;
+  margin: 1.34em 0 0.625em 0;
   color: var(--text-color);
   list-style: none;
   line-height: 2em;
@@ -66,5 +66,5 @@
 .swiper-button-next,
 .swiper-button-prev {
   --swiper-navigation-color: #000;
-  --swiper-navigation-size: 28px;
+  --swiper-navigation-size: 1.75rem;
 }
