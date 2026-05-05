@@ -233,19 +233,23 @@ final class ProfileController extends AbstractController
         ]);
     }
 
-    #[Route('/settings-pages/preferences_settings', name: 'preferences_settings')]
-    public function preferencesSettings(): Response
+    #[Route('/settings/preferences_settings', name: 'preferences_settings')]
+    public function preferencesSettings(#[CurrentUser] User $user): Response
     {
-        return $this->render('user/settings-pages/preferences.html.twig', [
-            'controller_name' => 'UserController',
+        $profile = $user->getProfile();
+
+        return $this->render('profile/settings/preferences.html.twig', [
+            'profile' => $profile
         ]);
     }
 
-    #[Route('/settings-pages/accessibility_settings', name: 'accessibility_settings')]
-    public function accessibilitySettings(): Response
+    #[Route('/settings/accessibility_settings', name: 'accessibility_settings')]
+    public function accessibilitySettings(#[CurrentUser] User $user): Response
     {
-        return $this->render('user/settings-pages/accessibility.html.twig', [
-            'controller_name' => 'UserController',
+        $profile = $user->getProfile();
+
+        return $this->render('profile/settings/accessibility.html.twig', [
+            'profile' => $profile
         ]);
     }
 }
