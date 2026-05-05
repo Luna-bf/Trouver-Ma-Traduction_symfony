@@ -3,36 +3,22 @@
 {% block title %}Résultats de la recherche - Trouver Ma Traduction
 {% endblock %}
 
-{% block head %}
-	{{ parent() }}
-{% endblock %}
-
-{# Mon fichier JS #}
-{% block script %}
-	<script src="/js/app.js" defer></script>
-{% endblock %}
-
-{# Header #}
-{% block header %}
-	{% include "inc/_header.html.twig" %}
-{% endblock %}
-
 {% block main %}
 	<main class="search-result-container">
-		<section class='song-container d-flex'>
-			<div class='simple-card-item'>
-				<div class='simple-card-content'>
-					<figure><img src='/assets/imgs/general/slider/docx-file-extension.png' alt='File extension'/>
+		<section class="song-container d-flex justify-content-center justify-content-around">
+			<article class="simple-card-item">
+				<div class="simple-card-content">
+					<figure><img src="/assets/imgs/general/slider/docx-file-extension.png" alt="File extension"/>
 					</figure>
 
-					<div class='simple-title'>
+					<div class="simple-title">
 						<h3>Nom de la traduction</h3>
-						<h4 class='see-translation-link'>
-							<a href='#'>Voir la traduction</a>
+						<h4 class="see-translation-link text-center">
+							<a href="#">Voir la traduction</a>
 						</h4>
 					</div>
 
-					<ul class='simple-text'>
+					<ul class="simple-text">
 						<li>Type :
 							<span>(Type de contenu)</span>
 						</li>
@@ -47,7 +33,7 @@
 						</li>
 					</ul>
 
-					<ul class='simple-other-infos'>
+					<ul class="simple-other-infos">
 						<li>Par :
 							<span>Nom de l'utilisateur</span>
 						</li>
@@ -56,430 +42,83 @@
 						</li>
 					</ul>
 				</div>
-			</div>
+			</article>
 
-			<div class='simple-card-item'>
-				<div class='simple-card-content'>
-					<figure><img src='/assets/imgs/general/slider/pdf-file-extension.png' alt='File extension'/>
-					</figure>
-
-					<div class='simple-title'>
-						<h3>Nom de la traduction</h3>
-						<h4 class='see-translation-link'>
-							<a href='#'>Voir la traduction</a>
-						</h4>
-					</div>
-
-					<ul class='simple-text'>
-						<li>Type :
-							<span>(Type de contenu)</span>
-						</li>
-						<li>Style :
-							<span>(Style)</span>
-						</li>
-						<li>Auteur :
-							<span>(Nom de l'auteur)</span>
-						</li>
-						<li>Langue :
-							<span>(Langue)</span>
-						</li>
-					</ul>
-
-					<ul class='simple-other-infos'>
-						<li>Par :
-							<span>Nom de l'utilisateur</span>
-						</li>
-						<li>Postée le :
-							<span>JJ/MM/AAAA</span>
-						</li>
-					</ul>
-				</div>
-			</div>
-
-			<div class='simple-card-item'>
-				<div class='simple-card-content'>
-					<figure><img src='/assets/imgs/general/slider/docx-file-extension.png' alt='File extension'/>
-					</figure>
-
-					<div class='simple-title'>
-						<h3>Nom de la traduction</h3>
-						<h4 class='see-translation-link'>
-							<a href='#'>Voir la traduction</a>
-						</h4>
-					</div>
-
-					<ul class='simple-text'>
-						<li>Type :
-							<span>(Type de contenu)</span>
-						</li>
-						<li>Style :
-							<span>(Style)</span>
-						</li>
-						<li>Auteur :
-							<span>(Nom de l'auteur)</span>
-						</li>
-						<li>Langue :
-							<span>(Langue)</span>
-						</li>
-					</ul>
-
-					<ul class='simple-other-infos'>
-						<li>Par :
-							<span>Nom de l'utilisateur</span>
-						</li>
-						<li>Postée le :
-							<span>JJ/MM/AAAA</span>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</section>
-
-		<section class="song-container d-flex">
-			<div class="simple-card-item">
+			<article class="simple-card-item">
 				<div class="simple-card-content">
 					<figure><img src="/assets/imgs/general/slider/pdf-file-extension.png" alt="File extension"/>
-					</a>
-				</figure>
+					</figure>
 
-				<div class="simple-title">
-					<h3>Nom de la traduction</h3>
-					<h4 class="see-translation-link">
-						<a href='#'>Voir la traduction</a>
-					</h4>
+					<div class="simple-title">
+						<h3>Nom de la traduction</h3>
+						<h4 class="see-translation-link text-center">
+							<a href="#">Voir la traduction</a>
+						</h4>
+					</div>
+
+					<ul class="simple-text">
+						<li>Type :
+							<span>(Type de contenu)</span>
+						</li>
+						<li>Style :
+							<span>(Style)</span>
+						</li>
+						<li>Auteur :
+							<span>(Nom de l'auteur)</span>
+						</li>
+						<li>Langue :
+							<span>(Langue)</span>
+						</li>
+					</ul>
+
+					<ul class="simple-other-infos">
+						<li>Par :
+							<span>Nom de l'utilisateur</span>
+						</li>
+						<li>Postée le :
+							<span>JJ/MM/AAAA</span>
+						</li>
+					</ul>
 				</div>
+			</article>
 
-				<ul class='simple-text'>
-					<li>Type :
-						<span>(Type de contenu)</span>
-					</li>
-					<li>Style :
-						<span>(Style)</span>
-					</li>
-					<li>Auteur :
-						<span>(Nom de l'auteur)</span>
-					</li>
-					<li>Langue :
-						<span>(Langue)</span>
-					</li>
-				</ul>
+			<article class="simple-card-item">
+				<div class="simple-card-content">
+					<figure><img src="/assets/imgs/general/slider/docx-file-extension.png" alt="File extension"/>
+					</figure>
 
-				<ul class='simple-other-infos'>
-					<li>Par :
-						<span>Nom de l'utilisateur</span>
-					</li>
-					<li>Postée le :
-						<span>JJ/MM/AAAA</span>
-					</li>
-				</ul>
-			</div>
-		</div>
+					<div class="simple-title">
+						<h3>Nom de la traduction</h3>
+						<h4 class="see-translation-link text-center">
+							<a href="#">Voir la traduction</a>
+						</h4>
+					</div>
 
-		<div class="simple-card-item">
-			<div class="simple-card-content">
-				<figure><img src="/assets/imgs/general/slider/pdf-file-extension.png" alt="File extension"/>
-				</figure>
+					<ul class="simple-text">
+						<li>Type :
+							<span>(Type de contenu)</span>
+						</li>
+						<li>Style :
+							<span>(Style)</span>
+						</li>
+						<li>Auteur :
+							<span>(Nom de l'auteur)</span>
+						</li>
+						<li>Langue :
+							<span>(Langue)</span>
+						</li>
+					</ul>
 
-				<div class="simple-title">
-					<h3>Nom de la traduction</h3>
-					<h4 class="see-translation-link">
-						<a href='#'>Voir la traduction</a>
-					</h4>
+					<ul class="simple-other-infos">
+						<li>Par :
+							<span>Nom de l'utilisateur</span>
+						</li>
+						<li>Postée le :
+							<span>JJ/MM/AAAA</span>
+						</li>
+					</ul>
 				</div>
-
-				<ul class='simple-text'>
-					<li>Type :
-						<span>(Type de contenu)</span>
-					</li>
-					<li>Style :
-						<span>(Style)</span>
-					</li>
-					<li>Auteur :
-						<span>(Nom de l'auteur)</span>
-					</li>
-					<li>Langue :
-						<span>(Langue)</span>
-					</li>
-				</ul>
-
-				<ul class='simple-other-infos'>
-					<li>Par :
-						<span>Nom de l'utilisateur</span>
-					</li>
-					<li>Postée le :
-						<span>JJ/MM/AAAA</span>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="simple-card-item">
-			<div class="simple-card-content">
-				<figure><img src="/assets/imgs/general/slider/docx-file-extension.png" alt="File extension"/>
-				</figure>
-
-				<div class="simple-title">
-					<h3>Nom de la traduction</h3>
-					<h4 class="see-translation-link">
-						<a href='#'>Voir la traduction</a>
-					</h4>
-				</div>
-
-				<ul class='simple-text'>
-					<li>Type :
-						<span>(Type de contenu)</span>
-					</li>
-					<li>Style :
-						<span>(Style)</span>
-					</li>
-					<li>Auteur :
-						<span>(Nom de l'auteur)</span>
-					</li>
-					<li>Langue :
-						<span>(Langue)</span>
-					</li>
-				</ul>
-
-				<ul class='simple-other-infos'>
-					<li>Par :
-						<span>Nom de l'utilisateur</span>
-					</li>
-					<li>Postée le :
-						<span>JJ/MM/AAAA</span>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</section>
-	<section class="song-container d-flex">
-		<div class="simple-card-item">
-			<div class="simple-card-content">
-				<figure><img src="/assets/imgs/general/slider/docx-file-extension.png" alt="File extension"/>
-				</figure>
-
-				<div class="simple-title">
-					<h3>Nom de la traduction</h3>
-					<h4 class="see-translation-link">
-						<a href='#'>Voir la traduction</a>
-					</h4>
-				</div>
-
-				<ul class='simple-text'>
-					<li>Type :
-						<span>(Type de contenu)</span>
-					</li>
-					<li>Style :
-						<span>(Style)</span>
-					</li>
-					<li>Auteur :
-						<span>(Nom de l'auteur)</span>
-					</li>
-					<li>Langue :
-						<span>(Langue)</span>
-					</li>
-				</ul>
-
-				<ul class='simple-other-infos'>
-					<li>Par :
-						<span>Nom de l'utilisateur</span>
-					</li>
-					<li>Postée le :
-						<span>JJ/MM/AAAA</span>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="simple-card-item">
-			<div class="simple-card-content">
-				<figure><img src="/assets/imgs/general/slider/docx-file-extension.png" alt="File extension"/>
-				</figure>
-
-				<div class="simple-title">
-					<h3>Nom de la traduction</h3>
-					<h4 class="see-translation-link">
-						<a href='#'>Voir la traduction</a>
-					</h4>
-				</div>
-
-				<ul class='simple-text'>
-					<li>Type :
-						<span>(Type de contenu)</span>
-					</li>
-					<li>Style :
-						<span>(Style)</span>
-					</li>
-					<li>Auteur :
-						<span>(Nom de l'auteur)</span>
-					</li>
-					<li>Langue :
-						<span>(Langue)</span>
-					</li>
-				</ul>
-
-				<ul class='simple-other-infos'>
-					<li>Par :
-						<span>Nom de l'utilisateur</span>
-					</li>
-					<li>Postée le :
-						<span>JJ/MM/AAAA</span>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="simple-card-item">
-			<div class="simple-card-content">
-				<figure><img src="/assets/imgs/general/slider/pdf-file-extension.png" alt="File extension"/>
-				</figure>
-
-				<div class="simple-title">
-					<h3>Nom de la traduction</h3>
-					<h4 class="see-translation-link">
-						<a href='#'>Voir la traduction</a>
-					</h4>
-				</div>
-
-				<ul class='simple-text'>
-					<li>Type :
-						<span>(Type de contenu)</span>
-					</li>
-					<li>Style :
-						<span>(Style)</span>
-					</li>
-					<li>Auteur :
-						<span>(Nom de l'auteur)</span>
-					</li>
-					<li>Langue :
-						<span>(Langue)</span>
-					</li>
-				</ul>
-
-				<ul class='simple-other-infos'>
-					<li>Par :
-						<span>Nom de l'utilisateur</span>
-					</li>
-					<li>Postée le :
-						<span>JJ/MM/AAAA</span>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</section>
-	<section class='song-container d-flex'>
-		<div class='simple-card-item'>
-			<div class='simple-card-content'>
-				<figure><img src='/assets/imgs/general/slider/docx-file-extension.png' alt='File extension'/>
-				</figure>
-
-				<div class='simple-title'>
-					<h3>Nom de la traduction</h3>
-					<h4 class='see-translation-link'>
-						<a href='#'>Voir la traduction</a>
-					</h4>
-				</div>
-
-				<ul class='simple-text'>
-					<li>Type :
-						<span>(Type de contenu)</span>
-					</li>
-					<li>Style :
-						<span>(Style)</span>
-					</li>
-					<li>Auteur :
-						<span>(Nom de l'auteur)</span>
-					</li>
-					<li>Langue :
-						<span>(Langue)</span>
-					</li>
-				</ul>
-
-				<ul class='simple-other-infos'>
-					<li>Par :
-						<span>Nom de l'utilisateur</span>
-					</li>
-					<li>Postée le :
-						<span>JJ/MM/AAAA</span>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		<div class='simple-card-item'>
-			<div class='simple-card-content'>
-				<figure><img src='/assets/imgs/general/slider/pdf-file-extension.png' alt='File extension'/>
-				</figure>
-
-				<div class='simple-title'>
-					<h3>Nom de la traduction</h3>
-					<h4 class='see-translation-link'>
-						<a href='#'>Voir la traduction</a>
-					</h4>
-				</div>
-
-				<ul class='simple-text'>
-					<li>Type :
-						<span>(Type de contenu)</span>
-					</li>
-					<li>Style :
-						<span>(Style)</span>
-					</li>
-					<li>Auteur :
-						<span>(Nom de l'auteur)</span>
-					</li>
-					<li>Langue :
-						<span>(Langue)</span>
-					</li>
-				</ul>
-
-				<ul class='simple-other-infos'>
-					<li>Par :
-						<span>Nom de l'utilisateur</span>
-					</li>
-					<li>Postée le :
-						<span>JJ/MM/AAAA</span>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		<div class='simple-card-item'>
-			<div class='simple-card-content'>
-				<figure><img src='/assets/imgs/general/slider/docx-file-extension.png' alt='File extension'/>
-				</figure>
-
-				<div class='simple-title'>
-					<h3>Nom de la traduction</h3>
-					<h4 class='see-translation-link'>
-						<a href='#'>Voir la traduction</a>
-					</h4>
-				</div>
-
-				<ul class='simple-text'>
-					<li>Type :
-						<span>(Type de contenu)</span>
-					</li>
-					<li>Style :
-						<span>(Style)</span>
-					</li>
-					<li>Auteur :
-						<span>(Nom de l'auteur)</span>
-					</li>
-					<li>Langue :
-						<span>(Langue)</span>
-					</li>
-				</ul>
-
-				<ul class='simple-other-infos'>
-					<li>Par :
-						<span>Nom de l'utilisateur</span>
-					</li>
-					<li>Postée le :
-						<span>JJ/MM/AAAA</span>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</section>
-</main>{% endblock %}{# Footer #}{% block footer %}
-{% include "inc/_footer.html.twig" %}{% endblock %}
+			</article>
+		</section>
+	</main>
+{% endblock %}
