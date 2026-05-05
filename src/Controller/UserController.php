@@ -14,11 +14,13 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/user', name: 'user_')]
 final class UserController extends AbstractController
 {
-    #[Route('/settings-pages/account_settings', name: 'account_settings')]
-    public function accountSettings(): Response
+    #[Route('/settings/account_settings', name: 'account_settings')]
+    public function accountSettings(#[CurrentUser] User $user): Response
     {
-        return $this->render('user/settings-pages/account.html.twig', [
-            'controller_name' => 'UserController',
+        $profile = $user->getProfile();
+
+        return $this->render('user/account.html.twig', [
+            'profile' => $profile
         ]);
     }
 }
