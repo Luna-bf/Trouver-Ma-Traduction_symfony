@@ -66,13 +66,18 @@ final class ProfileController extends AbstractController
     }
 
     #[Route('/settings/profileSettings', name: 'settings')]
-    public function profileSettings(#[CurrentUser] User $user, Request $request, EntityManagerInterface $em, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/profile/profilePictures')] string $profilePictures): Response
+    public function profileSettings(#[CurrentUser] User $user, Request $request, EntityManagerInterface $em, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/profile/profilePictures')] string $profilePictures, #[Autowire('%kernel.project_dir%/public/uploads/profile/profileThumbnails')] string $profileThumbnails): Response
     {
         // Récupère le profil de l'utilisateur
         $profile = $user->getProfile();
 
+        // Photo de profil
         $oldProfilePicture = $profilePictures . '/' . $profile->getProfilePictureName();
         $newProfilePicture = "";
+
+        // Bannière de profil
+        $oldThumbnail = $profilePictures . '/' . $profile->getThumbnailName();
+        $newThumbnail = "";
 
         // Initialisation du formulaire
         $editProfileForm = $this->createForm(ProfileType::class, $profile);
@@ -81,8 +86,9 @@ final class ProfileController extends AbstractController
 
         if ($editProfileForm->isSubmitted() && $editProfileForm->isValid()) {
 
-            // Récupère la valeur du champ "profilePictureName"
+            // Récupère la valeur des champs "profilePictureName" et "thumbnailName"
             $newProfilePicture = $editProfileForm->get('profilePictureName')->getData();
+            $newThumbnail = $editProfileForm->get('thumbnailName')->getData();
 
             // Si le champ "profilePictureName" contient un fichier (si il n'est pas vide)
             if ($newProfilePicture) {
@@ -146,6 +152,71 @@ final class ProfileController extends AbstractController
 
                     // Met à jour le nom du fichier dans la BDD
                     $profile->setProfilePictureName($newFilename);
+                }
+            }
+            
+            // Si le champ "thumbnailName" contient un fichier (si il n'est pas vide)
+            if ($newThumbnail) {
+
+                /*
+                Je vérifie ce qui est récupéré, si l'utilisateur n'a pas encore de photo de profil (valeur NULL dans la BDD),
+                alors cela signifie que le chemin récupéré s'arrête au dossier "profileThumbnails", j'utilise donc la fonction
+                "is_dir()" pour vérifier que le contenu récupéré est bien un dossier, puis j'envoie le fichier dans celui-ci
+                sans utiliser la méthode "unlink()", car je n'ai pas besoin de supprimer une ancienne bannière de profil.
+                */
+                if (is_dir($oldThumbnail)) {
+
+                    $originalFilename = pathinfo($newThumbnail->getClientOriginalName(), PATHINFO_FILENAME);
+                    $safeFilename = $slugger->slug($originalFilename);
+                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $newThumbnail->guessExtension();
+
+                    try {
+                        $newThumbnail->move($profilePictures, $newFilename);
+                    } catch (FileException $e) {
+                        $message = $e;
+                    }
+
+                    // Met à jour le nom du fichier dans la BDD
+                    $profile->setThumbnailName($newFilename);
+
+                    // Sinon, si je récupère un fichier :
+                } else {
+                    // Je supprime l'ancien fichier
+                    unlink($oldThumbnail);
+
+                    /*
+                    Puis j'ajoute le nouveau fichier :
+                    
+                    Je commence par récupérer le nom original du fichier : la fonction pathinfo() prend pour paramètre :
+                    - La variable $newThumbnail (soit le fichier) et son chemin d'accès
+                    */
+                    $originalFilename = pathinfo($newThumbnail->getClientOriginalName(), PATHINFO_FILENAME);
+
+                    /*
+                    Ensuite, je sécurise le nom du fichier grâce au composant SluggerInterface : celui-ci permet de créer une
+                    chaîne de caractère contenant uniquement des caractères sécurisés.
+                    */
+                    $safeFilename = $slugger->slug($originalFilename);
+                    /*
+                    Enfin, je crée un nouveau nom pour le fichier :
+                    
+                    - J'utilise la chaîne de caractère de la variable $safeFileName ainsi qu'un tiret (-)
+                    - J'ajoute un identifiant unique au fichier (au cas où deux fichiers auraient le même nom) avec la fonction
+                    "uniqid()"
+                    - J'ajoute ensuite un point (pour l'extension du fichier)
+                    - Enfin, j'utilise la fonction guessExtension() pour obtenir l'extension du fichier
+                    */
+                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $newThumbnail->guessExtension();
+
+                    try {
+                        // Je déplace le fichier dans le dossier adéquat (profileThumbnails) sous son nouveau nom (newFileName)
+                        $newThumbnail->move($profileThumbnails, $newFilename);
+                    } catch (FileException $e) {
+                        $message = $e;
+                    }
+
+                    // Met à jour le nom du fichier dans la BDD
+                    $profile->setThumbnailName($newFilename);
                 }
             }
 
