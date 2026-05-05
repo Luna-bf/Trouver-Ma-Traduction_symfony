@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Paramètres du profil - Trouver Ma Traduction
+{% endblock %}
+
+{% block main %}
+	<main>
+        <section class="settings-container d-flex flex-row justify-content-center mx-auto">
+            <article class="settings-parent">
+                {# Settings pages links #}
+                <ul class="all-settings d-flex flex-column">
+                    <li class="border-left">
+                        <a href="{{ path('profile_settings') }}" class="d-flex">
+                            <i class="fa-solid fa-user"></i>Profil</a>
+                    </li>
+                    <li>
+                        <a href="#" class="d-flex">
+                            <i class="fa-solid fa-paperclip"></i>Préférences de
+                                                    contenu</a>
+                    </li>
+                    <li>
+                        <a href="#" class="d-flex">
+                            <i class="fa-solid fa-universal-access"></i>Accessibilité</a>
+                    </li>
+                    <li>
+                        <a href="#" class="d-flex">
+                            <i class="fa-solid fa-gear"></i>Votre compte</a>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="edit-profile">
+                    <ul class="profile-picture d-flex flex-row align-items-center">
+                        {% if profile.profilePictureName is same as(null) %}
+                            <li><div class="user-pfp rounded-circle mb-2" style="background-image: url({{ asset('uploads/profile/profilePictures/' ~ profile.profilePictureName) }})"></div></li>
+                        {% else %}
+                            <li class="me-4"><div class="user-pfp-settings rounded-circle mb-2" style="background-image: url({{ asset('uploads/profile/profilePictures/' ~ profile.profilePictureName) }})"></div></li>
+                        {% endif %}
+                        <li class="ms-2">{{ profile.username }}</li>
+                    </ul>
+
+                    <div class="d-flex">
+                        {{ form_start(editProfileForm, {'attr': {'class': 'profile-form w-75'}}) }}
+                        {{ form_end(editProfileForm) }}
+                    </div>
+            </article>
+		</section>
+	</main>
+{% endblock %}

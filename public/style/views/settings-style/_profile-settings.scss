@@ -2,35 +2,31 @@
 
 .settings-container {
     max-width: 1080px;
-    margin: 0 auto;
+    margin-top: 4em;
+    margin-bottom: 4em;
 }
 
 .settings-parent {
-    flex-direction: row;
-    margin: 50px 0 50px 0;
-    border: 1px solid #A0A0A0;
+    border-top: 1px solid #A0A0A0;
+    border-bottom: 1px solid #A0A0A0;
+    border-left: 1px solid #A0A0A0;
+    padding-right: 1.563rem;
 }
 
 // all-settings
 .all-settings {
-    flex-direction: column;
-    flex-shrink: 0;
-    margin-right: 10px;
+    margin-right: 0.625em;
 }
 
 .all-settings>li {
-    padding: 25px 5em 25px 20px;
-}
-
-.all-settings li>a {
-    flex-direction: row;
-    align-items: center;
+    padding: 1.563em 0 1.563em 1.25em;
+    width: 100%;
 }
 
 // Icons (ul li>a)
 .all-settings li a>i {
-    font-size: 25px;
-    margin-right: 20px;
+    font-size: 1.313rem;
+    margin-right: 1.25em;
 }
 
 // border-left
@@ -38,140 +34,20 @@
     border-left: 2px solid #000;
 }
 
-.separator {
-    border-left: 1px solid #A0A0A0;
-    padding: 30px 0 30px 40px;
+.edit-profile {
+    border: 1px solid #A0A0A0;
+    padding: 1.875em 0 1.875em 2.5em;
+    width: 65%;
 }
 
 // profile-picture
-.profile-picture {
-    flex-direction: row;
-    align-items: center;
-    gap: 15px;
+.profile-picture li {
+    width: 11%;
 }
 
-.profile-picture>figure {
-    width: 10%;
+.profile-picture>li {
+    font-size: 1.125rem;
 }
-
-.profile-picture figure>img {
-    border-radius: 50%;
-}
-
-.profile-picture>ul {
-    line-height: 2em;
-}
-
-.profile-picture ul>li:first-child {
-    font-size: 18px;
-}
-
-.profile-picture ul li>a {
-    font-family: "PoppinsLight", sans-serif;
-    color: #608DFF;
-}
-
-// profile-form
-.profile-form {
-    margin-top: 50px;
-}
-
-.profile-form form>.param {
-    margin-bottom: 2em;
-}
-
-.param {
-    flex-direction: row;
-}
-
-.param label,
-.profile-input,
-.profile-textarea,
-.profile-select {
-    flex-shrink: 0;
-}
-
-.param>.profile-input,
-.profile-textarea,
-.profile-select {
-    width: 100%;
-    background-color: variables.$input-bg-color;
-    color: variables.$input-text-color;
-    border: 1px solid variables.$input-border;
-    border-radius: 5px;
-    margin-left: 15px;
-}
-
-.param>.profile-input,
-.profile-select {
-    font-family: "PoppinsLight", sans-serif;
-    height: 30px;
-}
-
-.param>.profile-input {
-    padding-left: 10px;
-}
-
-.param>.profile-textarea {
-    font-family: "PoppinsLight", sans-serif;
-    height: 150px;
-    overflow: auto;
-    padding: 5px 15px 5px 15px;
-}
-
-// submit-changes
-.submit-changes {
-    margin-top: 3em;
-}
-
-.submit-changes>button {
-    background-color: variables.$form-btn-bg-color;
-    border: 1px solid variables.$form-btn-bg-color;
-    transition: none;
-    color: #fff;
-    padding: 10px;
-    border-radius: 6px;
-}
-
-.submit-changes>button:hover {
-    background-color: variables.$form-btn-bg-color-active;
-    border: 1px solid variables.$form-btn-bg-color-active;
-    transition: none;
-    cursor: pointer;
-}
-
-
-// ANCIEN CODE
-
-// .table-form {
-//     display: table;
-//     width: 100%;
-// }
-
-// .param {
-//     display: table-row;
-// }
-
-// .param label,
-// input,
-// textarea,
-// select {
-//     flex-shrink: 0;
-//     // display: table-cell;
-// }
-
-// .param>input,
-// textarea,
-// select {
-//     display: table-cell;
-//     width: 100%;
-//     background-color: variables.$input-bg-color;
-//     color: variables.$input-text-color;
-//     border: 1px solid variables.$input-border-color;
-//     border-radius: 5px;
-//     margin-left: 15px;
-// }
-
 
 /************
 RESPONSIVE
