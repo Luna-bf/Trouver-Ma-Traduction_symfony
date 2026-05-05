@@ -22,9 +22,9 @@
 							<input type="password" name="_password" id="password" class="form-input mb-last-input" autocomplete="current-password" required>
 
 							{# Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-																					See https://symfony.com/doc/current/security/remember_me.html #}
+							See https://symfony.com/doc/current/security/remember_me.html #}
 
-							<div class="checkbox mb-3" id="remember-me">
+							<div class="checkbox mb-3 mt-4" id="remember-me">
 								<input type="checkbox" name="_remember_me" id="_remember_me" class="form-checkbox">
 								<span class="checkmark"></span>
 								<label for="_remember_me" class="sign-label">Se souvenir de moi</label>
@@ -42,9 +42,8 @@
 						</div>
 
 						<div class="d-flex flex-column align-items-center account-parent">
-							<a href="#">Mot de passe oublié ?</a>
-							<div>Vous n'avez pas de compte ?&ensp;<a href="{{ path('app_register') }}" class="connect-register-link">Inscrivez-vous</a>
-							</div>
+							<a href="#" class="forgotten-password text-white">Mot de passe oublié ?</a>
+							<p class="form-redirection-text">Vous n'avez pas de compte ? <a href="{{ path('app_register') }}">Inscrivez-vous</a></p>
 						</div>
 					</form>
 				</section>

@@ -12,34 +12,25 @@
 }
 
 .forms-body main section>h1 {
-    font-family: "PoppinsRegular", sans-serif;
-    font-size: 36px;
-    margin-bottom: 20px;
+    font-size: 2.25rem;
 }
 
 .form-width {
     width: 30%;
 }
 
-.form-parent-row>input, .form-parent-row>select {
+.form-parent-row>input, .form-parent-row>select, .form-parent-row>textarea {
     font-family: "PoppinsLight", sans-serif;
     background-color: #fff;
     border: 1px solid #B8B8B8;
     border-radius: 3px;
-    height: 35px;
-    font-size: 14.5px;
+    font-size: 0.906rem;
     direction: left;
     text-indent: 10px;
 }
 
-.form-parent-row>textarea {
-    font-family: "PoppinsLight", sans-serif;
-    background-color: #fff;
-    border: 1px solid #B8B8B8;
-    direction: left;
-    font-size: 14.5px;
-    text-indent: 10px;
-    border-radius: 3px;
+.form-parent-row>input, .form-parent-row>select {
+    height: 35px;
 }
 
 .mt-label {
@@ -50,11 +41,11 @@
 /*** .submit-btn ***/
 .submit-btn {
     font-family: "PoppinsLight", sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     background-color: variables.$form-btn-bg-color;
     border: 1px solid variables.$form-btn-bg-color;
     padding: 0.5em 0 0.5em 0;
-    margin: 80px auto 25px auto;
+    margin: 5rem auto 1.563rem auto;
     transition: none;
 }
 
@@ -66,33 +57,38 @@
 
 /*** account-parent ***/
 .account-parent {
-    margin-top: 3em;
+    font-family: "PoppinsExtraLight", sans-serif;
+    font-weight: 300;
 }
 
-.account-parent a,
-.account-parent div {
-    margin-bottom: 14px;
-    color: #fff;
+.account-parent>.form-redirection-text {
+    margin-top: 0;
+}
+
+/*** form-redirection-text ***/
+.form-redirection-text {
+    margin-top: 3em;
+    margin-bottom: 0.875rem;
+    font-size: 1.063rem;
     transition: none;
 }
 
-.account-parent div>.connect-register-link {
-    font-family: "PoppinsLight", sans-serif;
-    font-weight: 300;
+.form-redirection-text>a {
     color: variables.$form-btn-bg-color;
+    font-size: 1.063rem;
 }
 
-.account-parent div>.connect-register-link:hover {
+.form-redirection-text>a:hover {
     color: variables.$form-btn-bg-color-active;
     text-decoration: underline;
     transition: none;
     cursor: pointer;
 }
 
-.account-parent>a,
-.account-parent div {
-    font-family: "PoppinsExtraLight", sans-serif;
-    font-weight: 300;
+.forgotten-password {
+    margin-top: 3em;
+    margin-bottom: 0.875rem;
+    font-size: 1.063rem;
 }
 
 input[type="file"] {
@@ -104,8 +100,8 @@ input[type="file"]::file-selector-button {
     border: 2px solid #B8B8B8;
     background-color: #B8B8B8;
     height: 35px;
-    padding: 0 10px 0 10px;
-    font-size: 14px;
+    padding: 0 0.625em;
+    font-size: 0.875rem;
     cursor: pointer;
 }
 
