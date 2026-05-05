@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Compte - Trouver Ma Traduction
+{% endblock %}
+
+{% block main %}
+	<main>
+		<section class="settings-container d-flex flex-row justify-content-center mx-auto">
+			<article class="settings-parent">
+				{# Settings pages links #}
+				<ul class="all-settings d-flex flex-column">
+					<li>
+						<a href="{{ path('profile_settings') }}" class="d-flex">
+							<i class="fa-solid fa-user"></i>Profil</a>
+					</li>
+					<li>
+						<a href="{{ path('profile_preferences_settings') }}" class="d-flex">
+							<i class="fa-solid fa-paperclip"></i>Préférences de contenu</a>
+					</li>
+					<li>
+						<a href="{{ path('profile_accessibility_settings') }}" class="d-flex">
+							<i class="fa-solid fa-universal-access"></i>Accessibilité</a>
+					</li>
+					<li class="border-left">
+						<a href="{{ path('user_account_settings') }}" class="d-flex">
+							<i class="fa-solid fa-gear"></i>Votre compte</a>
+					</li>
+				</ul>
+			</article>
+
+			<article class="edit-parameters">
+				<form>
+					<div class="d-flex flex-column form-parent-row w-50">
+						<label for="password" class="mt-0 mt-label">Mot de passe</label>
+						<input type="password" name="password" id="password" class="form-input mb-3">
+					</div>
+				</form>
+
+				<hr class="account-hr">
+
+				<div class="d-flex account-params">
+					<h3 class="mt-2 fs-3">Autres actions</h3>
+
+					<ul class="other-actions">
+						<li>
+							<i class="fa-solid fa-arrows-rotate"></i>&ensp;Réinitialiser le mot de passe</li>
+						<li>
+							<i class="fa-solid fa-download"></i>&ensp;Télécharger mes données</li>
+						<li>
+							<i class="fa-solid fa-lock"></i>&ensp;Désactiver mon compte</li>
+						<li>
+							<i class="fa-solid fa-trash"></i>&ensp;Supprimer mon compte</li>
+					</ul>
+				</div>
+			</article>
+		</section>
+	</main>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Accessibilité - Trouver Ma Traduction
+{% endblock %}
+
+{% block main %}
+	<main>
+		<section class="settings-container d-flex flex-row justify-content-center mx-auto">
+			<article class="settings-parent">
+				{# Settings pages links #}
+				<ul class="all-settings d-flex flex-column">
+					<li>
+						<a href="{{ path('profile_settings') }}" class="d-flex">
+							<i class="fa-solid fa-user"></i>Profil</a>
+					</li>
+					<li>
+						<a href="{{ path('profile_preferences_settings') }}" class="d-flex">
+							<i class="fa-solid fa-paperclip"></i>Préférences de contenu</a>
+					</li>
+					<li class="border-left">
+						<a href="{{ path('profile_accessibility_settings') }}" class="d-flex">
+							<i class="fa-solid fa-universal-access"></i>Accessibilité</a>
+					</li>
+					<li>
+						<a href="{{ path('user_account_settings') }}" class="d-flex">
+							<i class="fa-solid fa-gear"></i>Votre compte</a>
+					</li>
+				</ul>
+			</article>
+
+			<article class="edit-parameters">
+				<form>
+					<div class="d-flex flex-column form-parent-row w-50">
+						<label for="theme" class="mt-0 mt-label">Thème</label>
+						<select name="theme" id="theme" class="form-input">
+							<option value="light" id="light" selected>Lumineux</option>
+							<option value="dark" id="dark">Sombre</option>
+						</select>
+					</div>
+
+					<div class="d-flex flex-column form-parent-row w-50">
+						<label for="language" class="mt-label">Langue</label>
+						<select name="language" id="language" class="form-input">
+							<option value="french" selected>Français</option>
+							<option value="english">English</option>
+						</select>
+					</div>
+
+					<div class="d-flex flex-column form-parent-row w-50">
+						<label for="myRange" class="mt-label">Taille de la police</label>
+						<div class="d-flex flex-row form-parent-row">
+							<input type="range" min="1" max="100" value="16" class="slider w-100 me-3" id="myRange">
+							<input type="number" id="number-input" class="profile-input" value="">
+						</div>
+					</div>
+
+					<div class="d-flex flex-column form-parent-row w-50">
+						<label for="text-to-speech" class="mt-label">Synthèse vocale</label>
+						<select name="text-to-speech" id="text-to-speech" class="profile-input">
+							<option value="enabled">Activée</option>
+							<option value="disabled" selected>Désactivée</option>
+						</select>
+					</div>
+
+					<button type="submit" class="submit-btn text-white w-25 rounded">Enregistrer</button>
+				</form>
+			</article>
+		</section>
+	</main>
+{% endblock %}

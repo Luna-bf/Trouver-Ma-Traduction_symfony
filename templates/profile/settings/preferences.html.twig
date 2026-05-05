@@ -1,0 +1,60 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Préférences de contenu - Trouver Ma Traduction
+{% endblock %}
+
+{% block main %}
+	<main>
+        <section class="settings-container d-flex flex-row justify-content-center mx-auto">
+			<article class="settings-parent">
+				{# Settings pages links #}
+				<ul class="all-settings d-flex flex-column">
+					<li>
+						<a href="{{ path('profile_settings') }}" class="d-flex">
+							<i class="fa-solid fa-user"></i>Profil</a>
+					</li>
+					<li class="border-left">
+						<a href="{{ path('profile_preferences_settings') }}" class="d-flex">
+							<i class="fa-solid fa-paperclip"></i>Préférences de contenu</a>
+					</li>
+					<li>
+						<a href="{{ path('profile_accessibility_settings') }}" class="d-flex">
+							<i class="fa-solid fa-universal-access"></i>Accessibilité</a>
+					</li>
+					<li>
+						<a href="{{ path('user_account_settings') }}" class="d-flex">
+							<i class="fa-solid fa-gear"></i>Votre compte</a>
+					</li>
+				</ul>
+			</article>
+
+			{# Y améliorer en donnant la possibilité de choisir plusieurs styles et changer le type d'options proposées
+			        en conséquences. #}
+			<article class="edit-parameters">
+				<form>
+					<div class="d-flex flex-column form-parent-row w-50">
+						<label for="recommendations">Recommendations</label>
+						<select name="recommendations" id="recommendations" class="form-input">
+							<option value="songs">Chansons</option>
+							<option value="books">Livres</option>
+							<option value="texts">Textes</option>
+						</select>
+					</div>
+
+					{# Faire comme sur la correction d'Henry (exercice du générateur de blagues) en utilisant un fichier
+                    JSON (ou en créant des entités ?) #}
+					<div class="d-flex flex-column form-parent-row w-50">
+						<label for="styles" class="mt-label">Style(s)</label>
+						<select name="styles" id="styles" class="form-input">
+							<option value="fantasy">Fantasy</option>
+							<option value="horreur">Horreur</option>
+							<option value="romance">Romance</option>
+						</select>
+					</div>
+
+					<button type="submit" class="submit-btn text-white w-25 rounded">Enregistrer</button>
+				</form>
+			</article>
+		</section>
+	</main>
+{% endblock %}
