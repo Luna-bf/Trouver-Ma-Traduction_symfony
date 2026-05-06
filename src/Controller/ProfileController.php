@@ -76,7 +76,7 @@ final class ProfileController extends AbstractController
         $newProfilePicture = "";
 
         // Bannière de profil
-        $oldThumbnail = $profilePictures . '/' . $profile->getThumbnailName();
+        $oldThumbnail = $profileThumbnails . '/' . $profile->getThumbnailName();
         $newThumbnail = "";
 
         // Initialisation du formulaire
