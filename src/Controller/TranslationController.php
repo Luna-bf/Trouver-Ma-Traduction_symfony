@@ -6,6 +6,7 @@ use App\Entity\Translation;
 use App\Entity\User;
 use App\Form\TranslationType;
 use App\Repository\TranslationRepository;
+use App\Service\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -53,7 +54,7 @@ final class TranslationController extends AbstractController
 
     #[IsGranted("ROLE_USER")]
     #[Route('/posts/new_upload', name: 'new_upload')]
-    public function newUpload(Request $request, #[CurrentUser] User $user, EntityManagerInterface $em, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/translations')] string $translationsDirectory): Response
+    public function newUpload(Request $request, #[CurrentUser] User $user, EntityManagerInterface $em, FileUploader $fileUploader): Response
     {
         // Création d'une nouvelle instance de Translation
         $translation = new Translation();
@@ -68,29 +69,23 @@ final class TranslationController extends AbstractController
 
         // Vérifie si le formulaire est valide
         if ($translationForm->isSubmitted() && $translationForm->isValid()) {
-
-            $translationFile = $translationForm->get('translationFile')->getData();
-
-            $fullTranslation = $translationForm->getData(); // Récupère les données du formulaire
+            
+            $fullTranslation = $translationForm->getData(); // Récupère toutes les données du formulaire
+            $translationFile = $translationForm->get('translationFile')->getData(); // Récupère le fichier du champ "translationFile"
+            
             $fullTranslation->setCreatedAt(new \DateTimeImmutable()); // Enregistre la date dans le champ du formulaire (setter)
+            
             $profile = $user->getProfile(); // Récupère les données l'utilisateur connecté
             $fullTranslation->setProfile($profile); // Enregistre les données de l'utilisateur connecté dans le champ du formulaire (setter)
 
             // Traitement du fichier
             if ($translationFile) {
-                $originalFilename = pathinfo($translationFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $translationFile->guessExtension();
+                /* Utilise le service "FileUploader" (injecté dans la variable $fileUploader) pour envoyer le fichier contenu
+                dans la variable $translationFile */
+                $translationFileName = $fileUploader->upload($translationFile);
 
-                // Envoi du fichier dans le dossier où les traductions sont stockées
-                try {
-                    $translationFile->move($translationsDirectory, $newFilename);
-                } catch (FileException $e) {
-                    dd('Echec');
-                }
-
-                // updates the 'translationFilename' property to store the PDF file name instead of its contents
-                $fullTranslation->setTranslationFileName($newFilename);
+                // Ajoute le nom du fichier à la colonne "translationFileName"
+                $fullTranslation->setTranslationFileName($translationFileName);
             }
 
             $em->persist($fullTranslation); // Crée le nouvel élément
@@ -108,15 +103,16 @@ final class TranslationController extends AbstractController
 
     #[IsGranted("ROLE_USER")]
     #[Route('translation/posts/edit/{id}', name: 'edit')]
-    public function edit(Translation $translation, Request $request, EntityManagerInterface $em, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/translations')] string $translationsDirectory): Response
+    public function edit(Translation $translation, Request $request, EntityManagerInterface $em, FileUploader $fileUploader): Response
     {
-        $oldTranslationFile = $translationsDirectory . '/' . $translation->getTranslationFileName();
-        $newTranslationFile = "";
+        /* Je n'ai pas besoin de déclarer une nouvelle instance de la classe Translation car je veux modifier des données déjà
+        existantes */
+        $oldTranslationFile = $fileUploader->getTargetDirectory() . '/' . $translation->getTranslationFileName(); // Récupère le fichier actuellement lié à la traduction 
+        $newTranslationFile = ""; // Initialise la variable newTranslationFile ici pour qu'elle soit accessible partout dans cette fonction
 
-        // Je n'ai pas besoin de déclarer une nouvelle instance de la classe Translation car je veux modifier des données déjà existantes
         // Initialisation du formulaire
         $editTranslationForm = $this->createForm(TranslationType::class, $translation, [
-            'is_file_required' => false // Ici, le champ "translation_file_name" n'est pas requis
+            'is_file_required' => false // Ici, le champ "translationFile" n'est pas requis
         ]);
 
         // Traitement du formulaire
@@ -132,13 +128,8 @@ final class TranslationController extends AbstractController
             if ($newTranslationFile) {
                 unlink($oldTranslationFile); // Je supprime l'ancien fichier associé à la publication
 
-                // Puis je relie le nouveau fichier à la publication
-                $originalFilename = pathinfo($newTranslationFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $newTranslationFile->guessExtension();
-
-                $newTranslationFile->move($translationsDirectory, $newFilename);
-                $translation->setTranslationFileName($newFilename);
+                $newTranslationFileName = $fileUploader->upload($newTranslationFile);
+                $translation->setTranslationFileName($newTranslationFileName);
             }
 
             $em->flush(); // Modifie la ligne en BDD
@@ -167,10 +158,12 @@ final class TranslationController extends AbstractController
             // Si le CRSF est valide
             if ($this->isCsrfTokenValid('delete-item', $submittedToken)) {
                 unlink($translationFile); // Supprime le fichier associé à la traduction
+
                 $em->remove($translation); // Supprime la traduction
                 $em->flush(); // Enregistre les changements
 
                 $this->addFlash('success', 'Traduction supprimée avec succès.');
+
                 return $this->redirectToRoute('profile_show');
             } else {
                 throw new Exception('Erreur : Jeton CSRF invalide.'); // Si le jeton CSRF est invalide
