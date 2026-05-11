@@ -31,12 +31,12 @@
 
             <article class="edit-parameters">
                     <ul class="profile-picture d-flex flex-row align-items-center">
-                        {% if profile.profilePictureName is same as(null) %}
-                            <li><div class="user-pfp rounded-circle mb-2" style="background-image: url({{ asset('uploads/profile/profilePictures/' ~ profile.profilePictureName) }})"></div></li>
+                        {% if profile.profilePictureName is empty %}
+                            <li class="me-4"><div class="user-pfp-settings rounded-circle mb-2" style="background-image: url('/assets/imgs/placeholders/default-pfp.png')"></div></li>
                         {% else %}
-                            <li class="me-4"><div class="user-pfp-settings rounded-circle mb-2" style="background-image: url({{ asset('uploads/profile/profilePictures/' ~ profile.profilePictureName) }})"></div></li>
+                            <li class="me-4"><div class="user-pfp-settings rounded-circle mb-2" style="background-image: url('{{ asset('uploads/profile/profilePictures/' ~ profile.profilePictureName) }}')"></div></li>
                         {% endif %}
-                        <li class="ms-2">{{ profile.username }}</li>
+                        <li class="ms-2 li-username">{{ profile.username }}</li>
                     </ul>
 
                     <div class="d-flex">
