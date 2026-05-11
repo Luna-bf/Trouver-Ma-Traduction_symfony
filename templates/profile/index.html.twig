@@ -13,7 +13,7 @@
 		{% if profile.thumbnailName is same as(null) %}
 			<div class="profile-banner d-flex" style="background-image: url('/assets/imgs/placeholders/placeholder-picture.png')"></div>
 		{% else %}
-			<div class="profile-banner d-flex" style="background-image: url({{ asset('uploads/profile/profileThumbnails/' ~ profile.thumbnailName) }})"></div>
+			<div class="profile-banner d-flex" style="background-image: url({{ asset('uploads/profile/thumbnails/' ~ profile.thumbnailName) }})"></div>
 		{% endif %}
 
 		<section class="profile-infos d-flex flex-column align-items-center">
