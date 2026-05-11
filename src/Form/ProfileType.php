@@ -47,6 +47,10 @@ class ProfileType extends AbstractType
                 'label_attr' => [
                     'class' => 'mt-label'
                 ],
+
+                'attr' => [
+                    'class' => 'text-black'
+                ]
             ])
             ->add('thumbnailName', FileType::class, [
                 // Label personnalisé
@@ -65,6 +69,10 @@ class ProfileType extends AbstractType
                 'label_attr' => [
                     'class' => 'mt-label'
                 ],
+
+                'attr' => [
+                    'class' => 'text-black'
+                ]
             ])
             ->add('description', TextareaType::class, [
                 // Label personnalisé
