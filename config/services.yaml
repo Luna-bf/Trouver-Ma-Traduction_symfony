@@ -7,8 +7,6 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-    profileImagesDirectory: '%kernel.project_dir%/public/uploads/profile/profilePictures'
-    profileThumbnailsDirectory: '%kernel.project_dir%/public/uploads/profile/profileThumbnails'
     
 services:
     # default configuration for services in *this* file
@@ -24,5 +22,13 @@ services:
     App\Service\FileUploader:
         arguments:
             $translationsDirectory: '%kernel.project_dir%/public/uploads/translations'
+    
+    App\Service\ProfilePictureUploader:
+        arguments:
+            $profilePicturesDirectory: '%kernel.project_dir%/public/uploads/profile/profilePictures'
+
+    App\Service\ThumbnailUploader:
+        arguments:
+            $thumbnailsDirectory: '%kernel.project_dir%/public/uploads/profile/thumbnails'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
