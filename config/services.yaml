@@ -7,7 +7,6 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-    translationsDirectory: '%kernel.project_dir%/public/uploads/translations'
     profileImagesDirectory: '%kernel.project_dir%/public/uploads/profile/profilePictures'
     profileThumbnailsDirectory: '%kernel.project_dir%/public/uploads/profile/profileThumbnails'
     
@@ -21,6 +20,9 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/'
-
+    
+    App\Service\FileUploader:
+        arguments:
+            $translationsDirectory: '%kernel.project_dir%/public/uploads/translations'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
