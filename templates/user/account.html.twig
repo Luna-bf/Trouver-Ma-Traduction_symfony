@@ -29,11 +29,20 @@
 			</article>
 
 			<article class="edit-parameters">
-				<form>
+				<form method="post" action="" class="d-flex flex-row align-content-center">
 					<div class="d-flex flex-column form-parent-row w-50">
 						<label for="password" class="mt-0 mt-label">Mot de passe</label>
 						<input type="password" name="password" id="password" class="form-input mb-3">
 					</div>
+					<button class="reset-btn text-white rounded align-self-center mt-3 ms-3">Réinitialiser</button>
+				</form>
+
+				<form method="post" action="" class="d-flex flex-row align-content-center mt-4">
+					<div class="d-flex flex-column form-parent-row w-50">
+						<label for="email" class="mt-0 mt-label">Adresse mail</label>
+						<input type="email" name="email" id="email" class="form-input mb-3">
+					</div>
+					<button class="reset-btn text-white rounded align-self-center mt-3 ms-3">Réinitialiser</button>
 				</form>
 
 				<hr class="account-hr">
