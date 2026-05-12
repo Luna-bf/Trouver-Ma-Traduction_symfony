@@ -40,11 +40,6 @@ final class UserController extends AbstractController
         } else {
             $submittedToken = $request->getPayload()->get('token'); // Récupère la valeur du champ nommé "token"
             
-            /*
-            La suppression du compte entraîne :
-                - La suppression du profil et des données qui y sont associées : pseudo, images du profil, traductions...
-                - La suppression du compte de l'utilisateur
-            */
             // Récupère toutes les traductions d'un utilisateur grâce à l'identifiant du profil auxquelles elles sont associées
             $translations = $repo->findBy(['profile' => $user->getProfile()->getId()]); // Récupère un objet Translation
             $profilePicture = $profilePictureUploader->getTargetDirectory() . '/' . $profile->getProfilePictureName();
