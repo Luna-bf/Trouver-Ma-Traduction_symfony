@@ -3,11 +3,6 @@
 {% block title %}Profil - Trouver Ma Traduction
 {% endblock %}
 
-{# Mon fichier JS #}
-{% block script %}
-	<script src="{{ asset('/js/app.js') }}" defer></script>
-{% endblock %}
-
 {% block main %}
 	<main class="profile-container">
 		{% if profile.thumbnailName is same as(null) %}
@@ -115,6 +110,6 @@
 				{% endfor %}
 			</section>
 
-			<p class="fs-5 fw-regular message">{{ message }}</p>
+			<p class="fw-regular message">{{ message }}</p>
 		</main>
 	{% endblock %}
