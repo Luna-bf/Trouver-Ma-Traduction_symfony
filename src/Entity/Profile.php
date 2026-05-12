@@ -35,7 +35,7 @@ class Profile
     /**
      * @var Collection<int, Translation>
      */
-    #[ORM\OneToMany(targetEntity: Translation::class, mappedBy: 'profile')]
+    #[ORM\OneToMany(targetEntity: Translation::class, mappedBy: 'profile', orphanRemoval: true)]
     private Collection $translations;
 
     public function __construct()
