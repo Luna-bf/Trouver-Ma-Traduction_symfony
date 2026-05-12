@@ -34,7 +34,7 @@ final class ProfileController extends AbstractController
 
             $profilePicture = $profileForm->get('profilePictureName')->getData(); // Récupère la valeur de "profilePictureName"
             $thumbnail = $profileForm->get('thumbnailName')->getData(); // Récupère la valeur de "thumbnailName"
-            
+
             $fullProfile = $profileForm->getData(); // Récupère toutes les données du formulaire
             $fullProfile->setUser($user);
 
@@ -131,8 +131,8 @@ final class ProfileController extends AbstractController
             if ($newThumbnail) {
 
                 /*
-                Je vérifie ce qui est récupéré, si l'utilisateur n'a pas encore de photo de profil (valeur NULL dans la BDD),
-                alors cela signifie que le chemin récupéré s'arrête au dossier "profileThumbnails", j'utilise donc la fonction
+                Je vérifie ce qui est récupéré, si l'utilisateur n'a pas encore de bannière de profil (valeur NULL dans la BDD),
+                alors cela signifie que le chemin récupéré s'arrête au dossier "thumbnails", j'utilise donc la fonction
                 "is_dir()" pour vérifier que le contenu récupéré est bien un dossier, puis j'envoie le fichier dans celui-ci
                 sans utiliser la méthode "unlink()", car je n'ai pas besoin de supprimer une ancienne bannière de profil.
                 */
