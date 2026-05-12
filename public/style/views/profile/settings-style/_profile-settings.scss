@@ -49,6 +49,30 @@
     font-size: 1.125rem;
 }
 
+.profile-form div>.submit-btn {
+    margin-top: 3em;
+}
+
+.edit-parameters>hr {
+    width: 95%;
+    margin: 3.2em 0 3em 0;
+}
+
+.edit-parameters form>.delete-profile, .account-params form>button {
+    font-family: "PoppinsLight", sans-serif;
+    border: 1px solid firebrick;
+    background-color: #fff;
+    padding: 0.6em 1.1em 0.6em 1.1em;
+    font-size: 1rem;
+    color: firebrick;
+}
+
+.edit-parameters form>.delete-profile:hover, .account-params form>button:hover {
+    border: 1px solid firebrick;
+    background-color: firebrick;
+    color: #fff;
+}
+
 /************
 RESPONSIVE
 ************/
