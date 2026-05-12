@@ -58,7 +58,7 @@
                     (traductions, photos, etc...) seront supprimés avant de supprimer le profil #}
                     <form action="{{ path('profile_delete', {id: profile.id}) }}" method="post">
                         <input type="hidden" name="token" value="{{ csrf_token('delete-profile') }}">
-                        <button class="rounded delete-profile"><i class="fa-solid fa-trash"></i>&ensp;Supprimer mon profil</button>
+                        <button class="rounded delete-profile"><i class="fa-solid fa-trash-can"></i>&ensp;Supprimer mon profil</button>
                     </form>
                 </div>
 			</article>

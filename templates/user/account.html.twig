@@ -44,7 +44,7 @@
 					{# Ajouter un pop-up de confirmation avertissant que le compte ET le profil seront supprimés #}
 					<form action="{{ path('user_account_delete', {id: profile.user.id}) }}" method="post" class="m-auto">
 						<input type="hidden" name="token" value="{{ csrf_token('delete-account') }}">
-						<button class="rounded mt-5"><i class="fa-solid fa-trash"></i>&ensp;Supprimer mon compte</button>
+						<button class="rounded mt-5"><i class="fa-solid fa-trash-can"></i>&ensp;Supprimer mon compte</button>
 					</form>
 				</div>
 			</article>
