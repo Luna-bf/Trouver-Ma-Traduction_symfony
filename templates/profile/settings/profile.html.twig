@@ -48,19 +48,6 @@
 					{{ form_start(editProfileForm, {'attr': {'class': 'profile-form w-75'}}) }}
 					{{ form_end(editProfileForm) }}
 				</div>
-
-				<hr>
-
-                <div class="d-flex flex-column align-items-center my-4">
-                    <h3 class="fs-3 text-center mb-5">Autres actions</h3>
-
-                    {# Ajouter un pop-up de confirmation avertissant que le profil et le contenu qui y est associé
-                    (traductions, photos, etc...) seront supprimés avant de supprimer le profil #}
-                    <form action="{{ path('profile_delete', {id: profile.id}) }}" method="post">
-                        <input type="hidden" name="token" value="{{ csrf_token('delete-profile') }}">
-                        <button class="rounded delete-profile"><i class="fa-solid fa-trash-can"></i>&ensp;Supprimer mon profil</button>
-                    </form>
-                </div>
 			</article>
 		</section>
 	</main>
