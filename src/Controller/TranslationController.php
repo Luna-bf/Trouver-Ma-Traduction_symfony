@@ -58,6 +58,7 @@ final class TranslationController extends AbstractController
     {
         // Création d'une nouvelle instance de Translation
         $translation = new Translation();
+        $img = "";
 
         // Initialisation du formulaire
         $translationForm = $this->createForm(TranslationType::class, $translation, [
@@ -69,12 +70,12 @@ final class TranslationController extends AbstractController
 
         // Vérifie si le formulaire est valide
         if ($translationForm->isSubmitted() && $translationForm->isValid()) {
-            
+
             $fullTranslation = $translationForm->getData(); // Récupère toutes les données du formulaire
             $translationFile = $translationForm->get('translationFile')->getData(); // Récupère le fichier du champ "translationFile"
-            
+
             $fullTranslation->setCreatedAt(new \DateTimeImmutable()); // Enregistre la date dans le champ du formulaire (setter)
-            
+
             $profile = $user->getProfile(); // Récupère les données l'utilisateur connecté
             $fullTranslation->setProfile($profile); // Enregistre les données de l'utilisateur connecté dans le champ du formulaire (setter)
 
@@ -86,6 +87,9 @@ final class TranslationController extends AbstractController
 
                 // Ajoute le nom du fichier à la colonne "translationFileName"
                 $fullTranslation->setTranslationFileName($translationFileName);
+
+                // Ajoute l'extension du fichier à la colonne "translationFileExtension"
+                $fullTranslation->setTranslationFileExtension(pathinfo($translation->getTranslationFileName(), PATHINFO_EXTENSION));
             }
 
             $em->persist($fullTranslation); // Crée le nouvel élément
@@ -130,6 +134,7 @@ final class TranslationController extends AbstractController
 
                 $newTranslationFileName = $fileUploader->upload($newTranslationFile);
                 $translation->setTranslationFileName($newTranslationFileName);
+                $translation->setTranslationFileExtension(pathinfo($translation->getTranslationFileName(), PATHINFO_EXTENSION));
             }
 
             $em->flush(); // Modifie la ligne en BDD
