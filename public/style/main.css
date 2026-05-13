@@ -21132,7 +21132,22 @@ input[type=file]::file-selector-button {
 }
 
 input[type=checkbox] {
-  transform: scale(1.4);
+  transform: scale(1.1);
+}
+
+.edit-parameters form > .reset-btn {
+  font-family: "PoppinsLight", sans-serif;
+  font-size: 0.86rem;
+  background-color: #dcac4d;
+  border: 1px solid #dcac4d;
+  padding: 0.5em 0px;
+  transition: none;
+  width: 20%;
+}
+
+.edit-parameters form > .reset-btn:hover {
+  background-color: #DB8535;
+  border: 1px solid #DB8535;
 }
 
 .accueil-connect-container > h2 {
@@ -21152,6 +21167,7 @@ input[type=checkbox] {
 
 .swiper-slide {
   border: 3px solid #DCAC4D;
+  background-color: #fff;
   padding: 0.625em 0;
 }
 
@@ -21205,6 +21221,7 @@ input[type=checkbox] {
 .simple-card-item {
   width: 290px;
   border: 3px solid #DCAC4D;
+  background-color: #fff;
   border-radius: 6px;
   padding: 0.625em 0;
   margin-bottom: 5em;
@@ -21321,6 +21338,10 @@ RESPONSIVE
     margin-top: 4em;
   }
 }
+body {
+  background-color: #F2F7FF;
+}
+
 .profile-container {
   width: 100%;
 }
@@ -21395,6 +21416,7 @@ RESPONSIVE
 
 .action-links li > .settings {
   border: 1px solid #6c757d;
+  background-color: #fff;
   color: #6c757d;
 }
 
@@ -21405,6 +21427,7 @@ RESPONSIVE
 
 .action-links li > .logout {
   border: 1px solid #b22222;
+  background-color: #fff;
   color: #b22222;
 }
 
@@ -21448,6 +21471,7 @@ RESPONSIVE
 
 .create-post {
   border: 1px solid #198754;
+  background-color: #fff;
   color: #198754;
   transition: all 0.2s;
 }
@@ -21574,6 +21598,30 @@ RESPONSIVE
 
 .profile-picture > li {
   font-size: 1.125rem;
+}
+
+.profile-form div > .submit-btn {
+  margin-top: 3em;
+}
+
+.edit-parameters > hr {
+  width: 95%;
+  margin: 3.2em 0 3em 0;
+}
+
+.edit-parameters form > .delete-profile, .account-params form > button {
+  font-family: "PoppinsLight", sans-serif;
+  border: 1px solid firebrick;
+  background-color: #fff;
+  padding: 0.6em 1.1em 0.6em 1.1em;
+  font-size: 1rem;
+  color: firebrick;
+}
+
+.edit-parameters form > .delete-profile:hover, .account-params form > button:hover {
+  border: 1px solid firebrick;
+  background-color: firebrick;
+  color: #fff;
 }
 
 /************
@@ -21717,6 +21765,11 @@ RESPONSIVE
   font-weight: 400;
   text-align: center;
   margin-bottom: 0.5rem;
+}
+
+.account-params form > button {
+  margin: 2em 0 1em 0;
+  font-size: 0.95rem;
 }
 
 .other-actions {
