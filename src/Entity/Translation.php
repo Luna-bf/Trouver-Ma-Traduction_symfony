@@ -42,6 +42,9 @@ class Translation
     #[ORM\JoinColumn(nullable: false)]
     private ?Profile $profile = null;
 
+    #[ORM\Column(length: 20)]
+    private ?string $translationFileExtension = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -179,6 +182,18 @@ class Translation
     public function setProfile(?Profile $profile): static
     {
         $this->profile = $profile;
+
+        return $this;
+    }
+
+    public function getTranslationFileExtension(): ?string
+    {
+        return $this->translationFileExtension;
+    }
+
+    public function setTranslationFileExtension(string $translationFileExtension): static
+    {
+        $this->translationFileExtension = $translationFileExtension;
 
         return $this;
     }
