@@ -61,8 +61,7 @@
 				{% for translation in translations %}
 					<article class='simple-card-item' id="{{ translation.id }}">
 						<div class='simple-card-content'>
-							<figure><img src='/assets/imgs/placeholders/placeholder-file.png' alt='File extension'/>
-							</figure>
+							<figure><img src='{{ asset("/assets/imgs/general/slider/#{translation.translationFileExtension}-file-extension.png")}}' alt='File extension' class="rounded-3"/></figure>
 
 							<div class='text-center simple-title'>
 								<h3>{{ translation.name }}</h3>

@@ -1,8 +1,7 @@
 {% for translation in translations %}
 	<article class='rounded-2 swiper-slide'>
 		<div class='m-auto card-content' id='{{ translation.id }}'>
-			<figure><img src='/assets/imgs/placeholders/placeholder-file.png' alt='File extension' class="rounded-3"/>
-			</figure>
+			<figure><img src='{{ asset("/assets/imgs/general/slider/#{translation.translationFileExtension}-file-extension.png")}}' alt='File extension' class="rounded-3"/></figure>
 
 			<div class='text-center title'>
 				<h3>{{ translation.name }}</h3>
