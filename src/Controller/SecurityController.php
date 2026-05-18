@@ -18,6 +18,13 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
+        // Si l'utilisateur porte le rôle "ROLE_USER" et qu'il est bel et bien connecté (IS_AUTHENTICATED_FULLY)
+        if ($this->isGranted('ROLE_USER') && $this->isGranted('IS_AUTHENTICATED_FULLY')) {
+
+            // Je redirige l'utilisateur vers la page d'accueil
+            return $this->redirectToRoute('translation_home');
+        }
+
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error,

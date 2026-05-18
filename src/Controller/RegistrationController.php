@@ -20,6 +20,13 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
+        // Si l'utilisateur porte le rôle "ROLE_USER" et qu'il est bel et bien connecté (IS_AUTHENTICATED_FULLY)
+        if ($this->isGranted('ROLE_USER') && $this->isGranted('IS_AUTHENTICATED_FULLY')) {
+
+            // Je redirige l'utilisateur vers la page d'accueil
+            return $this->redirectToRoute('translation_home');
+        }
+
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var string $plainPassword */
             $plainPassword = $form->get('plainPassword')->getData();
