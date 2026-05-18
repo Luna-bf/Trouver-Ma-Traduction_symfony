@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Translation;
+use App\Entity\Type;
+use App\Entity\Style;
+use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -34,7 +37,7 @@ class TranslationType extends AbstractType
             ->add('translationFile', FileType::class, [
 
                 'mapped' => false,
-                
+
                 'required' => $options['is_file_required'],
 
                 'row_attr' => [
@@ -57,12 +60,12 @@ class TranslationType extends AbstractType
                     )
                 ],
             ])
-            ->add('translationType', ChoiceType::class, [
+            ->add('translationType', EnumType::class, [
+                'class' => Type::class,
                 // Ajout d'une classe à la balise div générée par $builder
                 'row_attr' => [
                     'class' => 'd-flex flex-column form-parent-row',
                 ],
-
                 'label' => 'Type de contenu',
                 'label_attr' => [
                     'class' => 'mt-label'
@@ -70,17 +73,12 @@ class TranslationType extends AbstractType
                 'attr' => [
                     'class' => 'form-input',
                 ],
-                'choices' => [
-                    'Chanson' => 'Chanson',
-                    'Livre' => 'Livre',
-                    'Texte' => 'Texte',
-                ],
             ])
-            ->add('translationStyle', ChoiceType::class, [
+            ->add('translationStyle', EnumType::class, [
+                'class' => Style::class,
                 'row_attr' => [
                     'class' => 'd-flex flex-column form-parent-row',
                 ],
-
                 'label' => 'Style de la traduction',
                 'label_attr' => [
                     'class' => 'mt-label'
@@ -90,15 +88,15 @@ class TranslationType extends AbstractType
                 ],
                 'choices' => [
                     'Chanson' => [
-                        'Electro Swing' => 'Electro Swing',
-                        'Rock' => 'Rock',
-                        'Pop' => 'Pop'
+                        'Electro Swing' => Style::Swing,
+                        'Rock' => Style::Rock,
+                        'Pop' => Style::Pop
                     ],
                     'Livre' => [
-                        'Fantasy' => 'Fantasy',
+                        'Fantasy' => Style::Fantasy,
                     ],
                     'Texte' => [
-                        'Poème' => 'Poème',
+                        'Poème' => Style::Poème,
                     ]
                 ]
             ])
