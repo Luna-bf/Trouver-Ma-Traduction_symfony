@@ -8,6 +8,20 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Event\PostUpdateEventArgs;
 use Doctrine\ORM\Events;
 
+enum Type: string {
+    case Chanson = 'Chanson';
+    case Livre = 'Livre';
+    case Texte = 'Texte';
+}
+
+enum Style: string {
+    case Swing = 'Electro Swing';
+    case Pop = 'Pop';
+    case Rock = 'Rock';
+    case Fantasy = 'Fantasy';
+    case Poème = 'Poème';
+}
+
 #[ORM\Entity(repositoryClass: TranslationRepository::class)]
 // #[AsEntityListener(event: Events::postUpdate, method: 'postUpdate', entity: Translation::class)]
 class Translation
@@ -23,11 +37,11 @@ class Translation
     #[ORM\Column(length: 500)]
     private ?string $translationFileName = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $translationType = null;
+    #[ORM\Column(type: 'string', enumType: type::class)]
+    private ?Type $translationType = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $translationStyle = null;
+    #[ORM\Column(type: 'string', enumType: style::class)]
+    private ?Style $translationStyle = null;
 
     #[ORM\Column(length: 255)]
     private ?string $author = null;
@@ -74,24 +88,26 @@ class Translation
         return $this;
     }
 
-    public function getTranslationType(): ?string
+    // Le getter retourne maintenant l'objet enum et non une chaîne de caractère vu que le type de cette donnée est Enum
+    public function getTranslationType(): ?Type
     {
         return $this->translationType;
     }
 
-    public function setTranslationType(string $translationType): static
+    public function setTranslationType(Type $translationType): static
     {
         $this->translationType = $translationType;
 
         return $this;
     }
 
-    public function getTranslationStyle(): ?string
+    // Le getter retourne maintenant l'objet enum et non une chaîne de caractère vu que le type de cette donnée est Enum
+    public function getTranslationStyle(): ?Style
     {
         return $this->translationStyle;
     }
 
-    public function setTranslationStyle(string $translationStyle): static
+    public function setTranslationStyle(Style $translationStyle): static
     {
         $this->translationStyle = $translationStyle;
 
