@@ -4,11 +4,11 @@
 {% endblock %}
 
 {% block body %}
-	<body class="forms-body">
+	<body class="form-body">
 		{% block main %}
 			<main>
-				<section class="d-flex flex-column align-items-center justify-content-center text-white">
-					<h1 class="mb-3">Connexion</h1>
+				<section class="form-body__section d-flex flex-column align-items-center justify-content-center text-white">
+					<h1 class="mb-3 form-section_h1">Connexion</h1>
 
 					<form method="post" class="d-flex flex-column mt-2 form-width">
 
@@ -31,8 +31,8 @@
 
 							<div class="checkbox mb-3 mt-4" id="remember-me">
 								<input type="checkbox" name="_remember_me" id="_remember_me" class="form-checkbox">
-								<span class="checkmark"></span>
-								<label for="_remember_me" class="sign-label">Se souvenir de moi</label>
+								{# <span class="checkmark"></span> #}
+								<label for="_remember_me">Se souvenir de moi</label>
 							</div>
 						</div>
 
@@ -48,7 +48,7 @@
 
 						<div class="d-flex flex-column align-items-center account-parent">
 							<a href="#" class="forgotten-password text-white">Mot de passe oublié ?</a>
-							<p class="form-redirection-text">Vous n'avez pas de compte ? <a href="{{ path('app_register') }}">Inscrivez-vous</a></p>
+							<p class="form-redirection-text mt-4" id="no-account">Vous n'avez pas de compte ? <a href="{{ path('app_register') }}">Inscrivez-vous</a></p>
 						</div>
 					</form>
 				</section>

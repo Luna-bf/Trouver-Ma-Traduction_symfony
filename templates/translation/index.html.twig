@@ -6,10 +6,10 @@
 {% block body %}
 	<body class="bg-color-brown">
 		{% block header %}
-			<header class="hero d-flex flex-column align-items-center justify-content-center min-vh-100">
-				<h1 class="text-white">Toutes vos traductions rassemblées à un seul endroit.</h1>
-				<p class="text-white text-center">Chansons, textes, livres... Notre site communautaire rassemble des centaines d'adaptions traduites par des amoureux de la langue et de l'art !</p>
-				<ul class="d-flex flex-row">
+			<header class="landing-header d-flex flex-column align-items-center justify-content-center min-vh-100">
+				<h1 class="landing-header__h1 text-white">Toutes vos traductions rassemblées à un seul endroit.</h1>
+				<p class="landing-header__p text-white text-center">Chansons, textes, livres... Notre site communautaire rassemble des centaines d'adaptions traduites par des amoureux de la langue et de l'art !</p>
+				<ul class="landing-header__ul d-flex flex-row">
 					<li class="text-center me-5">
 						<a href="{{ path('app_register') }}" class="text-white">S'inscrire</a>
 					</li>
@@ -21,13 +21,13 @@
 		{% endblock %}
 
 		{% block main %}
-			<main class="d-flex flex-column justify-content-center m-auto accueil-container">
-				<section class="d-flex flex-column align-items-center text-white translation-titles">
-					<p>Avide de lecture, mordu de musique ou bien lecteur occasionnel ?</p>
-					<p>Notre site est accessible à tous et propose toute une variété de traductions, tel que :</p>
+			<main class="d-flex flex-column justify-content-center m-auto">
+				<section class="translation-titles d-flex flex-column align-items-center">
+					<p class="translation-titles__p">Avide de lecture, mordu de musique ou bien lecteur occasionnel ?</p>
+					<p class="translation-titles__p">Notre site est accessible à tous et propose toute une variété de traductions, tel que :</p>
 				</section>
 
-				<section class="d-flex flex-row justify-content-center translation-parent">
+				<section class="translation-parent d-flex flex-row justify-content-center">
 					<article class="d-flex flex-column justify-content-center align-items-center bg-white translation-card">
 						<figure class="card-img">
 							<img src="../../assets/imgs/general/accueil/books-card-img.png" alt="Livres" class="rounded-3">
@@ -36,7 +36,7 @@
 						<ul class="d-flex flex-column justify-content-center align-items-center list-unstyled mb-0 summary">
 							<li><span class="fst-italic">Livres</span></li>
 							<li><p>Fantasy, roman policier, histoires à l'eau de rose... Tout les types de récits sont proposés sur le site et n'attendent plus que vous pour les découvrir !</p></li>
-							<li class="text-center"><a href="{{ path('app_register') }}">Commencez vos recherches dès maintenant</a></li>
+							<li class="text-center mb-2"><a href="{{ path('app_register') }}">Commencez vos recherches dès maintenant</a></li>
 						</ul>
 					</article>
 

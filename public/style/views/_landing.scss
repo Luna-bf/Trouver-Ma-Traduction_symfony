@@ -1,113 +1,116 @@
 @use '../other/variables';
 
-// body
-.bg-color-brown {
-    background-color: #592720;
-}
-
-/***HERO***/
-.hero {
+/*** .landing-header ***/
+.landing-header {
     background-image: url("../assets/imgs/general/accueil/header.png");
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.7);
     background-size: cover;
     background-position: center center;
+
+    // <h1>
+    .landing-header__h1 {
+        font-family: "PoppinsLight", sans-serif;
+        font-size: 2.813rem;
+        line-height: 3.5;
+    }
+
+    // <p>
+    .landing-header__p {
+        font-family: "PoppinsExtraLight", sans-serif;
+        font-size: 22px;
+        max-width: 1050px;
+    }
+
+    // <ul>
+    .landing-header__ul {
+        margin-top: 6em;
+
+        >li {
+            border: 2px solid white;
+            border-radius: 7px;
+            padding: 0.625em 2.8125em;
+            transition: none;
+        }
+
+        >li:hover {
+            border: 2px solid variables.$form-btn-bg-color-hover;
+            background-color: variables.$form-btn-bg-color-hover;
+            transition: none;
+            cursor: pointer;
+        }
+
+        >li:active {
+            border: 2px solid variables.$form-btn-bg-color-active;
+            background-color: variables.$form-btn-bg-color-active;
+            transition: none;
+        }
+
+        >li>a {
+            font-family: "PoppinsLight", sans-serif;
+            font-size: 1.063rem;
+        }
+    }
 }
 
-.hero>h1 {
-    font-family: "PoppinsLight", sans-serif;
-    font-size: 2.813rem;
-    line-height: 3.5;
-}
 
-.hero>p {
-    font-family: "PoppinsExtraLight", sans-serif;
-    font-size: 22px;
-    max-width: 1050px;
-}
+/*** Main ***/
 
-.hero>ul {
-    margin-top: 6em;
-}
-
-.hero ul>li {
-    border: 2px solid white;
-    border-radius: 7px;
-    padding: 0.625em 2.8125em;
-    transition: none;
-}
-
-.hero ul>li:hover {
-    border: 2px solid variables.$form-btn-bg-color-hover;
-    background-color: variables.$form-btn-bg-color-hover;
-    transition: none;
-    cursor: pointer;
-}
-
-.hero ul>li:active {
-    border: 2px solid variables.$form-btn-bg-color-active;
-    background-color: variables.$form-btn-bg-color-active;
-    transition: none;
-}
-
-.hero ul li>a {
-    font-family: "PoppinsLight", sans-serif;
-    font-size: 1.063rem;
-}
-
-
-/***Main**/
-.accueil-container>.translation-titles {
+// .translation-titles
+.translation-titles {
     padding: 4em 0 3.5em 0;
+
+    // <p>
+    .translation-titles__p {
+        font-family: "PoppinsExtraLight", sans-serif;
+        font-size: 1.5rem;
+        line-height: 70px;
+    }
 }
 
-.accueil-container .translation-titles>p {
-    font-family: "PoppinsExtraLight", sans-serif;
-    font-size: 1.5rem;
-    line-height: 70px;
-}
-
-.accueil-container>.translation-parent {
+// .translation-parent
+.translation-parent {
     column-gap: 4em;
     padding-bottom: 3.5em;
-}
 
-.accueil-container>section .translation-card {
-    border: 3px solid #DCAC4D;
-    border-radius: 10px;
-    width: 20%;
-    padding: 1em 0.5em;
-}
+    // .translation-card
+    >.translation-card {
+        border: 3px solid #DCAC4D;
+        border-radius: 10px;
+        width: 20%;
+        padding: 1em 0.5em;
 
-.accueil-container>section .translation-card .card-img {
-    width: 90%;
-}
+        >.card-img {
+            width: 90%;
+        }
 
-.translation-card>.summary {
-    max-width: 260px;
-}
+        // .summary
+        >.summary {
+            max-width: 260px;
 
-.translation-card .summary li>span {
-    font-size: 1.313rem;
-    margin-top: 0.8em;
-}
+            >li:first-child {
+                margin-top: 0.2em;
+                font-size: 1.4rem;
+            }
 
-.translation-card .summary li>p {
-    margin: 1.25rem 0 1.563rem 0;
-}
+            >li>p {
+                margin: 1.25rem 0 1.563rem 0;
+            }
 
-.translation-card .summary li>a {
-    color: variables.$form-btn-bg-color-hover;
-    transition: none;
-    font-size: 0.938rem;
-}
+            >li>a {
+                color: variables.$form-btn-bg-color-hover;
+                transition: none;
+                font-size: 1rem;
+            }
 
-.translation-card .summary li>a:hover {
-    transition: none;
-    text-decoration: underline;
-    color: variables.$form-btn-bg-color-active;
-    cursor: pointer;
+            >li>a:hover {
+                transition: none;
+                text-decoration: underline;
+                color: variables.$form-btn-bg-color-active;
+                cursor: pointer;
+            }
+        }
+    }
 }
-
 
 /************
 RESPONSIVE

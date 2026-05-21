@@ -1,9 +1,9 @@
 {% for translation in translations %}
 	<article class='rounded-2 swiper-slide'>
 		<div class='m-auto card-content' id='{{ translation.id }}'>
-			<figure><img src='{{ asset("/assets/imgs/general/slider/#{translation.translationFileExtension}-file-extension.png")}}' alt='File extension' class="rounded-3"/></figure>
+			<figure><img src='{{ asset("/assets/imgs/general/slider/#{translation.translationFileExtension}-file-extension.png")}}' alt='File extension' class="rounded-3 card-content__img"/></figure>
 
-			<div class='text-center title'>
+			<div class='text-center'>
 				<h3>{{ translation.name }}</h3>
 				<h4 class='mt-3 see-translation-link'>
 					<a href='{{ asset("uploads/translations/#{translation.translationFilename}") }}'>Voir la traduction</a>
@@ -12,10 +12,10 @@
 
 			<ul class='text'>
 				<li>Type :
-					<span>{{ translation.translationType }}</span>
+					<span>{{ translation.translationType.value }}</span>
 				</li>
 				<li>Style :
-					<span>{{ translation.translationStyle }}</span>
+					<span>{{ translation.translationStyle.value }}</span>
 				</li>
 				<li>Auteur :
 					<span>{{ translation.author }}</span>

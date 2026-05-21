@@ -1,25 +1,108 @@
 @use '../../other/variables';
 
-.forms-body {
+.form-body {
     background-image: url("../../assets/imgs/general/form/paysage.png");
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: 0 60em rgba(0, 0, 0, 0.58) inset;
+
+    .form-body__section {
+        margin-top: 5em;
+
+        .form-body__h1 {
+            font-size: 2.25rem;
+        }
+
+        .form-width {
+            width: 30%;
+        }
+
+        // .form-parent-row
+        .form-parent-row {
+
+            .mt-label {
+                margin-top: 2.5em;
+                margin-bottom: 0.5em;
+            }
+
+            input[type="checkbox"] {
+                transform: scale(1.1);
+            }
+        }
+
+        // .submit-btn
+        .submit-btn {
+            font-family: "PoppinsLight", sans-serif;
+            font-size: 1rem;
+            background-color: variables.$form-btn-bg-color;
+            border: 1px solid variables.$form-btn-bg-color;
+            padding: 0.5em 0 0.5em 0;
+            margin: 5rem auto 1.563rem auto;
+            transition: none;
+        }
+
+        .submit-btn:hover {
+            background-color: variables.$form-btn-bg-color-active;
+            border: 1px solid variables.$form-btn-bg-color-active;
+            cursor: pointer;
+        }
+    }
 }
 
-.forms-body main>section {
-    margin-top: 5em;
+// .form-redirection-text (registration form)
+.form-redirection-text {
+    margin-top: 3em;
+    margin-bottom: 0.875rem;
+    font-size: 1.063rem;
+    transition: none;
+
+    a {
+        color: variables.$form-btn-bg-color;
+        font-size: 1.063rem;
+    }
+
+    a:hover {
+        color: variables.$form-btn-bg-color-active;
+        text-decoration: underline;
+        transition: none;
+        cursor: pointer;
+    }
 }
 
-.forms-body main section>h1 {
-    font-size: 2.25rem;
+// .account-parent (login form)
+.account-parent {
+    font-family: "PoppinsExtraLight", sans-serif;
+    font-weight: 300;
+
+    .forgotten-password {
+        margin-top: 3em;
+        font-size: 1.063rem;
+    }
 }
 
-.form-width {
-    width: 30%;
+// .edit parameters__form
+.edit-parameters__form {
+
+    .reset-btn {
+        font-family: "PoppinsLight", sans-serif;
+        font-size: 0.86rem;
+        background-color: #dcac4d;
+        border: 1px solid #dcac4d;
+        padding: 0.5em 0px;
+        transition: none;
+        width: 20%;
+    }
+
+    .reset-btn:hover {
+        background-color: variables.$form-btn-bg-color-active;
+        border: 1px solid variables.$form-btn-bg-color-active;
+    }
 }
 
-.form-parent-row>input, .form-parent-row>select, .form-parent-row>textarea {
+// Non-nested style
+input,
+select,
+textarea {
     font-family: "PoppinsLight", sans-serif;
     background-color: #fff;
     border: 1px solid #B8B8B8;
@@ -29,66 +112,14 @@
     text-indent: 10px;
 }
 
-.form-parent-row>input, .form-parent-row>select {
+input[type="text"],
+input[type="select"],
+input[type="password"],
+input[type="email"],
+input[type="file"],
+input[type="search"],
+select {
     height: 35px;
-}
-
-.mt-label {
-    margin-top: 2.5em;
-    margin-bottom: 0.5em;
-}
-
-/*** .submit-btn ***/
-.submit-btn {
-    font-family: "PoppinsLight", sans-serif;
-    font-size: 1rem;
-    background-color: variables.$form-btn-bg-color;
-    border: 1px solid variables.$form-btn-bg-color;
-    padding: 0.5em 0 0.5em 0;
-    margin: 5rem auto 1.563rem auto;
-    transition: none;
-}
-
-.submit-btn:hover {
-    background-color: variables.$form-btn-bg-color-active;
-    border: 1px solid variables.$form-btn-bg-color-active;
-    cursor: pointer;
-}
-
-/*** account-parent ***/
-.account-parent {
-    font-family: "PoppinsExtraLight", sans-serif;
-    font-weight: 300;
-}
-
-.account-parent>.form-redirection-text {
-    margin-top: 0;
-}
-
-/*** form-redirection-text ***/
-.form-redirection-text {
-    margin-top: 3em;
-    margin-bottom: 0.875rem;
-    font-size: 1.063rem;
-    transition: none;
-}
-
-.form-redirection-text>a {
-    color: variables.$form-btn-bg-color;
-    font-size: 1.063rem;
-}
-
-.form-redirection-text>a:hover {
-    color: variables.$form-btn-bg-color-active;
-    text-decoration: underline;
-    transition: none;
-    cursor: pointer;
-}
-
-.forgotten-password {
-    margin-top: 3em;
-    margin-bottom: 0.875rem;
-    font-size: 1.063rem;
 }
 
 input[type="file"] {
@@ -103,23 +134,4 @@ input[type="file"]::file-selector-button {
     padding: 0 0.625em;
     font-size: 0.875rem;
     cursor: pointer;
-}
-
-input[type=checkbox] {
-    transform: scale(1.1);
-}
-
-.edit-parameters form>.reset-btn {
-    font-family: "PoppinsLight", sans-serif;
-    font-size: 0.86rem;
-    background-color: #dcac4d;
-    border: 1px solid #dcac4d;
-    padding: 0.5em 0px;
-    transition: none;
-    width: 20%;
-}
-
-.edit-parameters form>.reset-btn:hover {
-    background-color: #DB8535;
-    border: 1px solid #DB8535;
 }
