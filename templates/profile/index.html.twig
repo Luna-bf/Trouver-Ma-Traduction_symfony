@@ -45,8 +45,8 @@
 			</article>
 		</section>
 
-		<section class="d-flex flex-column">
-			<div class="posts-btns d-flex justify-content-center">
+		<section class="d-flex flex-column align-items-center">
+			<div class="posts-btn d-flex justify-content-center">
 				<a href="{{ path('translation_new_upload') }}" class="create-post">
 					<i class="fa-solid fa-plus"></i>Nouvelle publication</a>
 			</div>
@@ -57,7 +57,7 @@
 				</div>
 			{% endfor %}
 
-			<section class="d-flex flex-row justify-content-center flex-wrap justify-content-evenly">
+			<section class="d-flex flex-row justify-content-center flex-wrap justify-content-around w-75">
 				{% for translation in translations %}
 					<article class='simple-card-item' id="{{ translation.id }}">
 						<div class='simple-card-content'>
