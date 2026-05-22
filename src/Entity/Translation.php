@@ -15,11 +15,16 @@ enum Type: string {
 }
 
 enum Style: string {
-    case Swing = 'Electro Swing';
-    case Pop = 'Pop';
-    case Rock = 'Rock';
-    case Fantasy = 'Fantasy';
-    case Poème = 'Poème';
+    case Swing = 'Swing (Chanson)';
+    case Pop = 'Pop (Chanson)';
+    case Rock = 'Rock (Chanson)';
+    case Fantasy = 'Fantasy (Livre)';
+    case Policier = 'Policier (Livre)';
+    case Romance = 'Romance (Livre)';
+    case Poème = 'Poème (Texte)';
+    case Fable = 'Fable (Texte)';
+    case Légende = 'Légende (Texte)';
+    case Autre = 'Autre';
 }
 
 #[ORM\Entity(repositoryClass: TranslationRepository::class)]
