@@ -86,19 +86,21 @@ class TranslationType extends AbstractType
                 'attr' => [
                     'class' => 'form-input',
                 ],
-                'choices' => [
-                    'Chanson' => [
-                        'Electro Swing' => Style::Swing,
-                        'Rock' => Style::Rock,
-                        'Pop' => Style::Pop
-                    ],
-                    'Livre' => [
-                        'Fantasy' => Style::Fantasy,
-                    ],
-                    'Texte' => [
-                        'Poème' => Style::Poème,
-                    ]
-                ]
+                'group_by' => function (Style $style, int $key, string $value): ?string {
+                    if (str_contains($value, 'Chanson')) {
+                        return 'Chanson';
+                    }
+
+                    if (str_contains($value, 'Livre')) {
+                        return 'Livre';
+                    }
+
+                    if (str_contains($value, 'Texte')) {
+                        return 'Texte';
+                    }
+
+                    return 'Autre';
+                }
             ])
             ->add('author', TextType::class, [
                 'row_attr' => [
