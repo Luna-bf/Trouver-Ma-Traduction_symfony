@@ -4,10 +4,10 @@
 {% endblock %}
 
 {% block body %}
-	<body class="forms-body">
+	<body class="form-body">
 		{% block main %}
 			<main>
-				<section class="d-flex flex-column align-items-center justify-content-center text-white">
+				<section class="form-body__section d-flex flex-column align-items-center justify-content-center text-white">
 					<h1 class="mt-1">Modifier la publication</h1>
 					{{ form_start(editTranslationForm, {'attr': {'class': 'd-flex flex-column mt-2 form-width'}}) }}
 						{{ form_row(editTranslationForm.name) }}
