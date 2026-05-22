@@ -56,7 +56,6 @@ final class TranslationController extends AbstractController
     {
         // Création d'une nouvelle instance de Translation
         $translation = new Translation();
-        $img = "";
 
         // Initialisation du formulaire
         $translationForm = $this->createForm(TranslationType::class, $translation, [
@@ -70,7 +69,25 @@ final class TranslationController extends AbstractController
         if ($translationForm->isSubmitted() && $translationForm->isValid()) {
 
             $fullTranslation = $translationForm->getData(); // Récupère toutes les données du formulaire
+
             $translationFile = $translationForm->get('translationFile')->getData(); // Récupère le fichier du champ "translationFile"
+            $translationType = $translationForm->get('translationType')->getData();
+            $translationStyle = $translationForm->get('translationStyle')->getData();
+
+            /*
+            Je recherche un type (translationType) précis (ex: "Chanson") dans la valeur de la string translationStyle
+            (ex: "Rock (Chanson)").
+
+            Je vérifie si "$translationType->value" (ex: "Chanson") est une string contenue dans la valeur de la
+            variable "$translationStyle->value" (ex: Rock (Chanson)). Si c'est le cas, j'enregistre ses deux valeurs dans
+            la base de données, sinon, je déclenche une erreur.
+            */
+            if (str_contains($translationStyle->value, $translationType->value)) {
+                $fullTranslation->setTranslationType($translationType);
+                $fullTranslation->setTranslationStyle($translationStyle);
+            } else {
+                throw new Exception("Le style et le type de la traduction sont incompatibles.");
+            }
 
             $fullTranslation->setCreatedAt(new \DateTimeImmutable()); // Enregistre la date dans le champ du formulaire (setter)
 
@@ -125,6 +142,23 @@ final class TranslationController extends AbstractController
 
             // Récupère la valeur du champ "translationFile" (le fichier) dans le formulaire
             $newTranslationFile = $editTranslationForm->get('translationFile')->getData();
+            $translationType = $editTranslationForm->get('translationType')->getData();
+            $translationStyle = $editTranslationForm->get('translationStyle')->getData();
+
+            /*
+            Je recherche un type (translationType) précis (ex: "Chanson") dans la valeur de la string translationStyle
+            (ex: "Rock (Chanson)").
+
+            Je vérifie si "$translationType->value" (ex: "Chanson") est une string contenue dans la valeur de la
+            variable "$translationStyle->value" (ex: Rock (Chanson)). Si c'est le cas, j'enregistre ses deux valeurs dans
+            la base de données, sinon, je déclenche une erreur.
+            */
+            if (str_contains($translationStyle->value, $translationType->value)) {
+                $translation->setTranslationType($translationType);
+                $translation->setTranslationStyle($translationStyle);
+            } else {
+                throw new Exception("Le style et le type de la traduction sont incompatibles.");
+            }
 
             // Si un nouveau fichier est envoyé dans le formulaire
             if ($newTranslationFile) {
