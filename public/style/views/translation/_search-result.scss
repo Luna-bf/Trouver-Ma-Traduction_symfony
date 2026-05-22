@@ -1,59 +1,63 @@
+.search-result-container>:first-child {
+    margin-top: 4em;
+}
+
 .simple-card-item {
     width: 290px;
     border: 3px solid #DCAC4D;
     border-radius: 6px;
     padding: 0.625em 0;
     margin-bottom: 5em;
-}
 
-.simple-card-content {
-    width: 240px;
-    margin: 0 auto;
-}
+    .simple-card-content {
+        width: 240px;
+        margin: 0 auto;
 
-.simple-card-item .simple-card-content figure>img {
-    border-radius: 10px;
-    margin: 0.313em 0 0.625em 0;
-}
+        figure>img {
+            border-radius: 10px;
+            margin: 0.313em 0 0.625em 0;
+        }
 
-.simple-card-item .simple-card-content .simple-title>h3 {
-    font-family: "PoppinsRegular", sans-serif;
-    font-weight: 400;
-    text-align: center;
-    line-height: 1.6em;
-    margin-top: 0.625em;
-}
+        .simple-title>h3 {
+            font-family: "PoppinsRegular", sans-serif;
+            font-weight: 400;
+            text-align: center;
+            line-height: 1.6em;
+            margin-top: 0.625em;
+        }
 
-.simple-card-item .simple-card-content>.simple-text {
-    font-family: "PoppinsRegular", sans-serif;
-    font-size: 1rem;
-    margin: 2.5em 0;
-    color: var(--text-color);
-    list-style: none;
-    line-height: 2.5em;
-}
+        .simple-title>h4>a {
+            font-family: "PoppinsSemibold", sans-serif;
+        }
 
-.simple-card-item .simple-card-content .simple-text li>span {
-    font-family: "PoppinsLight", sans-serif;
-    font-weight: 300;
-}
+        .simple-text {
+            font-family: "PoppinsRegular", sans-serif;
+            font-size: 1rem;
+            margin: 2.5em 0;
+            color: var(--text-color);
+            list-style: none;
+            line-height: 2.5em;
 
-.simple-card-item .simple-card-content>.simple-other-infos {
-    font-family: "PoppinsRegular", sans-serif;
-    font-size: 1rem;
-    margin-bottom: 10px;
-    color: var(--text-color);
-    list-style: none;
-    line-height: 2em;
-}
+            >li>span {
+                font-family: "PoppinsLight", sans-serif;
+                font-weight: 300;
+            }
+        }
 
-.simple-card-item .simple-card-content .simple-other-infos li>span {
-    font-family: "PoppinsLight", sans-serif;
-    font-weight: 300;
-}
+        .simple-other-infos {
+            font-family: "PoppinsRegular", sans-serif;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+            list-style: none;
+            line-height: 2em;
 
-.search-result-container>:first-child {
-    margin-top: 4em;
+            li>span {
+                font-family: "PoppinsLight", sans-serif;
+                font-weight: 300;
+            }
+        }
+    }
 }
 
 /************
