@@ -102,7 +102,7 @@ class ProfileType extends AbstractType
                 ],
 
                 'attr' => [
-                    'class' => 'submit-btn text-white w-50 rounded'
+                    'class' => 'submit-btn text-white rounded mx-0'
                 ]
             ])
         ;
