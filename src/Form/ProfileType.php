@@ -27,7 +27,7 @@ class ProfileType extends AbstractType
 
                 // Attributs du label
                 'label_attr' => [
-                    'class' => 'mt-label'
+                    'class' => 'mt-label mt-1'
                 ],
             ])
             ->add('profilePictureName', FileType::class, [
