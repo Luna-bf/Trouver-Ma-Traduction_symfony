@@ -20,31 +20,9 @@
         // .form-parent-row
         .form-parent-row {
 
-            .mt-label {
-                margin-top: 2.5em;
-                margin-bottom: 0.5em;
-            }
-
             input[type="checkbox"] {
                 transform: scale(1.1);
             }
-        }
-
-        // .submit-btn
-        .submit-btn {
-            font-family: "PoppinsLight", sans-serif;
-            font-size: 1rem;
-            background-color: variables.$form-btn-bg-color;
-            border: 1px solid variables.$form-btn-bg-color;
-            padding: 0.5em 0 0.5em 0;
-            margin: 5rem auto 1.563rem auto;
-            transition: none;
-        }
-
-        .submit-btn:hover {
-            background-color: variables.$form-btn-bg-color-active;
-            border: 1px solid variables.$form-btn-bg-color-active;
-            cursor: pointer;
         }
     }
 }
@@ -133,5 +111,27 @@ input[type="file"]::file-selector-button {
     height: 35px;
     padding: 0 0.625em;
     font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.mt-label {
+    margin-top: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+// .submit-btn
+.submit-btn {
+    font-family: "PoppinsLight", sans-serif;
+    font-size: 1rem;
+    background-color: variables.$form-btn-bg-color;
+    border: 1px solid variables.$form-btn-bg-color;
+    padding: 0.5em 0 0.5em 0;
+    margin: 5rem auto 1.563rem auto;
+    transition: none;
+}
+
+.submit-btn:hover {
+    background-color: variables.$form-btn-bg-color-active;
+    border: 1px solid variables.$form-btn-bg-color-active;
     cursor: pointer;
 }
