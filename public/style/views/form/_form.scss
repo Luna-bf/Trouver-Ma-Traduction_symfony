@@ -122,12 +122,13 @@ input[type="file"]::file-selector-button {
 // .submit-btn
 .submit-btn {
     font-family: "PoppinsLight", sans-serif;
-    font-size: 1rem;
+    font-size: 0.9rem;
     background-color: variables.$form-btn-bg-color;
     border: 1px solid variables.$form-btn-bg-color;
     padding: 0.5em 0 0.5em 0;
     margin: 5rem auto 1.563rem auto;
     transition: none;
+    width: 40%;
 }
 
 .submit-btn:hover {
