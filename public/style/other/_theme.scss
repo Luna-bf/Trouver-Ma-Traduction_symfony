@@ -2,6 +2,27 @@
     --base-bg-color: #fff;
     --text-color: #000000;
     --nav-bg-color: #fff;
+    // settings
+    --settings-border: 1px solid #6c757d;
+    --settings-bg-color: transparent;
+    --settings-color: #6c757d;
+    --settings-bg-color-hover: #6c757d;
+    --settings-color-hover: #fff;
+    --settings-border-hover: 1px solid #6c757d;
+    // success
+    --success-border: 1px solid #198754;
+    --success-bg-color: transparent;
+    --success-color: #198754;
+    --success-bg-color-hover: #198754;
+    --success-color-hover: #fff;
+    --success-border-hover: 1px solid #198754;
+    // danger
+    --danger-border: 1px solid #b22222;
+    --danger-bg-color: transparent;
+    --danger-color: #b22222;
+    --danger-bg-color-hover: #b22222;
+    --danger-color-hover: #fff;
+    --danger-border-hover: 1px solid #b22222;
 }
 
 /***Dark mode***/
@@ -9,4 +30,24 @@
     --base-bg-color: #333333;
     --text-color: #fff;
     --nav-bg-color: #333333;
+    // settings
+    --settings-border: 1px solid #6c757d;
+    --settings-bg-color: #6c757d;
+    --settings-color: #fff;
+    --settings-bg-color-hover: #51585e;
+    --settings-color-hover: #fff;
+    --settings-border-hover: 1px solid #51585e;
+    // success
+    --success-border: 1px solid #198754;
+    --success-bg-color: #198754;
+    --success-color: #fff;
+    --success-bg-color-hover: #135e3b;
+    --success-color-hover: #fff;
+    --success-border-hover: 1px solid #135e3b;
+    // danger
+    --danger-border: 1px solid #b22222;
+    --danger-bg-color: #b22222;
+    --danger-color: #fff;
+    --danger-bg-color-hover: #911a1a;
+    --danger-border-hover: 1px solid #911a1a;
 }
