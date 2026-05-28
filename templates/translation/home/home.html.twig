@@ -7,11 +7,6 @@
 	<link rel="stylesheet" href="{{ asset('/assets/libs/swiper/swiper-bundle.css') }}"/>
 {% endblock %}
 
-{% block javascripts %}	
-	<script src="{{ asset('/assets/libs/swiper/swiper-bundle.js') }}"></script>
-	<script type="module" src="{{ asset('/js/slider.js') }}"></script>
-{% endblock %}
-
 {% block main %}
 	<main class="accueil-connect-container">
 		<a href="{{ path('translation_search_result') }}">Envoyer form</a>
@@ -28,4 +23,10 @@
 			<div class="swiper-slide-button swiper-button-next"></div>
 		</div>
 	</main>
+{% endblock %}
+
+{% block javascripts %}	
+	<script src="{{ asset('/assets/libs/swiper/swiper-bundle.js') }}"></script>
+	<script type="module" src="{{ asset('/js/slider.js') }}"></script>
+	<script src="{{ asset('/js/settings-js/theme.js') }}"></script>
 {% endblock %}

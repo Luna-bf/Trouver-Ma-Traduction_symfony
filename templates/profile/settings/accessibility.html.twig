@@ -6,7 +6,8 @@
 {% block main %}
 	<main>
 		<section class="settings-container d-flex flex-row justify-content-center mx-auto">
-			<article class="settings-parent">
+			<article
+				class="settings-parent">
 				{# Settings pages links #}
 				<ul class="all-settings d-flex flex-column">
 					<li>
@@ -29,15 +30,15 @@
 			</article>
 
 			<article class="edit-parameters">
-				<form>
-					<div class="d-flex flex-column form-parent-row w-50">
-						<label for="theme" class="mt-0 mt-label">Thème</label>
-						<select name="theme" id="theme" class="form-input">
-							<option value="light" id="light" selected>Lumineux</option>
-							<option value="dark" id="dark">Sombre</option>
-						</select>
-					</div>
+				<div class="d-flex flex-column form-parent-row w-50">
+					<label for="theme-select" class="mt-0 mt-label">Thème</label>
+					<select name="theme" id="theme-select" class="form-input">
+						<option value="light" id="light">Lumineux</option>
+						<option value="dark" id="dark">Sombre</option>
+					</select>
+				</div>
 
+				<form>
 					<div class="d-flex flex-column form-parent-row w-50">
 						<label for="language" class="mt-label">Langue</label>
 						<select name="language" id="language" class="form-input">
@@ -67,4 +68,8 @@
 			</article>
 		</section>
 	</main>
+{% endblock %}
+
+{% block javascripts %}
+	<script src="/js/settings-js/theme.js"></script>
 {% endblock %}
