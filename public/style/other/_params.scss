@@ -18,6 +18,8 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  background-color: var(--base-bg-color);
+  color: var(--text-color);
 }
 
 main {
@@ -62,7 +64,7 @@ p {
 }
 
 a {
-  color: #000000;
+  color: var(--text-color);
   font-size: 1.125rem;
   text-decoration: none;
 }
