@@ -1,43 +1,37 @@
 .account-hr {
     width: 93%;
-    margin: 1rem 0 1rem 0;
+    margin: 2.5rem 0;
 }
 
 .account-params {
     flex-direction: column;
     justify-content: center;
     margin-top: 0.8rem;
-}
 
-.account-params>h3 {
-    font-weight: 400;
-    text-align: center;
-    margin-bottom: 0.5rem;
-}
+    >h3 {
+        font-weight: 400;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
 
-.account-params form>button {
-    margin: 2em 0 1em 0;
-    font-size: 0.95rem;
-}
+    >form {
+        >button {
+            font-family: "PoppinsLight", sans-serif;
+            background-color: var(--danger-bg-color);
+            border: var(--danger-border);
+            color: var(--danger-color);
+            padding: 0.6em 1.1em 0.6em 1.1em;
+            margin: 2em 0 1em 0;
+            font-size: 0.9rem;
+        }
 
-// Other actions
-.other-actions {
-    margin-top: 1.5rem;
+        >button:hover {
+            background-color: var(--danger-bg-color-hover);
+            border: var(--danger-border-hover);
+            color: var(--danger-color-hover);
+        }
+    }
 }
-
-.other-actions>li {
-    margin-bottom: 1.5rem;
-}
-
-.other-actions>li:nth-child(3) {
-    color: #f5bf53;
-}
-
-.other-actions>li:last-child {
-    color: firebrick;
-    margin-bottom: 2rem;
-}
-
 
 /************
 RESPONSIVE
