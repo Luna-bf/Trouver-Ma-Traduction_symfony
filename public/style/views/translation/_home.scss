@@ -58,7 +58,7 @@
   // Arrows
   .swiper-button-next,
   .swiper-button-prev {
-    --swiper-navigation-color: #000;
+    --swiper-navigation-color: var(--text-color);
     --swiper-navigation-size: 1.75rem;
   }
 }
