@@ -61,14 +61,13 @@
 
         /*** .translation-count ***/
         >.translation-count {
-            font-family: "PoppinsRegular", sans-serif;
-            font-size: 1.063rem;
+            font-size: 1.03rem;
             margin-top: 2em;
         }
 
         >.translation-count>i {
             margin-right: 0.5rem;
-            font-size: 1.25rem;
+            font-size: 1.23rem;
             color: #1B9675;
         }
 
@@ -81,33 +80,37 @@
             >li>.settings,
             >li>.logout,
             >.create-post {
-                padding: 0.52em 1.162em;
+                padding: 0.6em 1.165em;
                 border-radius: 5px;
-                font-size: 0.969rem;
+                font-size: 1rem;
             }
 
             /*** .settings ***/
             li>.settings {
-                border: 1px solid #6c757d;
-                color: #6c757d;
+                background-color: var(--settings-bg-color);
+                border: var(--settings-border);
+                color: var(--settings-color);
                 font-size: 0.9rem;
             }
 
             li>.settings:hover {
-                background-color: #6c757d;
-                color: #fff
+                background-color: var(--settings-bg-color-hover);
+                border: var(--settings-border-hover);
+                color: var(--settings-color-hover);
             }
 
             /*** .logout ***/
             >li>.logout {
-                border: 1px solid #b22222;
-                color: #b22222;
+                background-color: var(--danger-bg-color);
+                border: var(--danger-border);
+                color: var(--danger-color);
                 font-size: 0.9rem;
             }
 
             >li>.logout:hover {
-                background-color: #b22222;
-                color: #fff
+                background-color: var(--danger-bg-color-hover);
+                border: var(--danger-border-hover);
+                color: var(--danger-color-hover);
             }
         }
     }
@@ -120,14 +123,16 @@ section>.posts-btn {
         padding: 0.52em 1.162em;
         border-radius: 5px;
         font-size: 0.9rem;
-        border: 1px solid #198754;
-        color: #198754;
+        background-color: var(--success-bg-color);
+        border: var(--success-border);
+        color: var(--success-color);
         transition: all 0.2s;
     }
 
     >.create-post:hover {
-        background-color: #198754;
-        color: #fff;
+        background-color: var(--success-bg-color-hover);
+        border: var(--success-border-hover);
+        color: var(--success-color-hover);
         transition: all 0.2s;
         cursor: pointer;
     }
@@ -144,9 +149,9 @@ section>.posts-btn {
 
         /*** .edit ***/
         >.edit {
-            border: 1px solid #198754;
-            background-color: #fff;
-            color: #198754;
+            background-color: var(--success-bg-color);
+            border: var(--success-border);
+            color: var(--success-color);
             padding: 0.25em 0.75em;
             border-radius: 5px;
             transition: all 0.2s;
@@ -154,18 +159,18 @@ section>.posts-btn {
         }
 
         >.edit:hover {
-            border: 1px solid #198754;
-            background-color: #198754;
-            color: #fff;
+            background-color: var(--success-bg-color-hover);
+            border: var(--success-border-hover);
+            color: var(--success-color-hover);
             transition: all 0.2s;
             cursor: pointer;
         }
 
         /*** button ***/
         >form>button {
-            border: 1px solid #b22222;
-            background-color: #fff;
-            color: #b22222;
+            background-color: var(--danger-bg-color);
+            border: var(--danger-border);
+            color: var(--danger-color);
             padding: 0.45em 1em;
             border-radius: 5px;
             transition: all 0.2s;
@@ -173,8 +178,9 @@ section>.posts-btn {
         }
 
         >form>button:hover {
-            background-color: #b22222;
-            color: #fff;
+            background-color: var(--danger-bg-color-hover);
+            border: var(--danger-border-hover);
+            color: var(--danger-color-hover);
             transition: all 0.2s;
             cursor: pointer;
         }
