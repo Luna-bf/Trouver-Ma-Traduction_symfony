@@ -31,7 +31,7 @@
 
 // border-left
 .border-left {
-    border-left: 2px solid #000;
+    border-left: 2px solid var(--text-color);
 }
 
 .edit-parameters {
@@ -49,26 +49,6 @@
         >li:last-child {
             font-size: 1.125rem;
         }
-    }
-
-    >hr {
-        width: 95%;
-        margin: 3.2em 0 3em 0;
-    }
-
-    .account-params form>button {
-        font-family: "PoppinsLight", sans-serif;
-        border: 1px solid firebrick;
-        background-color: #fff;
-        padding: 0.6em 1.1em 0.6em 1.1em;
-        font-size: 0.9rem;
-        color: firebrick;
-    }
-
-    .account-params form>button:hover {
-        border: 1px solid firebrick;
-        background-color: firebrick;
-        color: #fff;
     }
 }
 
