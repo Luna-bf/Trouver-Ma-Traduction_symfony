@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Profile;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -29,6 +30,29 @@ class ProfileType extends AbstractType
                 'label_attr' => [
                     'class' => 'mt-label mt-3'
                 ],
+            ])
+            // Essayer de définir les erreurs du formulaire ici ? (Assert Constraint ???)
+            ->add('language', ChoiceType::class, [
+                'label' => 'Langue',
+
+                'required' => true,
+
+                'choices' => [
+                    'Français' => 'fr',
+                    'English' => 'en',
+                ],
+
+                'row_attr' => [
+                    'class' => 'd-flex flex-column form-parent-row'
+                ],
+
+                'label_attr' => [
+                    'class' => 'mt-label'
+                ],
+
+                'attr' => [
+                    'class' => 'text-black'
+                ]
             ])
             ->add('profilePictureName', FileType::class, [
                 // Label personnalisé
@@ -102,7 +126,7 @@ class ProfileType extends AbstractType
                 ],
 
                 'attr' => [
-                    'class' => 'submit-btn text-white rounded mx-0'
+                    'class' => 'submit-btn text-white w-50 rounded'
                 ]
             ])
         ;
