@@ -27,7 +27,7 @@ Textes: Texts
 'Traductions postées :': 'Published translations :'
 Paramètres: Settings
 'Se déconnecter': Logout
-'Nouvelle publication': 'New publication'
+'Nouvelle publication': 'New post'
 Modifier: Edit
 Supprimer: Delete
 'Autres actions': 'Other actions'
@@ -50,3 +50,7 @@ Inscrivez-vous: Register
 'Mot de passe': Password
 'Se souvenir de moi': 'Remember me'
 "Vous n'avez pas saisi de description pour votre profil.": "You didn't enter a description for your profile."
+'Créez votre profil': 'Create your profile'
+'Modifier le mot de passe': 'Edit password'
+'Modification du mot de passe': 'Password change'
+'Modifiez votre mot de passe': 'Change your password'
