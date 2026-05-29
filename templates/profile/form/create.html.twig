@@ -8,7 +8,7 @@
 		{% block main %}
 			<main>
 				<section class="form-body__section d-flex flex-column align-items-center justify-content-center text-white">
-					<h1 class="mb-3 form-section_h1">Créez votre profil</h1>
+					<h1 class="mb-3 form-section_h1">{% trans %}Créez votre profil{% endtrans %}</h1>
 					{{ form_start(profileForm, {'attr': {'class': 'd-flex flex-column mt-2 form-width'}}) }}
 						{{ form_row(profileForm.username) }}
 						{{ form_row(profileForm.language) }}
