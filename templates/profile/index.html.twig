@@ -24,7 +24,7 @@
 					{% if profile.description is not null %}
 						<p class="m-auto">{{ profile.description }}</p>
 					{% else %}
-						<p class="m-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. A molestias asperiores alias suscipit voluptas nisi quisquam tenetur, eos exercitationem ipsa. Placeat sed cupiditate repudiandae sequi.</p>
+						<p class="m-auto">{% trans %}Vous n'avez pas saisi de description pour votre profil.{% endtrans %}</p>
 					{% endif %}
 				</div>
 

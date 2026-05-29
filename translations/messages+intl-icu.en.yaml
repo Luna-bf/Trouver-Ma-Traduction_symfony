@@ -47,5 +47,6 @@ Connectez-vous: 'Log in'
 'Mot de passe oublié ?': 'Forgotten password?'
 "Vous n'avez pas de compte ?": "You don't have an account?"
 Inscrivez-vous: Register
-'Mot de passe': 'Password'
+'Mot de passe': Password
 'Se souvenir de moi': 'Remember me'
+"Vous n'avez pas saisi de description pour votre profil.": "You didn't enter a description for your profile."
