@@ -38,6 +38,9 @@ class Profile
     #[ORM\OneToMany(targetEntity: Translation::class, mappedBy: 'profile', orphanRemoval: true)]
     private Collection $translations;
 
+    #[ORM\Column(length: 2)]
+    private ?string $language = null;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
@@ -134,6 +137,18 @@ class Profile
                 $translation->setProfile(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLanguage(): ?string
+    {
+        return $this->language;
+    }
+
+    public function setLanguage(string $language): static
+    {
+        $this->language = $language;
 
         return $this;
     }
