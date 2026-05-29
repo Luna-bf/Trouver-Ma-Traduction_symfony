@@ -86,6 +86,10 @@ class TranslationType extends AbstractType
                 'attr' => [
                     'class' => 'form-input',
                 ],
+                /* Je regroupe les différents styles contenant une chaîne de caractère spécifique : tous les styles contenant
+                la chaîne "Chanson", seront regroupés dans une balise <optgroup>. Celle-ci contient des balises <option> pour
+                chaque style (voir via l'inspection pour mieux comprendre).
+                */
                 'group_by' => function (Style $style, int $key, string $value): ?string {
                     if (str_contains($value, 'Chanson')) {
                         return 'Chanson';
