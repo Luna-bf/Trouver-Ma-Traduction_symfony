@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Compte - Trouver Ma Traduction
+{% block title %}{% trans %}Compte{% endtrans %} - Trouver Ma Traduction
 {% endblock %}
 
 {% block main %}
@@ -50,12 +50,12 @@
 				<hr class="account-hr">
 
 				<div class="d-flex account-params">
-					<h3 class="mt-2 fs-3">Autres actions</h3>
+					<h3 class="mt-2 fs-3">{% trans %}Autres actions{% endtrans %}</h3>
 					
 					{# Ajouter un pop-up de confirmation avertissant que le compte ET le profil seront supprimés #}
 					<form action="{{ path('user_account_delete', {id: profile.user.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer votre compte ? Cette action est irréversible.')" class="m-auto">
 						<input type="hidden" name="token" value="{{ csrf_token('delete-account') }}">
-						<button class="rounded"><i class="fa-solid fa-trash-can"></i>&ensp;Supprimer mon compte</button>
+						<button class="rounded"><i class="fa-solid fa-trash-can"></i>&ensp;{% trans %}Supprimer mon compte{% endtrans %}</button>
 					</form>
 				</div>
 			</article>

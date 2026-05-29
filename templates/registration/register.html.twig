@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription - Trouver Ma Traduction
+{% block title %}{% trans %}Inscription{% endtrans %} - Trouver Ma Traduction
 {% endblock %}
 
 {% block body %}
@@ -23,7 +23,7 @@
 					{{ form_row(registrationForm.submit) }}
 					{{ form_end(registrationForm) }}
 
-					<p class="form-redirection-text">Vous avez déjà un compte ? <a href="{{ path('app_login') }}">Connectez-vous</a></p>
+					<p class="form-redirection-text">{% trans %}Vous avez déjà un compte ?{% endtrans %} <a href="{{ path('app_login') }}">{% trans %}Connectez-vous{% endtrans %}</a></p>
 				</section>
 			</main>
 		{% endblock %}

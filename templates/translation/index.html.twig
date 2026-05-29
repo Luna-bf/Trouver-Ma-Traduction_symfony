@@ -1,20 +1,20 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Toutes vos traductions rassemblées à un seul endroit.
+{% block title %}{% trans %}Toutes vos traductions rassemblées à un seul endroit.{% endtrans %}
 {% endblock %}
 
 {% block body %}
 	<body class="bg-color-brown">
 		{% block header %}
 			<header class="landing-header d-flex flex-column align-items-center justify-content-center min-vh-100">
-				<h1 class="landing-header__h1 text-white">Toutes vos traductions rassemblées à un seul endroit.</h1>
-				<p class="landing-header__p text-white text-center">Chansons, textes, livres... Notre site communautaire rassemble des centaines d'adaptions traduites par des amoureux de la langue et de l'art !</p>
+				<h1 class="landing-header__h1 text-white">{% trans %}Toutes vos traductions rassemblées à un seul endroit.{% endtrans %}</h1>
+				<p class="landing-header__p text-white text-center">{% trans %}Chansons, livres, textes... Notre site communautaire rassemble des centaines d'adaptions traduites par des amoureux de la langue et de l'art !{% endtrans %}</p>
 				<ul class="landing-header__ul d-flex flex-row">
 					<li class="text-center me-5">
-						<a href="{{ path('app_register') }}" class="text-white">S'inscrire</a>
+						<a href="{{ path('app_register') }}" class="text-white">{% trans %}S'inscrire{% endtrans %}</a>
 					</li>
 					<li>
-						<a href="{{ path('app_login') }}" class="text-white">Se connecter</a>
+						<a href="{{ path('app_login') }}" class="text-white">{% trans %}Se connecter{% endtrans %}</a>
 					</li>
 				</ul>
 			</header>
@@ -23,8 +23,8 @@
 		{% block main %}
 			<main class="d-flex flex-column justify-content-center m-auto">
 				<section class="translation-titles d-flex flex-column align-items-center">
-					<p class="translation-titles__p">Avide de lecture, mordu de musique ou bien lecteur occasionnel ?</p>
-					<p class="translation-titles__p">Notre site est accessible à tous et propose toute une variété de traductions, tel que :</p>
+					<p class="translation-titles__p">{% trans %}Avide de lecture, mordu de musique ou bien lecteur occasionnel ?{% endtrans %}</p>
+					<p class="translation-titles__p">{% trans %}Notre site est accessible à tous et propose toute une variété de traductions, tel que :{% endtrans %}</p>
 				</section>
 
 				<section class="translation-parent d-flex flex-row justify-content-center">
@@ -34,9 +34,9 @@
 						</figure>
 
 						<ul class="d-flex flex-column justify-content-center align-items-center list-unstyled mb-0 summary">
-							<li><span class="fst-italic">Livres</span></li>
-							<li><p>Fantasy, roman policier, histoires à l'eau de rose... Tout les types de récits sont proposés sur le site et n'attendent plus que vous pour les découvrir !</p></li>
-							<li class="text-center mb-2"><a href="{{ path('app_register') }}">Commencez vos recherches dès maintenant</a></li>
+							<li><span class="fst-italic">{% trans %}Livres{% endtrans %}</span></li>
+							<li><p>{% trans %}Fantasy, roman policier, histoires à l'eau de rose... Tout les types de récits sont proposés sur le site et n'attendent plus que vous pour les découvrir !{% endtrans %}</p></li>
+							<li class="text-center mb-2"><a href="{{ path('app_register') }}">{% trans %}Commencez vos recherches dès maintenant{% endtrans %}</a></li>
 						</ul>
 					</article>
 
@@ -46,9 +46,9 @@
 						</figure>
 
 						<ul class="d-flex flex-column justify-content-center align-items-center list-unstyled mb-0 summary">
-							<li><span class="fst-italic">Chansons</span></li>
-							<li><p>Replongez dans vos chansons préférées grâce aux traductions proposées : pop, rock, jazz... Tout les styles de musique sont présents !</p></li>
-							<li class="text-center"><a href="{{ path('app_register') }}">Commencez vos recherches dès maintenant</a></li>
+							<li><span class="fst-italic">{% trans %}Chansons{% endtrans %}</span></li>
+							<li><p>{% trans %}Redécouvrez dans vos chansons préférées grâce aux traductions proposées : pop, rock, jazz... Tout les styles de musique sont présents !{% endtrans %}</p></li>
+							<li class="text-center"><a href="{{ path('app_register') }}">{% trans %}Commencez vos recherches dès maintenant{% endtrans %}</a></li>
 						</ul>
 					</article>
 
@@ -58,9 +58,9 @@
 						</figure>
 
 						<ul class="d-flex flex-column justify-content-center align-items-center list-unstyled mb-0 summary">
-							<li><span class="fst-italic">Textes</span></li>
-							<li><p>Vous favorisez les récits condencés ? Les traductions de poèmes, de nouvelles et autres textes courts seront parfaites pour vous !</p></li>
-							<li class="text-center"><a href="{{ path('app_register') }}">Commencez vos recherches dès maintenant</a></li>
+							<li><span class="fst-italic">{% trans %}Textes{% endtrans %}</span></li>
+							<li><p>{% trans %}Vous favorisez les récits condensés ? Les traductions de poèmes, de nouvelles et autres textes courts seront parfaites pour vous !{% endtrans %}</p></li>
+							<li class="text-center"><a href="{{ path('app_register') }}">{% trans %}Commencez vos recherches dès maintenant{% endtrans %}</a></li>
 						</ul>
 					</article>
 				</section>

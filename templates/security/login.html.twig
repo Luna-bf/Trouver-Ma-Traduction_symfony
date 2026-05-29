@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion - Trouver Ma Traduction
+{% block title %}{% trans %}Connexion{% endtrans %} - Trouver Ma Traduction
 {% endblock %}
 
 {% block body %}
@@ -8,17 +8,17 @@
 		{% block main %}
 			<main>
 				<section class="form-body__section d-flex flex-column align-items-center justify-content-center text-white">
-					<h1 class="mb-3 form-section_h1">Connexion</h1>
+					<h1 class="mb-3 form-section_h1">{% trans %}Connexion{% endtrans %}</h1>
 
 					<form method="post" class="d-flex flex-column mt-2 form-width">
 
 						<div class="d-flex flex-column form-parent-row">
-							<label for="email" class="mt-label">Adresse mail</label>
+							<label for="email" class="mt-label">{% trans %}Adresse mail{% endtrans %}</label>
 							<input type="email" value="{{ last_username }}" name="email" id="email" class="form-input mb-50" autocomplete="email" required autofocus>
 						</div>
 
 						<div class="d-flex flex-column form-parent-row">
-							<label for="password" class="mt-label">Mot de passe</label>
+							<label for="password" class="mt-label">{% trans %}Mot de passe{% endtrans %}</label>
 							<input type="password" name="password" id="password" class="form-input mb-last-input" autocomplete="current-password" required>
 
 							{# Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
@@ -32,7 +32,7 @@
 							<div class="checkbox mb-3 mt-4" id="remember-me">
 								<input type="checkbox" name="_remember_me" id="_remember_me" class="form-checkbox">
 								{# <span class="checkmark"></span> #}
-								<label for="_remember_me">Se souvenir de moi</label>
+								<label for="_remember_me">{% trans %}Se souvenir de moi{% endtrans %}</label>
 							</div>
 						</div>
 
@@ -43,12 +43,12 @@
 						{% endif %}
 
 						<div class="d-flex">
-							<button type="submit" class="submit-btn text-white w-50 rounded">Se connecter</button>
+							<button type="submit" class="submit-btn text-white w-50 rounded">{% trans %}Se connecter{% endtrans %}</button>
 						</div>
 
 						<div class="d-flex flex-column align-items-center account-parent">
-							<a href="#" class="forgotten-password text-white">Mot de passe oublié ?</a>
-							<p class="form-redirection-text mt-4" id="no-account">Vous n'avez pas de compte ? <a href="{{ path('app_register') }}">Inscrivez-vous</a></p>
+							<a href="#" class="forgotten-password text-white">{% trans %}Mot de passe oublié ?{% endtrans %}</a>
+							<p class="form-redirection-text mt-4" id="no-account">{% trans %}Vous n'avez pas de compte ?{% endtrans %} <a href="{{ path('app_register') }}">{% trans %}Inscrivez-vous{% endtrans %}</a></p>
 						</div>
 					</form>
 				</section>

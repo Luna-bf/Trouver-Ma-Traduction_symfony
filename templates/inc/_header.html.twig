@@ -4,6 +4,12 @@
 			<input type="search" name="search" id="search" class="form-input w-25" placeholder="Recherche...">
 		</form>
 
+		{% for locale in locales %}
+			{% if locale is not same as(app.request.locale) %}
+				<a href="{{ path('profile_change_locale', { locale: locale }) }}">{{ locale }}</a>
+			{% endif %}
+		{% endfor %}
+
 		{% if profile.profilePictureName is same as(null) %}
 			<a href="{{ path('profile_show') }}" class="user-pfp-header rounded-circle mb-2" style="background-image: url('/assets/imgs/placeholders/default-pfp.png')"></a>
 		{% else %}
