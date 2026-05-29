@@ -6,25 +6,24 @@
 {% block main %}
 	<main>
 		<section class="settings-container d-flex flex-row justify-content-center mx-auto">
-			<article
-				class="settings-parent">
+			<article class="settings-parent">
 				{# Settings pages links #}
 				<ul class="all-settings d-flex flex-column">
-					<li class="border-left">
+					<li class="mt-0 border-left">
 						<a href="{{ path('profile_settings') }}" class="d-flex">
-							<i class="fa-solid fa-user"></i>Profil</a>
+							<i class="fa-solid fa-user"></i>{% trans %}Profil{% endtrans %}</a>
 					</li>
 					<li>
 						<a href="{{ path('profile_preferences_settings') }}" class="d-flex">
-							<i class="fa-solid fa-bookmark"></i>Préférence de contenu</a>
+							<i class="fa-solid fa-bookmark"></i>{% trans %}Préférence de contenu{% endtrans %}</a>
 					</li>
 					<li>
 						<a href="{{ path('profile_accessibility_settings') }}" class="d-flex">
-							<i class="fa-solid fa-universal-access"></i>Accessibilité</a>
+							<i class="fa-solid fa-universal-access"></i>{% trans %}Accessibilité{% endtrans %}</a>
 					</li>
 					<li>
 						<a href="{{ path('user_account_settings') }}" class="d-flex">
-							<i class="fa-solid fa-gear"></i>Votre compte</a>
+							<i class="fa-solid fa-gear"></i>{% trans %}Votre compte{% endtrans %}</a>
 					</li>
 				</ul>
 			</article>

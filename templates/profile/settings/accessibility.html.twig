@@ -6,25 +6,24 @@
 {% block main %}
 	<main>
 		<section class="settings-container d-flex flex-row justify-content-center mx-auto">
-			<article
-				class="settings-parent">
+			<article class="settings-parent">
 				{# Settings pages links #}
 				<ul class="all-settings d-flex flex-column">
-					<li>
+					<li class="mt-0">
 						<a href="{{ path('profile_settings') }}" class="d-flex">
-							<i class="fa-solid fa-user"></i>Profil</a>
+							<i class="fa-solid fa-user"></i>{% trans %}Profil{% endtrans %}</a>
 					</li>
 					<li>
 						<a href="{{ path('profile_preferences_settings') }}" class="d-flex">
-							<i class="fa-solid fa-bookmark"></i>Préférence de contenu</a>
+							<i class="fa-solid fa-bookmark"></i>{% trans %}Préférence de contenu{% endtrans %}</a>
 					</li>
 					<li class="border-left">
 						<a href="{{ path('profile_accessibility_settings') }}" class="d-flex">
-							<i class="fa-solid fa-universal-access"></i>Accessibilité</a>
+							<i class="fa-solid fa-universal-access"></i>{% trans %}Accessibilité{% endtrans %}</a>
 					</li>
 					<li>
 						<a href="{{ path('user_account_settings') }}" class="d-flex">
-							<i class="fa-solid fa-gear"></i>Votre compte</a>
+							<i class="fa-solid fa-gear"></i>{% trans %}Votre compte{% endtrans %}</a>
 					</li>
 				</ul>
 			</article>
@@ -38,17 +37,23 @@
 					</select>
 				</div>
 
+				{# {{ form(accessibilityForm) }} #}
 				<form>
 					<div class="d-flex flex-column form-parent-row w-50">
 						<label for="language" class="mt-label">Langue</label>
 						<select name="language" id="language" class="form-input">
-							<option value="french" selected>Français</option>
-							<option value="english">English</option>
+							{% for locale in locales %}
+								<option value="{{ locale }}">{{ locale }}</option>
+							{% endfor %}
 						</select>
 					</div>
 
-					<div class="d-flex flex-column form-parent-row w-50">
-						<label for="myRange" class="mt-label">Taille de la police</label>
+
+					{# {% if locale !== app.request.locale %} #}
+					{# <a href="{{ path('profile_change_locale', {locale: locale}) }}">{{ locale }}</a> #}
+					{# {% endif %} #}
+
+						<div class="d-flex flex-column form-parent-row w-50"> <label for="myRange" class="mt-label">Taille de la police</label>
 						<div class="d-flex flex-row form-parent-row">
 							<input type="range" min="1" max="100" value="16" class="slider w-100 me-3" id="myRange">
 							<input type="number" id="number-input" class="profile-input" value="">
