@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -82,7 +83,7 @@ final class TranslationController extends AbstractController
             variable "$translationStyle->value" (ex: Rock (Chanson)). Si c'est le cas, j'enregistre ses deux valeurs dans
             la base de données, sinon, je déclenche une erreur.
             */
-            if (str_contains($translationStyle->value, $translationType->value)) {
+            if (str_contains($translationStyle->value, $translationType->value) || $translationStyle->value === 'Autre') {
                 $fullTranslation->setTranslationType($translationType);
                 $fullTranslation->setTranslationStyle($translationStyle);
             } else {
@@ -153,7 +154,7 @@ final class TranslationController extends AbstractController
             variable "$translationStyle->value" (ex: Rock (Chanson)). Si c'est le cas, j'enregistre ses deux valeurs dans
             la base de données, sinon, je déclenche une erreur.
             */
-            if (str_contains($translationStyle->value, $translationType->value)) {
+            if (str_contains($translationStyle->value, $translationType->value) || $translationStyle->value === 'Autre') {
                 $translation->setTranslationType($translationType);
                 $translation->setTranslationStyle($translationStyle);
             } else {
