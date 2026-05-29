@@ -1,29 +1,36 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{% trans %}Compte{% endtrans %} - Trouver Ma Traduction
+{% block title %}
+	{% trans %}Compte{% endtrans %}
+	- Trouver Ma Traduction
 {% endblock %}
 
 {% block main %}
 	<main>
 		<section class="settings-container d-flex flex-row justify-content-center mx-auto">
-			<article class="settings-parent">
+			<article
+				class="settings-parent">
 				{# Settings pages links #}
 				<ul class="all-settings d-flex flex-column">
 					<li class="mt-0">
 						<a href="{{ path('profile_settings') }}" class="d-flex">
-							<i class="fa-solid fa-user"></i>{% trans %}Profil{% endtrans %}</a>
+							<i class="fa-solid fa-user"></i>
+							{% trans %}Profil{% endtrans %}</a>
 					</li>
 					<li>
 						<a href="{{ path('profile_preferences_settings') }}" class="d-flex">
-							<i class="fa-solid fa-bookmark"></i>{% trans %}Préférence de contenu{% endtrans %}</a>
+							<i class="fa-solid fa-bookmark"></i>
+							{% trans %}Préférence de contenu{% endtrans %}</a>
 					</li>
 					<li>
 						<a href="{{ path('profile_accessibility_settings') }}" class="d-flex">
-							<i class="fa-solid fa-universal-access"></i>{% trans %}Accessibilité{% endtrans %}</a>
+							<i class="fa-solid fa-universal-access"></i>
+							{% trans %}Accessibilité{% endtrans %}</a>
 					</li>
 					<li class="border-left">
 						<a href="{{ path('user_account_settings') }}" class="d-flex">
-							<i class="fa-solid fa-gear"></i>{% trans %}Votre compte{% endtrans %}</a>
+							<i class="fa-solid fa-gear"></i>
+							{% trans %}Votre compte{% endtrans %}</a>
 					</li>
 				</ul>
 			</article>
@@ -37,26 +44,23 @@
 					<input type="hidden" name="token" value="{{ csrf_token('reset-email') }}">
 					<button class="reset-btn text-white rounded align-self-center mt-3 ms-3">Réinitialiser</button>
 				</form>
-
-				<form method="post" action="" class="d-flex flex-row align-content-center mt-4 edit-parameters__form">
-					<div class="d-flex flex-column form-parent-row w-50">
-						<label for="password" class="mt-0 mt-label">Mot de passe</label>
-						<input type="password" name="password" id="password" class="form-input mb-3">
-					</div>
-					<input type="hidden" name="token" value="{{ csrf_token('reset-password') }}">
-					<button class="reset-btn text-white rounded align-self-center mt-3 ms-3">Réinitialiser</button>
-				</form>
-
+				
 				<hr class="account-hr">
 
 				<div class="d-flex account-params">
 					<h3 class="mt-2 fs-3">{% trans %}Autres actions{% endtrans %}</h3>
-					
-					{# Ajouter un pop-up de confirmation avertissant que le compte ET le profil seront supprimés #}
-					<form action="{{ path('user_account_delete', {id: profile.user.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer votre compte ? Cette action est irréversible.')" class="m-auto">
-						<input type="hidden" name="token" value="{{ csrf_token('delete-account') }}">
-						<button class="rounded"><i class="fa-solid fa-trash-can"></i>&ensp;{% trans %}Supprimer mon compte{% endtrans %}</button>
-					</form>
+
+					<div class="d-flex flex-row justify-content-center">
+						<a href="#" class="rounded password-link me-5">
+							<i class="fa-solid fa-key"></i>&ensp;{% trans %}Modifier le mot de passe{% endtrans %}</a>
+
+						{# Ajouter un pop-up de confirmation avertissant que le compte ET le profil seront supprimés #}
+						<form action="{{ path('user_account_delete', {id: profile.user.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer votre compte ? Cette action est irréversible.')">
+							<input type="hidden" name="token" value="{{ csrf_token('delete-account') }}">
+							<button class="rounded">
+								<i class="fa-solid fa-trash-can"></i>&ensp;{% trans %}Supprimer mon compte{% endtrans %}</button>
+						</form>
+					</div>
 				</div>
 			</article>
 		</section>
