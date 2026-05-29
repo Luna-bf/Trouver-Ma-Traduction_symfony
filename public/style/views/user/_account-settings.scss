@@ -14,21 +14,40 @@
         margin-bottom: 0.5rem;
     }
 
-    >form {
-        >button {
+    div {
+
+        >.password-link {
             font-family: "PoppinsLight", sans-serif;
-            background-color: var(--danger-bg-color);
-            border: var(--danger-border);
-            color: var(--danger-color);
             padding: 0.6em 1.1em 0.6em 1.1em;
             margin: 2em 0 1em 0;
             font-size: 0.9rem;
+            background-color: var(--password-bg-color);
+            border: var(--password-border);
+            color: var(--password-color);
         }
 
-        >button:hover {
-            background-color: var(--danger-bg-color-hover);
-            border: var(--danger-border-hover);
-            color: var(--danger-color-hover);
+        >.password-link:hover {
+            background-color: var(--password-bg-color-hover);
+            border: var(--password-border-hover);
+            color: var(--password-color-hover);
+        }
+
+        >form {
+            >button {
+                font-family: "PoppinsLight", sans-serif;
+                background-color: var(--danger-bg-color);
+                border: var(--danger-border);
+                color: var(--danger-color);
+                padding: 0.6em 1.1em 0.6em 1.1em;
+                margin: 2em 0 1em 0;
+                font-size: 0.9rem;
+            }
+
+            >button:hover {
+                background-color: var(--danger-bg-color-hover);
+                border: var(--danger-border-hover);
+                color: var(--danger-color-hover);
+            }
         }
     }
 }
