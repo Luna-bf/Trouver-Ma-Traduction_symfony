@@ -23,6 +23,13 @@
     --danger-bg-color-hover: #b22222;
     --danger-color-hover: #fff;
     --danger-border-hover: 1px solid #b22222;
+    // password
+    --password-border: 1px solid #1C1E7B;
+    --password-bg-color: transparent;
+    --password-color: #1C1E7B;
+    --password-bg-color-hover: #1C1E7B;
+    --password-color-hover: #fff;
+    --password-border-hover: 1px solid #1C1E7B;
 }
 
 /***Dark mode***/
@@ -31,23 +38,29 @@
     --text-color: #fff;
     --nav-bg-color: #333333;
     // settings
-    --settings-border: 1px solid #6c757d;
-    --settings-bg-color: #6c757d;
+    --settings-border: 1px solid #51585e;
+    --settings-bg-color: #51585e;
     --settings-color: #fff;
-    --settings-bg-color-hover: #51585e;
+    --settings-bg-color-hover: #6c757d;
     --settings-color-hover: #fff;
-    --settings-border-hover: 1px solid #51585e;
+    --settings-border-hover: 1px solid #6c757d;
     // success
-    --success-border: 1px solid #198754;
-    --success-bg-color: #198754;
+    --success-border: 1px solid #135e3b;
+    --success-bg-color: #135e3b;
     --success-color: #fff;
-    --success-bg-color-hover: #135e3b;
+    --success-bg-color-hover: #198754;
     --success-color-hover: #fff;
-    --success-border-hover: 1px solid #135e3b;
+    --success-border-hover: 1px solid #198754;
     // danger
-    --danger-border: 1px solid #b22222;
-    --danger-bg-color: #b22222;
+    --danger-border: 1px solid #911a1a;
+    --danger-bg-color: #911a1a;
     --danger-color: #fff;
-    --danger-bg-color-hover: #911a1a;
-    --danger-border-hover: 1px solid #911a1a;
+    --danger-bg-color-hover: #b22222;
+    --danger-border-hover: 1px solid #b22222;
+    // password
+    --password-border: 1px solid #131555;
+    --password-bg-color: #131555;
+    --password-color: #fff;
+    --password-bg-color-hover: #1C1E7B;
+    --password-border-hover: 1px solid #1C1E7B;
 }
