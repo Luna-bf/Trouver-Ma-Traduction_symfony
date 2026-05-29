@@ -32,15 +32,15 @@
 					<hr>
 				</div>
 
-				<p class="translation-count mb-0 text-center"><i class="fa-solid fa-file-pen"></i>Traductions postées : {{ translations|length }}</p>
+				<p class="translation-count mb-0 text-center"><i class="fa-solid fa-file-pen"></i>{% trans %}Traductions postées :{% endtrans %} {{ translations|length }}</p>
 
 				<div class="hr-profile d-flex">
 					<hr>
 				</div>
 
 				<ul class="action-links d-flex justify-content-center">
-					<li><a href="{{ path('profile_settings') }}" class="settings"><i class="fa-solid fa-gear me-2"></i>Paramètres</a></li>
-					<li><a href="{{ logout_path() }}" class="logout"><i class="fa-solid fa-right-from-bracket me-2"></i>Se déconnecter</a></li>
+					<li><a href="{{ path('profile_settings') }}" class="settings"><i class="fa-solid fa-gear me-2"></i>{% trans %}Paramètres{% endtrans %}</a></li>
+					<li><a href="{{ logout_path() }}" class="logout"><i class="fa-solid fa-right-from-bracket me-2"></i>{% trans %}Se déconnecter{% endtrans %}</a></li>
 				</ul>
 			</article>
 		</section>
@@ -48,7 +48,7 @@
 		<section class="d-flex flex-column align-items-center">
 			<div class="posts-btn d-flex justify-content-center">
 				<a href="{{ path('translation_new_upload') }}" class="create-post">
-					<i class="fa-solid fa-plus"></i>Nouvelle publication</a>
+					<i class="fa-solid fa-plus"></i>{% trans %}Nouvelle publication{% endtrans %}</a>
 			</div>
 
 			{% for message in app.flashes('success') %}
@@ -66,42 +66,42 @@
 							<div class='text-center simple-title'>
 								<h3>{{ translation.name }}</h3>
 								<h4 class='see-translation-link'>
-									<a href='{{ asset("uploads/translations/#{translation.translationFilename}") }}'>Voir la traduction</a>
+									<a href='{{ asset("uploads/translations/#{translation.translationFilename}") }}'>{% trans %}Voir la traduction{% endtrans %}</a>
 								</h4>
 							</div>
 
 							<ul class='simple-text'>
-								<li>Type :
+								<li>{% trans %}Type :{% endtrans %}
 									<span>{{ translation.translationType.name }}</span>
 								</li>
-								<li>Style :
+								<li>{% trans %}Style :{% endtrans %}
 									<span>{{ translation.translationStyle.name }}</span>
 								</li>
-								<li>Auteur :
+								<li>{% trans %}Auteur :{% endtrans %}
 									<span>{{ translation.author }}</span>
 								</li>
-								<li>Langue :
+								<li>{% trans %}Langue :{% endtrans %}
 									<span>{{ translation.language }}</span>
 								</li>
 							</ul>
 
 							<ul class='simple-other-infos'>
-								<li>Par :
+								<li>{% trans %}Par :{% endtrans %}
 									<span>{{ profile.username }}</span>
 								</li>
-								<li>Postée le :
+								<li>{% trans %}Postée le :{% endtrans %}
 									<span>{{ translation.createdAt | date("d/m/Y") }}</span>
 								</li>
 							</ul>
-							<div class="action-buttons d-flex">
+							<div class="action-buttons d-flex justify-content-center">
 								<a href="{{ path('translation_edit', {id: translation.id}) }}" class="edit d-flex align-items-center">
-									<i class="fa-solid fa-pen"></i>Modifier
+									<i class="fa-solid fa-pen"></i>{% trans %}Modifier{% endtrans %}
 								</a>
 								<form action="{{ path('translation_delete', {id: translation.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cette traduction ?')" class="d-flex">
 									{# Le token sert à sécuriser l'application #}
 									{# Le token se nomme "delete-item" #}
 									<input type="hidden" name="token" value="{{ csrf_token('delete-item') }}"> <button>
-										<i class="fa-solid fa-ban"></i>Supprimer</button>
+										<i class="fa-solid fa-ban"></i>{% trans %}Supprimer{% endtrans %}</button>
 								</form>
 							</div>
 						</div>
