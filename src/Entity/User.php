@@ -25,7 +25,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     donc plus prudent d'utiliser NotBlank, qui refuse d'envoyer un formulaire dont l'un des champs n'est pas rempli.
     */
     #[ORM\Column(length: 180)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(['message' => 'Veuillez saisir une adresse mail.'])]
     private ?string $email = null;
 
     /**
@@ -37,8 +37,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      */
+    /* Je n'ajoute pas la propriété NotBlank sur la propriété, mais uniquement sur le formulaire : la propriété "password"
+    ne sera remplie qu'après le hachage (hash) de la chaîne de caractère récupérée dans l'input "plainPassword" (voir le
+    fichier RegistrationController.php pour comprendre) */
     #[ORM\Column]
-    #[Assert\NotBlank]
     private ?string $password = null;
 
     /**
