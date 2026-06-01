@@ -21,7 +21,7 @@ class Profile
     donc plus prudent d'utiliser NotBlank, qui refuse d'envoyer un formulaire dont l'un des champs n'est pas rempli.
     */
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(['message' => 'Veuillez définir un nom d\'utilisateur.'])]
     private ?string $username = null;
 
     #[ORM\Column(length: 255, nullable: true)]
