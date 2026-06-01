@@ -7,6 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Attribute\AsEntityListener;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Event\PostUpdateEventArgs;
 use Doctrine\ORM\Events;
+use Symfony\Component\Validator\Constraints as Assert;
 
 enum Type: string {
     case Chanson = 'Chanson';
@@ -37,21 +38,26 @@ class Translation
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotNull]
     private ?string $name = null;
 
     #[ORM\Column(length: 500)]
     private ?string $translationFileName = null;
 
     #[ORM\Column(type: 'string', enumType: type::class)]
+    #[Assert\NotNull]
     private ?Type $translationType = null;
 
     #[ORM\Column(type: 'string', enumType: style::class)]
+    #[Assert\NotNull]
     private ?Style $translationStyle = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotNull]
     private ?string $author = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotNull]
     private ?string $language = null;
 
     #[ORM\Column]
@@ -62,6 +68,7 @@ class Translation
     private ?Profile $profile = null;
 
     #[ORM\Column(length: 20)]
+    #[Assert\NotNull]
     private ?string $translationFileExtension = null;
 
     public function getId(): ?int
