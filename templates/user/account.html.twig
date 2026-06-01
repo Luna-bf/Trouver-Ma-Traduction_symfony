@@ -44,14 +44,14 @@
 					<input type="hidden" name="token" value="{{ csrf_token('reset-email') }}">
 					<button class="reset-btn text-white rounded align-self-center mt-3 ms-3">Réinitialiser</button>
 				</form>
-				
+
 				<hr class="account-hr">
 
 				<div class="d-flex account-params">
 					<h3 class="mt-2 fs-3">{% trans %}Autres actions{% endtrans %}</h3>
 
 					<div class="d-flex flex-row justify-content-center">
-						<a href="#" class="rounded password-link me-5">
+						<a href="{{ path('user_reset_password') }}" class="rounded password-link me-5">
 							<i class="fa-solid fa-key"></i>&ensp;{% trans %}Modifier le mot de passe{% endtrans %}</a>
 
 						{# Ajouter un pop-up de confirmation avertissant que le compte ET le profil seront supprimés #}
