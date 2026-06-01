@@ -8,19 +8,49 @@
 		{% block main %}
 			<main>
 				<section class="form-body__section d-flex flex-column align-items-center justify-content-center text-white">
-					<h1 class="mb-3 form-section_h1">Inscription</h1>
+					<h1 class="mb-3 form-section_h1">{% trans %}Inscription{% endtrans %}</h1>
+
 					{{ form_start(registrationForm, {'attr': {'class': 'd-flex flex-column mt-2 form-width'}}) }}
-					{{ form_row(registrationForm.email) }}
-					{{ form_row(registrationForm.plainPassword) }}
-					
-					<div class="mb-3 mt-4" id="remember">
-						{{ form_widget(registrationForm.agreeTerms) }}
-						{{ form_label(registrationForm.agreeTerms, 'J\'accepte les conditions d\'utilisation') }}
-					</div>
+						{# START EMAIL #}
+						<div class="d-flex flex-column form-parent-row">
+							{{ form_label(registrationForm.email, null, {'label_attr': {'class': 'mt-label'}}) }}
+							
+							<div class="d-flex align-items-center text-danger error-message">
+								{{ form_errors(registrationForm.email) }}
+							</div>
+							
+							{{ form_widget(registrationForm.email, {'attr': {'class': 'd-flex flex-column form-parent-row'}}) }}
+						</div>
+						{# END EMAIL #}
 
-					{{ form_errors(registrationForm) }}
+						{# START PASSWORD #}
+						<div class="d-flex flex-column form-parent-row">
+							{{ form_label(registrationForm.plainPassword, null, {'label_attr': {'class': 'mt-label'}}) }}
+							
+							<div class="d-flex align-items-center text-danger error-message">
+								{{ form_errors(registrationForm.plainPassword) }}
+							</div>
 
-					{{ form_row(registrationForm.submit) }}
+							{{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'd-flex flex-column form-parent-row'}}) }}
+						</div>
+						{# END PASSWORD #}
+
+						{# <div class="mb-3 mt-4" id="remember">
+							{{ form_row(registrationForm.agreeTerms) }}
+						</div> #}
+						
+						{# form_widget permet d'afficher chaque ligne du champ d'un formulaire sans la <div> prédéfinie par
+						$builder dans le fichier RegistrationFormType (décommenter le bloc ci-dessus et l'inspecter pour
+						mieux comprendre) #}
+						{# START REMEMBER #}
+						<div class="mb-3 mt-4" id="remember">
+							{{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-checkbox'}}) }}
+							{{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'sign-label'}}) }}
+						</div>
+						{# END REMEMBER #}
+
+						{# SUBMIT #}
+						{{ form_row(registrationForm.submit, {'row_attr': {'class': 'd-flex'}, 'attr': {'class': 'submit-btn text-white w-50 rounded'}}) }}
 					{{ form_end(registrationForm) }}
 
 					<p class="form-redirection-text">{% trans %}Vous avez déjà un compte ?{% endtrans %} <a href="{{ path('app_login') }}">{% trans %}Connectez-vous{% endtrans %}</a></p>
