@@ -17,8 +17,11 @@ class Profile
     #[ORM\Column]
     private ?int $id = null;
 
+    /* J'utilise NotBlank plutôt que NotNull : en effet, NotNull accepte les chaînes de caractères vide (sans contenu). Il est
+    donc plus prudent d'utiliser NotBlank, qui refuse d'envoyer un formulaire dont l'un des champs n'est pas rempli.
+    */
     #[ORM\Column(length: 255)]
-    #[Assert\NotNull]
+    #[Assert\NotBlank]
     private ?string $username = null;
 
     #[ORM\Column(length: 255, nullable: true)]

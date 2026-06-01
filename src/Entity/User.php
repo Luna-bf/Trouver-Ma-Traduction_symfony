@@ -21,8 +21,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
+    /* J'utilise NotBlank plutôt que NotNull : en effet, NotNull accepte les chaînes de caractères vide (sans contenu). Il est
+    donc plus prudent d'utiliser NotBlank, qui refuse d'envoyer un formulaire dont l'un des champs n'est pas rempli.
+    */
     #[ORM\Column(length: 180)]
-    #[Assert\NotNull]
+    #[Assert\NotBlank]
     private ?string $email = null;
 
     /**
@@ -35,7 +38,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
-    #[Assert\NotNull]
+    #[Assert\NotBlank]
     private ?string $password = null;
 
     /**
