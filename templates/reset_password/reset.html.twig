@@ -1,12 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reset your password{% endblock %}
+{% block title %}{% trans %}Réinitialisez votre mot de passe{% endtrans %}{% endblock %}
 
 {% block body %}
-    <h1>Reset your password</h1>
+    <body class="form-body">
+		{% block main %}
+            <main>
+                <section class="form-body__section d-flex flex-column align-items-center justify-content-center text-white">
+                    <h1 class="mb-5">{% trans %}Réinitialisez votre mot de passe{% endtrans %}</h1>
 
-    {{ form_start(resetForm) }}
-        {{ form_row(resetForm.plainPassword) }}
-        <button class="btn btn-primary">Reset password</button>
-    {{ form_end(resetForm) }}
+                    {{ form_start(resetForm, {'attr': {'class': 'd-flex flex-column mt-2 form-width'}}) }}
+                        {{ form_row(resetForm.plainPassword) }}
+                        <button class="submit-btn text-white w-50 rounded">{% trans %}Enregistrer{% endtrans %}</button>
+                    {{ form_end(resetForm) }}
+                </section>
+            </main>
+		{% endblock %}
+    </body>
 {% endblock %}
