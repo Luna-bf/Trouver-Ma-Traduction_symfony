@@ -20,16 +20,6 @@ class ProfileType extends AbstractType
             ->add('username', TextType::class, [
                 // Label personnalisé
                 'label' => 'Nom d\'utilisateur',
-
-                // Attributs de la div générée par $builder
-                'row_attr' => [
-                    'class' => 'd-flex flex-column form-parent-row'
-                ],
-
-                // Attributs du label
-                'label_attr' => [
-                    'class' => 'mt-label mt-3'
-                ],
             ])
             // Essayer de définir les erreurs du formulaire ici ? (Assert Constraint ???)
             ->add('language', ChoiceType::class, [
@@ -40,18 +30,6 @@ class ProfileType extends AbstractType
                 'choices' => [
                     'Français' => 'fr',
                     'English' => 'en',
-                ],
-
-                'row_attr' => [
-                    'class' => 'd-flex flex-column form-parent-row'
-                ],
-
-                'label_attr' => [
-                    'class' => 'mt-label'
-                ],
-
-                'attr' => [
-                    'class' => 'text-black'
                 ]
             ])
             ->add('profilePictureName', FileType::class, [
@@ -61,20 +39,6 @@ class ProfileType extends AbstractType
                 'mapped' => false,
 
                 'required' => false,
-
-                // Attributs de la div générée par $builder
-                'row_attr' => [
-                    'class' => 'd-flex flex-column form-parent-row'
-                ],
-
-                // Attributs du label
-                'label_attr' => [
-                    'class' => 'mt-label'
-                ],
-
-                'attr' => [
-                    'class' => 'text-black'
-                ]
             ])
             ->add('thumbnailName', FileType::class, [
                 // Label personnalisé
@@ -83,51 +47,15 @@ class ProfileType extends AbstractType
                 'mapped' => false,
 
                 'required' => false,
-
-                // Attributs de la div générée par $builder
-                'row_attr' => [
-                    'class' => 'd-flex flex-column form-parent-row'
-                ],
-
-                // Attributs du label
-                'label_attr' => [
-                    'class' => 'mt-label'
-                ],
-
-                'attr' => [
-                    'class' => 'text-black'
-                ]
             ])
             ->add('description', TextareaType::class, [
                 // Label personnalisé
                 'label' => 'Description (optionnel)',
 
                 'required' => false,
-
-                // Attributs de la div générée par $builder
-                'row_attr' => [
-                    'class' => 'd-flex flex-column form-parent-row'
-                ],
-
-                // Attributs du label
-                'label_attr' => [
-                    'class' => 'mt-label'
-                ],
-
-                'attr' => [
-                    'rows' => '5'
-                ]
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Enregistrer',
-
-                'row_attr' => [
-                    'class' => 'd-flex'
-                ],
-
-                'attr' => [
-                    'class' => 'submit-btn text-white w-50 rounded'
-                ]
             ])
         ;
     }
