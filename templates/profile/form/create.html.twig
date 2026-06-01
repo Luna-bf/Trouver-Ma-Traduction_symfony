@@ -10,15 +10,24 @@
 				<section class="form-body__section d-flex flex-column align-items-center justify-content-center text-white">
 					<h1 class="mb-3 form-section_h1">{% trans %}Créez votre profil{% endtrans %}</h1>
 					{{ form_start(profileForm, {'attr': {'class': 'd-flex flex-column mt-2 form-width'}}) }}
-						{{ form_row(profileForm.username) }}
-						{{ form_row(profileForm.language) }}
-						{{ form_row(profileForm.profilePictureName) }}
-						{{ form_row(profileForm.thumbnailName) }}
-						{{ form_row(profileForm.description) }}
+						{# START USERNAME #}
+						<div class="d-flex flex-column form-parent-row">
+							{{ form_label(profileForm.username, null, {'label_attr': {'class': 'mt-label'}}) }}
+							
+							<div class="d-flex align-items-center text-danger error-message">
+								{{ form_errors(profileForm.username) }}
+							</div>
+							
+							{{ form_widget(profileForm.username) }}
+						</div>
+						{# END USERNAME #}
+						
+						{{ form_row(profileForm.language, {'row_attr': {'class': 'd-flex flex-column form-parent-row'}, 'label_attr': {'class': 'mt-label'}}) }}
+						{{ form_row(profileForm.profilePictureName, {'row_attr': {'class': 'd-flex flex-column form-parent-row'}, 'label_attr': {'class': 'mt-label'}, 'attr': {'class': 'text-black'}}) }}
+						{{ form_row(profileForm.thumbnailName, {'row_attr': {'class': 'd-flex flex-column form-parent-row'}, 'label_attr': {'class': 'mt-label'}, 'attr': {'class': 'text-black'}}) }}
+						{{ form_row(profileForm.description, {'row_attr': {'class': 'd-flex flex-column form-parent-row'}, 'label_attr': {'class': 'mt-label'}, 'attr': {'rows': '5'}}) }}
 
-						{{ form_errors(profileForm) }}
-
-						{{ form_row(profileForm.submit) }}
+						{{ form_row(profileForm.submit, {'row_attr': {'class': 'd-flex'}, 'attr': {'class': 'submit-btn text-white w-50 rounded'}}) }}
 					{{ form_end(profileForm) }}
 				</section>
 			</main>
