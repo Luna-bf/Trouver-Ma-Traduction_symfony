@@ -24,16 +24,16 @@
                 transform: scale(1.1);
             }
 
-            .error-message {                
-                i {
-                    margin-right: 0.3em;
-                    margin-bottom: 0.5em;
-                }
-                
+            .error-message {
                 ul {
                     margin-bottom: 0.5em;
                 }
             }
+        }
+
+        #password-error ul>li {
+            margin: 0.5em 0;
+            list-style-type: disc;
         }
     }
 }
