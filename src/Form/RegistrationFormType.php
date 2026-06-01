@@ -21,40 +21,7 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'label' => 'Adresse mail',
-
-                // Attributs de la div générée par $builder
-                'row_attr' => [
-                    'class' => 'd-flex flex-column form-parent-row'
-                ],
-
-                // Attributs du label
-                'label_attr' => [
-                    'class' => 'mt-label'
-                ],
-            ])
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
-                    ]),
-                ],
-                
-                // Attributs de la div générée par $builder
-                'row_attr' => [
-                    'id' => 'remember'
-                ],
-
-                // Attributs du label
-                'label_attr' => [
-                    'class' => 'sign-label'
-                ],
-
-                // Attributs de l'input
-                'attr' => [
-                    'class' => 'form-checkbox',
-                ]
+                'label' => 'Adresse mail'
             ])
             ->add('plainPassword', PasswordType::class, [
                 'label' => 'Mot de passe',
@@ -73,31 +40,24 @@ class RegistrationFormType extends AbstractType
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
-                ],
-
-                'row_attr' => [
-                    'class' => 'd-flex flex-column form-parent-row'
-                ],
-
-                'label_attr' => [
-                    'class' => 'mt-label'
-                ],
-                
+                ],                
                 'attr' => [
                     'autocomplete' => 'new-password'
                 ],
             ])
+            ->add('agreeTerms', CheckboxType::class, [
+                'mapped' => false,
 
+                'label' => 'J\'accepte les conditions d\'utilisation',
+
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'You should agree to our terms.',
+                    ]),
+                ],
+            ])
             ->add('submit', SubmitType::class, [
                 'label' => 'S\'inscrire',
-
-                'row_attr' => [
-                    'class' => 'd-flex'
-                ],
-
-                'attr' => [
-                    'class' => 'submit-btn text-white w-50 rounded'
-                ]
             ])
         ;
     }
