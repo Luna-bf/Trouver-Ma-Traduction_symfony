@@ -37,27 +37,29 @@ class Translation
     #[ORM\Column]
     private ?int $id = null;
 
+    /* J'utilise NotBlank plutôt que NotNull : en effet, NotNull accepte les chaînes de caractères vide (sans contenu). Il est
+    donc plus prudent d'utiliser NotBlank, qui refuse d'envoyer un formulaire dont l'un des champs n'est pas rempli.
+    */
     #[ORM\Column(length: 255)]
-    #[Assert\NotNull]
+    #[Assert\NotBlank]
     private ?string $name = null;
 
     #[ORM\Column(length: 500)]
     private ?string $translationFileName = null;
 
     #[ORM\Column(type: 'string', enumType: type::class)]
-    #[Assert\NotNull]
     private ?Type $translationType = null;
 
     #[ORM\Column(type: 'string', enumType: style::class)]
-    #[Assert\NotNull]
+    #[Assert\NotBlank]
     private ?Style $translationStyle = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotNull]
+    #[Assert\NotBlank]
     private ?string $author = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotNull]
+    #[Assert\NotBlank]
     private ?string $language = null;
 
     #[ORM\Column]
@@ -68,7 +70,6 @@ class Translation
     private ?Profile $profile = null;
 
     #[ORM\Column(length: 20)]
-    #[Assert\NotNull]
     private ?string $translationFileExtension = null;
 
     public function getId(): ?int
