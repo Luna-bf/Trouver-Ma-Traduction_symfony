@@ -1,7 +1,7 @@
 @use '../../other/variables';
 
 .form-body {
-    background-image: url("../../assets/imgs/general/form/paysage.png");
+    background-image: url("../../assets/imgs/placeholders/placeholder_form-bg.png");
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: 0 200em rgba(0, 0, 0, 0.58) inset;
@@ -22,6 +22,17 @@
 
             input[type="checkbox"] {
                 transform: scale(1.1);
+            }
+
+            .error-message {                
+                i {
+                    margin-right: 0.3em;
+                    margin-bottom: 0.5em;
+                }
+                
+                ul {
+                    margin-bottom: 0.5em;
+                }
             }
         }
     }
