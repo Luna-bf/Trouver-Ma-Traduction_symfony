@@ -36,14 +36,22 @@
 			</article>
 
 			<article class="edit-parameters">
-				<form method="post" action="" class="d-flex flex-row align-content-center edit-parameters__form">
+				{{ form_start(resetEmailForm, {'attr': {'class': 'd-flex flex-row align-content-center edit-parameters__form'}}) }}
 					<div class="d-flex flex-column form-parent-row w-50">
-						<label for="email" class="mt-0 mt-label">Adresse mail</label>
-						<input type="email" name="email" id="email" class="form-input mb-3">
+						{{ form_label(resetEmailForm.email, null, {'label_attr':  {'class': 'mt-0 mt-label'}}) }}
+						{{ form_widget(resetEmailForm.email, {'attr':  {'class': 'form-input mb-3'}}) }}
 					</div>
+
 					<input type="hidden" name="token" value="{{ csrf_token('reset-email') }}">
-					<button class="reset-btn text-white rounded align-self-center mt-3 ms-3">Réinitialiser</button>
-				</form>
+
+					{{ form_widget(resetEmailForm.submit, {'attr': {'class': 'reset-btn text-white rounded align-self-center mt-3 ms-3'}}) }}
+				{{ form_end(resetEmailForm) }}
+
+				{% for message in app.flashes('success') %}
+					<div class="flash-success mb-0 mt-4 d-flex justify-content-start">
+						{{ message }}
+					</div>
+				{% endfor %}
 
 				<hr class="account-hr">
 
