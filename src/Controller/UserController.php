@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Profile;
 use App\Entity\User;
 use App\Form\ChangePasswordFormType;
+use App\Form\UserFormType;
 use App\Repository\TranslationRepository;
 use App\Service\FileUploader;
 use App\Service\ProfilePictureUploader;
@@ -25,12 +26,35 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 final class UserController extends AbstractController
 {
     #[Route('/settings/account_settings', name: 'account_settings')]
-    public function accountSettings(#[CurrentUser] User $user): Response
+    public function accountSettings(#[CurrentUser] User $user, Request $request, EntityManagerInterface $em): Response
     {
         $profile = $user->getProfile();
 
+        $resetEmailForm = $this->createForm(UserFormType::class, $user);
+        $resetEmailForm->handleRequest($request);
+
+        if($resetEmailForm->isSubmitted() && $resetEmailForm->isValid()) {
+            
+            $newEmail = $resetEmailForm->get('email')->getData();
+            $submittedToken = $request->getPayload()->get('token'); // Récupère la valeur du champ nommé "token"
+
+            if ($this->isCsrfTokenValid('reset-email', $submittedToken)) {
+
+                // Envoyer un mail de confirmation pour valider le changement d'email avant de l'envoyer dans la BDD
+                $user->setEmail($newEmail);
+                $em->flush();
+
+                $this->addFlash('success', 'Votre adresse mail a été modifiée avec succès.');
+
+                return $this->redirectToRoute('user_account_settings');
+            } else {
+                throw new Exception('Erreur : Le jeton CSRF est invalide.');
+            }
+        }
+
         return $this->render('user/account.html.twig', [
-            'profile' => $profile
+            'profile' => $profile,
+            'resetEmailForm' => $resetEmailForm
         ]);
     }
 
