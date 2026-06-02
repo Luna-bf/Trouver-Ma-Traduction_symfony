@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Profile;
 use App\Entity\User;
+use App\Form\ChangePasswordFormType;
 use App\Repository\TranslationRepository;
 use App\Service\FileUploader;
 use App\Service\ProfilePictureUploader;
@@ -13,6 +14,7 @@ use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
@@ -29,6 +31,30 @@ final class UserController extends AbstractController
 
         return $this->render('user/account.html.twig', [
             'profile' => $profile
+        ]);
+    }
+
+    #[Route('/settings/account_settings/reset_password', name: 'reset_password')]
+    public function resetPassword(#[CurrentUser] User $user, Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $em)
+    {
+        $resetForm = $this->createForm(ChangePasswordFormType::class, $user);
+
+        $resetForm->handleRequest($request);
+
+        if ($resetForm->isSubmitted() && $resetForm->isValid()) {
+            // dd($request->getPayload()->all();
+
+            // $newPassword = $resetForm->get('plainPassword')->getViewData(); // Affiche les données sous forme de tableau
+            $newPassword = $resetForm->get('plainPassword')->getData();
+
+            $user->setPassword($userPasswordHasher->hashPassword($user, $newPassword));
+            $em->flush();
+
+            return $this->redirectToRoute('user_account_settings');
+        }
+
+        return $this->render('reset_password/reset.html.twig', [
+            'resetForm' => $resetForm
         ]);
     }
 
